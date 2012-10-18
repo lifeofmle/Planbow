@@ -1,0 +1,146 @@
+﻿<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Planbow App</title>
+
+    <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.2"></script>
+    <script type="text/javascript">
+        var map = null;
+
+        function getMap() {
+            map = new VEMap('map');
+            map.LoadMap();
+            map.SetZoomLevel(10);
+        }
+    </script>
+
+    <style type="text/css">
+        .headerNav { background-color: #bbb; list-style-type: none; padding: 0; margin: 0; border-radius: 7px; 
+	        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #d6d6d6), color-stop(0.4, #c0c0c0), color-stop(1,#a4a4a4)); 
+	        margin: 10px 0 16px 0;
+            font-size: 0px;
+        }
+        
+        .headerNav li:hover { background-color: #ddd; }    
+        .headerNav li:first-child { border-left: none; border-radius: 7px 0 0 7px; }
+        .headerNav li { font-size: 16px; font-weight: bold; display: inline-block; padding: 0.5em 1.5em; cursor: pointer; color: #444; text-shadow: #f7f7f7 0 1px 1px; border-left: 1px solid #ddd; border-right: 1px solid #888; }
+        .headerNav li { *display: inline !important; } /* IE7 only */
+        .headerNav .selected { background-color: #444 !important; color: white; text-shadow:none; border-right-color: #aaa; border-left: none; box-shadow:inset 1px 2px 6px #070707; }
+
+        .menu { background-color: red; }
+        .menu-filter { float: left; width: 25% }
+        .menu-search { float: left; width: 50% }
+        .menu-view { float: left; width: 25% }
+
+        .content { float:none; }
+    </style>
+</head>
+<body
+    onload="getMap();">
+    <div>
+        <ul class="headerNav" data-bind="foreach: views">
+            <li data-bind="text: $data"></li>
+        </ul>
+    </div>
+
+    <div class="discoverView"
+        style="border:1px solid black; height:480px; width:320px;">
+
+        <div class="menu">
+            <div class="menu-filter">
+                <a href="#">
+                    <div class="button"
+                        style="background: #66CCCC; height:25px; width:50px;">
+                        Filter
+                    </div>
+                </a>
+            </div>            
+            <div class="menu-search">
+                <input type="text" placeholder="Search for plans..." />
+            </div>        
+            <div class="menu-view">
+                <a href="#">
+                    <div class="button"
+                        style="background: #66CCCC; height:25px; width:50px;">
+                        Map
+                    </div>
+                </a> 
+            </div>             
+        </div>           
+        
+        <div class="content">
+            <br />
+            <ul>
+                <li>
+                    <div>
+                        <img src="https://irs2.4sqi.net/img/user/32x32/KE2IOZYCCSRNB0FA.jpg" width="32" height="32" />
+                        <!--  -->
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <img src="https://irs2.4sqi.net/img/user/32x32/KE2IOZYCCSRNB0FA.jpg" width="32" height="32" />
+                    </div>
+                </li>
+            </ul> 
+        </div>  
+    </div>
+
+    <div class="mapView"
+        style="border:1px solid black; height:480px; width:320px;">
+
+        <div class="menu">
+            <div class="menu-filter">
+                <a href="#">
+                    <div class="button"
+                        style="background: #66CCCC; height:25px; width:50px;">
+                        Filter
+                    </div>
+                </a>
+            </div>            
+            <div class="menu-search">
+                <input type="text" placeholder="Search for plans..." />
+            </div>        
+            <div class="menu-view">
+                <a href="#">
+                    <div class="button"
+                        style="background: #66CCCC; height:25px; width:50px;">
+                        Map
+                    </div>
+                </a> 
+            </div>             
+        </div>       
+
+        <div id="map"
+            style="position: relative; width: 320px; height: 400px;">
+        </div>
+    </div>
+
+    <div class="planView"
+        style="border:1px solid black; height:480px; width:320px;">
+        <p>Plan view</p>
+    </div>
+
+    <div class="detailedPlanView"
+        style="border:1px solid black; height:480px; width:320px;">
+        <p>Detailed plan view</p>
+    </div>
+
+    <div class="myAccountView"
+        style="border:1px solid black; height:480px; width:320px;">
+        <p>My account view</p>
+    </div>
+
+    <script type="text/html" id="person-template">
+        <h3 data-bind="text: name"></h3>
+        <p>Credits: <span data-bind="text: credits"></span></p>
+    </script>
+    
+    <script src="Scripts/lib/jquery-1.7.1.js"></script>
+    <script src="Scripts/lib/knockout-2.1.0.js"></script>
+    <script src="Scripts/lib/kendo.mobile.min.js"></script>
+    <script src="Scripts/lib/knockout-kendo.min.js"></script>
+    <script src="Scripts/lib/sammy.js"></script>
+    <script src="Scripts/app.js"></script>
+</body>
+</html>
