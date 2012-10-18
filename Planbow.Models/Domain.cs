@@ -7,7 +7,6 @@ namespace Planbow.Models
 {
     public class Domain
     {
-        public string Id { get; set; }
         public string CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
 

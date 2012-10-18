@@ -6,8 +6,7 @@ using System.Text;
 
 namespace Planbow.Data.Interfaces
 {
-    public interface IPlanRepository
+    public interface IPlanRepository : IRepository<Plan>
     {
-        IEnumerable<Plan> GetPlans();
     }
 }

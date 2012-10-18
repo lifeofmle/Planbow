@@ -7,7 +7,7 @@ namespace Planbow.Models
 {
     public class Plan : Domain
     {
-        public string Id { get; set; }
+        public string PlanId { get; set; }
         public string Name { get; set; }
 
         public User Owner { get; set; }

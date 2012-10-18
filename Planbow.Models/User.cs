@@ -7,7 +7,7 @@ namespace Planbow.Models
 {
     public class User : Domain
     {
-        public string Id { get; set; }
+        public string UserId { get; set; }
         public string ImageUrl { get; set; }
 
         public string FirstName { get; set; }
@@ -16,5 +16,7 @@ namespace Planbow.Models
         public string TwitterId { get; set; }
         public string FacebookId { get; set; }
         public string FoursquareId { get; set; }
+
+        public virtual List<Plan> Plans { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Text;
 namespace Planbow.Models
 {
     public class Location : Domain
-    {        
+    {       
         public string Name { get; set; }
         public double Longitude { get; set; }
         public double Latitude { get; set; }

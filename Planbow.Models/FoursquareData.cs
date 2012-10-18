@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Planbow.Models
 {
-    public class FoursquareData : SocialData
+    public class FoursquareData : SocialPlatform
     {
         public string VenueId { get; set; }
 
