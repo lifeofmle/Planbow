@@ -17,6 +17,7 @@ namespace Planbow.Data
         public DbSet<User> Users { get; set; }
         public DbSet<SocialPlatform> SocialPlatforms { get; set; }
         public DbSet<Activity> Activities { get; set; }
-        public DbSet<FoursquareData> FoursquareData { get; set; }
+        public DbSet<FoursquareVenue> FoursquareData { get; set; }
+        public DbSet<HotDinnerData> HotDinnerData { get; set; }
     }
 }

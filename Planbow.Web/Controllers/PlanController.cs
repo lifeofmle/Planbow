@@ -26,6 +26,5 @@ namespace Planbow.Web.Controllers
 
             return Uow.Plans.GetAll();
         }
-
     }
 }
