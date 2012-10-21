@@ -151,6 +151,7 @@
     <Compile Include="Controllers\ApiControllerBase.cs" />
     <Compile Include="Controllers\FoursquareController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Hot4DinnerController.cs" />
     <Compile Include="Controllers\HotDinnersController.cs" />
     <Compile Include="Controllers\PlanController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -280,6 +281,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Hot4Dinner\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

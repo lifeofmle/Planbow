@@ -1,11 +1,49 @@
-﻿<div class="content-wrapper">
-    <div>
-        <img src="~/Images/planbowBanner.jpg" width="240" />
-    </div>
-    
-    <div id="mainlayout">
-        Coming soon is a tool to help you plan your activities easily.
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Planbow</title>
 
-        <a href="~/index.html" target="_blank">View demo</a>
+    <meta name="description" content="We make planning your social life in London easier by connecting points of interest. We do this by leveraging social networks to help you find out the activities for your plans" />
+
+    <meta name="keywords" content="what to do in London, plan birthdays, plan dates, first date, romantic date ideas, pub crawl in London, fun date ideas, night out in London, where to go in London, trending in London, activities in London, plans for tomorrow, plans for tonight"  />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    @Styles.Render("~/Content/css")
+    @*@Scripts.Render("~/bundles/modernizr")*@
+
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-34789441-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+</head>
+<body>
+    <div class="content-wrapper">
+        <div>
+            <img src="~/Images/planbowBanner.jpg" width="240" />
+        </div>
+    
+        <div id="mainlayout">
+            Coming soon is a tool to help you plan your activities easily.
+
+            <a href="~/index.html" target="_blank">View demo</a>
+        </div>
     </div>
-</div>
+
+    @*@Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)*@
+</body>
+</html>
+
+
