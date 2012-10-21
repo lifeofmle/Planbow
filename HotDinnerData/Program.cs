@@ -1,4 +1,6 @@
 ﻿using HtmlAgilityPack;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using NLog;
 using System;
 using System.Collections.Generic;
@@ -36,78 +38,172 @@ namespace HotDinnerData
 
             //using (var stream = httpResponse.GetResponseStream())
             //{
-            var htmlDocument = new HtmlDocument();
-            htmlDocument.Load("hotDinnerOpened.html");
-            var html = htmlDocument.DocumentNode;
+            //var htmlDocument = new HtmlDocument();
+            //htmlDocument.Load("hotDinnerOpened.html");
+            //var html = htmlDocument.DocumentNode;
 
-            // Opened restaurants
-            var openedRestaurants = new List<HotDinnerData>();
-            var restaurants = html.SelectNodes("//div[@style='margin-left: 150px;']");
+            //// Opened restaurants
+            //var openedRestaurants = new List<HotDinnerData>();
+            //var restaurants = html.SelectNodes("//div[@style='margin-left: 150px;']");
 
-            foreach (var restaurant in restaurants)
-            {
-                try
-                {
-                    var hotDinnerData = HotDinnerDataParser.Parse(restaurant, true);
-                    openedRestaurants.Add(hotDinnerData);
-                }
-                catch (Exception ex)
-                {
-                    Log.Error("Could not parse restaurant data", ex, restaurant.OuterHtml);
-                }
-            }
-
+            //foreach (var restaurant in restaurants)
+            //{
+            //    try
+            //    {
+            //        var hotDinnerData = HotDinnerDataParser.Parse(restaurant, true);
+            //        openedRestaurants.Add(hotDinnerData);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Log.Error("Could not parse restaurant data", ex, restaurant.OuterHtml);
+            //    }
             //}
 
-            hotRestaurants.AddRange(openedRestaurants);
+            ////}
 
-            htmlDocument = new HtmlDocument();
-            htmlDocument.Load("hotDinnerComingSoon.html");
-            html = htmlDocument.DocumentNode;
+            //hotRestaurants.AddRange(openedRestaurants);
 
-            var comingSoon = new List<HotDinnerData>();
+            //htmlDocument = new HtmlDocument();
+            //htmlDocument.Load("hotDinnerComingSoon.html");
+            //html = htmlDocument.DocumentNode;
 
-            var restaurantNames = new List<string>();
-            var restaurantNameNodes = html.SelectNodes("//span[@class=\"articleheading\"]");
-            foreach (var nameNode in restaurantNameNodes)
-            {
-                if (string.IsNullOrEmpty(nameNode.InnerText))
-                    continue;
+            //var comingSoon = new List<HotDinnerData>();
 
-                if (nameNode.InnerHtml.Contains("<br>"))
-                    restaurantNames.Add(nameNode.InnerText.Trim());
-            }
+            //var restaurantNames = new List<string>();
+            //var restaurantNameNodes = html.SelectNodes("//span[@class=\"articleheading\"]");
+            //foreach (var nameNode in restaurantNameNodes)
+            //{
+            //    if (string.IsNullOrEmpty(nameNode.InnerText))
+            //        continue;
 
-            // Coming soon
-            var index = 0;
-            var restaurantDetails = html.SelectNodes("//p");
-            foreach (var restaurant in restaurantDetails)
-            {
-                try
-                {
-                    if (restaurant.InnerText.Contains("In a nutshell"))
-                    {
-                        var hotDinnerData = HotDinnerDataParser.Parse(restaurant, false);
-                        hotDinnerData.RestaurantName = restaurantNames[index];
+            //    if (nameNode.InnerHtml.Contains("<br>"))
+            //        restaurantNames.Add(nameNode.InnerText.Trim());
+            //}
 
-                        comingSoon.Add(hotDinnerData);
-                        index++;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Log.Error("Could not parse restaurant data", ex, restaurant.OuterHtml);
-                }
-            }
+            //// Coming soon
+            //var index = 0;
+            //var restaurantDetails = html.SelectNodes("//p");
+            //foreach (var restaurant in restaurantDetails)
+            //{
+            //    try
+            //    {
+            //        if (restaurant.InnerText.Contains("In a nutshell"))
+            //        {
+            //            var hotDinnerData = HotDinnerDataParser.Parse(restaurant, false);
+            //            hotDinnerData.RestaurantName = restaurantNames[index];
 
-            hotRestaurants.AddRange(comingSoon);
+            //            comingSoon.Add(hotDinnerData);
+            //            index++;
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Log.Error("Could not parse restaurant data", ex, restaurant.OuterHtml);
+            //    }
+            //}
 
-            using (var fileStream = new FileStream(@"hotDinner.csv", FileMode.OpenOrCreate, FileAccess.ReadWrite))
+            //hotRestaurants.AddRange(comingSoon);
+
+            //using (var fileStream = new FileStream(@"hotDinner.csv", FileMode.OpenOrCreate, FileAccess.ReadWrite))
+            //{
+            //    using (var streamWriter = new StreamWriter(fileStream))
+            //    {
+            //        foreach (var data in hotRestaurants)
+            //            streamWriter.WriteLine(CreateCsv(data));    
+            //    }
+            //}
+
+            var hotDinnerData = CsvUtility.ParseCsv("hotDinner_version1.csv");
+
+            var foursquareVenues = new List<string>();
+
+            using (var fileStream = new FileStream(@"hotDinnerLocations.csv", FileMode.OpenOrCreate, FileAccess.ReadWrite))
             {
                 using (var streamWriter = new StreamWriter(fileStream))
                 {
-                    foreach (var data in hotRestaurants)
-                        streamWriter.WriteLine(CreateCsv(data));    
+                    foreach (var restaurant in hotDinnerData)
+                    {
+                        var restaurantName = restaurant[0];
+                        var foursquareId = restaurant[1];
+
+                        var clientId = "Q3PBA3ZZ3WV4T4SOKCKBTOYAAACRYXOGGC5EKMHW2GL4V4MD";
+                        var clientSecret = "S4QKDK2E0I3MLS02IY0YU14YBQ5RQ1XGZAR2UVC11IHDF5ZZ";
+                        var date = DateTime.Now.ToString("yyyyMMdd");
+
+                        if (string.IsNullOrEmpty(foursquareId))
+                        {
+                            var message = string.Format("{0},{1},{2},{3},{4}",
+                                            CsvUtility.Escape(restaurantName),
+                                            CsvUtility.Escape(string.Empty),
+                                            CsvUtility.Escape(string.Empty),
+                                            CsvUtility.Escape(string.Empty),
+                                            CsvUtility.Escape(string.Empty));
+
+                            streamWriter.WriteLine(message);
+                        }
+                        else
+                        {
+                            var foursquareUrl = string.Format("https://api.foursquare.com/v2/venues/{0}?v={1}&client_id={2}&client_secret={3}",
+                                                foursquareId,
+                                                date,
+                                                clientId,
+                                                clientSecret);
+
+                            try
+                            {
+                                var request = WebRequest.Create(foursquareUrl);
+
+                                using (var response = (HttpWebResponse)request.GetResponse())
+                                {
+                                    using (var stream = response.GetResponseStream())
+                                    {
+                                        using (var reader = new StreamReader(stream))
+                                        {
+                                            var json = reader.ReadToEnd();
+
+                                            var fsJObject = JObject.Parse(json);
+
+                                            var fsResponse = fsJObject["response"];
+
+                                            var fsVenue = fsResponse["venue"];
+
+                                            var fsData = fsVenue.ToObject<FoursquareVenue>();
+
+                                            var message = string.Format("{0},{1},{2},{3}",
+                                                CsvUtility.Escape(restaurantName),
+                                                CsvUtility.Escape(foursquareId),
+                                                CsvUtility.Escape(fsData.Location.Latitude.ToString()),
+                                                CsvUtility.Escape(fsData.Location.Longitude.ToString()));
+
+                                            foursquareVenues.Add(fsVenue.ToString());
+
+                                            streamWriter.WriteLine(message);
+                                        }
+                                    }
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                Log.Error(ex);
+                            }                            
+                        }
+
+                        Console.WriteLine("Processed {0}", restaurantName);
+                    }
+                }
+            }
+
+            using (var fileStream = new FileStream(@"foursquareData.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite))
+            {
+                using (var streamWriter = new StreamWriter(fileStream))
+                {
+                    streamWriter.WriteLine("[");
+                    foreach (var item in foursquareVenues)
+                    {
+                        streamWriter.WriteLine(item);
+                        streamWriter.WriteLine(",");
+                    }
+                    streamWriter.WriteLine("]");
                 }
             }
 

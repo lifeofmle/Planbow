@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NLog;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,6 +12,8 @@ namespace HotDinnerData
 {
     public static class CsvUtility
     {
+        private static Logger Log = LogManager.GetCurrentClassLogger();
+
         private const string QUOTE = "\"";
         private const string ESCAPED_QUOTE = "\"\"";
         private static char[] CHARACTERS_THAT_MUST_BE_QUOTED = { ',', '"', '\n' };
@@ -32,6 +36,9 @@ namespace HotDinnerData
 
         public static string Unescape(string s)
         {
+            if (string.IsNullOrEmpty(s))
+                return string.Empty;
+
             if (s.StartsWith(QUOTE) && s.EndsWith(QUOTE))
             {
                 s = s.Substring(1, s.Length - 2);
@@ -41,8 +48,33 @@ namespace HotDinnerData
             }
 
             return s;
-        }         
-        
+        }
+
+        public static List<string[]> ParseCsv(string path)
+        {
+            List<string[]> parsedData = new List<string[]>();
+
+            try
+            {
+                using (StreamReader readFile = new StreamReader(path))
+                {
+                    string line;
+                    string[] row;
+
+                    while ((line = readFile.ReadLine()) != null)
+                    {
+                        row = line.Split(',');
+                        parsedData.Add(row);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Log.Error(e);
+            }
+
+            return parsedData;
+        }
     }
 
     public sealed class CsvReader : System.IDisposable
@@ -62,7 +94,7 @@ namespace HotDinnerData
             _reader = new StreamReader(stream);
         }
 
-        public System.Collections.IEnumerable RowEnumerator
+        public IEnumerable RowEnumerator
         {
             get
             {
