@@ -52,15 +52,14 @@ namespace Planbow.Data
                             hotDinner.Description = restaurant[6];
                             hotDinner.Url = restaurant[7];
 
-                            venue.SocialPlatforms.Add(hotDinner);
+                            venue.HotDinnerData = hotDinner;
 
                             var foursquareId = restaurant[1];
 
-                            if (!string.IsNullOrEmpty(foursquareId))
-                                venue.SocialPlatforms.Add(new SocialPlatform { Source = "Foursquare", PlatformId = foursquareId });
+                            venue.FoursquareData = new FoursquareVenue() { FoursquareId = foursquareId };
 
                             if (!string.IsNullOrEmpty(restaurant[8]))
-                                venue.Latitude = double.Parse(restaurant[8]);
+                                venue.Longitude = double.Parse(restaurant[8]);
 
                             if (!string.IsNullOrEmpty(restaurant[9]))
                                 venue.Latitude = double.Parse(restaurant[9]);

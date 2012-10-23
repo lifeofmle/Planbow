@@ -8,17 +8,12 @@ namespace Planbow.Models
 {
     public class Venue : Location
     {
-        public Venue()
-        {
-            SocialPlatforms = new List<SocialPlatform>();
-        }
+        public FoursquareVenue FoursquareData { get; set; }
 
-        public string VenueId { get; set; }
+        public HotDinnerData HotDinnerData { get; set; }
 
         [JsonIgnore]
-        public string VenueType { get; set; }
-
-        public List<SocialPlatform> SocialPlatforms { get; set; }
+        public string VenueType { get; set; }        
 
         [JsonIgnore]
         public virtual List<User> PastVistors { get; set; }

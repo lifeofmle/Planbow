@@ -4,26 +4,145 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Planbow - Hot4Dinner</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <script src='http://api.tiles.mapbox.com/mapbox.js/v0.6.6/mapbox.js'></script>
     <link href='http://api.tiles.mapbox.com/mapbox.js/v0.6.6/mapbox.css' rel='stylesheet' />
     <style>
-        body { margin:0; padding:0; }
+        body { margin:0; padding:0; font-family: 'Open Sans', sans-serif; }
         #map { position:absolute; top:0; bottom:0; width:100%; }
+
+        #sidebar {
+          position:absolute;
+          top:0px;
+          left:15px;
+          height:auto;
+          height:100%;
+          width:400px;
+          background:#fff;
+          z-index:900;
+        }
+
+        #header {
+            height: 50px;
+            background: #008baa;
+            position:absolute; 
+            top:0px;
+            left:0px; 
+            overflow:hidden;
+        }
+
+        #restaurants {
+            position:absolute; 
+            top:50px; 
+            bottom:50px; 
+            left:0px; 
+            overflow:auto;
+        }
+
+        #footer {
+            height: 50px;
+	        background: #008baa;
+            bottom:0px;
+            width:100%;
+	        position:absolute;
+            left:0px; 
+            overflow:hidden;
+        }
+
+        #list { list-style:none; padding:0; margin:0; } 
+		#list li { padding:5px;  } 
+		#list li:hover { background:#b3d4db; }
+
+        img.center {   display: block;   margin-left: auto; margin-right: auto; }
+    </style>
+    <style>
+        .zoomin {
+          left:430px;
+          }
+        .zoomout {
+          left:460px;
+          }
     </style>
 </head>
 <body>
-    <p>Hot4Dinner is a mashup of data between Hot-Dinners.com and Foursquare.com in London</p>
-    <div id='map'></div>
-<script>
-    var map = mapbox.map('map');
-    map.addLayer(mapbox.layer().id('lifeofmle.map-82k4zxio'));
+    <div id="sidebar">
+        <div id="header">
+            Hot4Dinner is a visualization of restaurant openings from Hot-Dinners.com in London
+        </div>
+        <div id="restaurants">
+            <ul id="list" data-bind="foreach: venues">
+                <li data-bind="text: name"></li>
+            </ul>
+        </div>
+        <div id="footer">
+            <a href="https://www.foursquare.com"><img class="center" src="/Images/poweredFoursquare.png" width="200" /></a>
+        </div>
+    </div>
+    
 
-    // center the map on London
-    map.centerzoom({
-        lat: 51.50981475509015,
-        lon: -0.12579261607242934
-    }, 13);
-</script>
+    <div id='map'>
+    </div>
+    
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.1.0.js"></script>
+    <script>
+        function VenueViewModel() {
+            var self = this;
+            self.name = "";
+        }
+
+        function HotDinnersViewModel() {
+            var self = this;
+            self.venues = ko.observableArray();
+        }
+
+        var hotDinnersVM = new HotDinnersViewModel();
+        ko.applyBindings(hotDinnersVM)
+
+        var map = mapbox.map('map');
+        map.addLayer(mapbox.layer().id('lifeofmle.map-82k4zxio'));
+        map.ui.zoomer.add();
+        map.ui.zoombox.add();
+        // center the map on London
+        map.centerzoom({
+            lat: 51.50981475509015,
+            lon: -0.17317115611149933
+        }, 13);
+
+        // Create an empty markers layer
+        var markerLayer = mapbox.markers.layer();
+
+        mapbox.markers.interaction(markerLayer);
+        map.addLayer(markerLayer);
+
+        $(document).ready(function () {
+            $.ajax({
+                url: '/api/hotdinners',
+                success: function (data) {
+                    $.each(data, function (i, row) {
+                        
+                        markerLayer.add_feature({
+                            geometry: {
+                                coordinates: [row["latitude"], row["longitude"]]
+                            },
+                            properties: {
+                                'marker-color': '#008baa',
+                                'marker-symbol': 'restaurant',
+                                title: row["name"],
+                                description: row["hotDinnerData"]["shortDescription"]
+                            }
+                        });
+
+                        var venueVM = new VenueViewModel();
+                        venueVM.name = row["name"];
+
+                        hotDinnersVM.venues.push(venueVM);
+                    });
+                }
+            });
+        });
+
+    </script>
 </body>
 </html>
 
