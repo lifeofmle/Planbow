@@ -6,15 +6,26 @@ using System.Web.Mvc;
 
 namespace Planbow.Web.Controllers
 {
-    public class BlogController : Controller
+    public class LabsController : Controller
     {
         //
-        // GET: /Blog/
+        // GET: /Labs/
 
         public ActionResult Index()
         {
             return View();
         }
 
+        public ActionResult Hot4Dinner()
+        {
+
+            return View();
+        }
+
+        public ActionResult About()
+        {
+
+            return View();
+        }
     }
 }

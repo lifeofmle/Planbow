@@ -158,12 +158,10 @@
     <Compile Include="App_Start\ValidationActionFilter.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ApiControllerBase.cs" />
-    <Compile Include="Controllers\BlogController.cs" />
-    <Compile Include="Controllers\DemoController.cs" />
     <Compile Include="Controllers\FoursquareController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\Hot4DinnerController.cs" />
     <Compile Include="Controllers\HotDinnersController.cs" />
+    <Compile Include="Controllers\LabsController.cs" />
     <Compile Include="Controllers\PlanController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -237,9 +235,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Hot4Dinner\Index.cshtml" />
     <Content Include="Views\Demo\Index.cshtml" />
-    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\Labs\Index.cshtml" />
+    <Content Include="Views\Labs\About.cshtml" />
+    <Content Include="Views\Labs\Hot4Dinner.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

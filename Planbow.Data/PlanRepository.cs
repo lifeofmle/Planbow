@@ -30,7 +30,7 @@ namespace Planbow.Data
             // Read in csv from resource
             lock (FileLock)
             {
-                using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Planbow.Data.hotDinner_version1.csv"))
+                using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Planbow.Data.Files.mappedDinners_20121027.csv"))
                 {
                     CsvReader reader = new CsvReader(stream);
 
@@ -42,27 +42,26 @@ namespace Planbow.Data
 
                             var venue = new Venue();
 
-                            venue.Name = CsvUtility.Escape(restaurant[0]);
-
-                            var hotDinner = new HotDinnerData();
-                            hotDinner.IsOpen = restaurant[2] == "Open" ? true : false;
-                            hotDinner.When = restaurant[3];
-                            hotDinner.Where = restaurant[4];
-                            hotDinner.ShortDescription = restaurant[5];
-                            hotDinner.Description = restaurant[6];
-                            hotDinner.Url = restaurant[7];
-
-                            venue.HotDinnerData = hotDinner;
+                            venue.Name = CsvUtility.Escape(restaurant[0]);                            
 
                             var foursquareId = restaurant[1];
-
                             venue.FoursquareData = new FoursquareVenue() { FoursquareId = foursquareId };
 
-                            if (!string.IsNullOrEmpty(restaurant[8]))
-                                venue.Longitude = double.Parse(restaurant[8]);
+                            if (!string.IsNullOrEmpty(restaurant[2]))
+                                venue.Longitude = double.Parse(restaurant[2]);
 
-                            if (!string.IsNullOrEmpty(restaurant[9]))
-                                venue.Latitude = double.Parse(restaurant[9]);
+                            if (!string.IsNullOrEmpty(restaurant[3]))
+                                venue.Latitude = double.Parse(restaurant[3]);                            
+
+                            var hotDinner = new HotDinnerData();
+                            hotDinner.IsOpen = restaurant[4] == "Open" ? true : false;
+                            hotDinner.When = restaurant[5];
+                            hotDinner.Where = restaurant[6];
+                            hotDinner.ShortDescription = restaurant[7];
+                            hotDinner.Description = restaurant[8];
+                            hotDinner.Url = restaurant[9];                           
+
+                            venue.HotDinnerData = hotDinner;
 
                             _hotDinnerVenues.Add(venue);
                         }
