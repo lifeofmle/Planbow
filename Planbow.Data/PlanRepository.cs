@@ -19,6 +19,9 @@ namespace Planbow.Data
         private static Logger Log = LogManager.GetCurrentClassLogger();
 
         private List<Venue> _hotDinnerVenues;
+        private Dictionary<string, string> _foursquareDictionary = new Dictionary<string,string>();
+
+        private string _foursquareJson;
 
         private static object FileLock = new object();
 
@@ -26,6 +29,14 @@ namespace Planbow.Data
         {
             List<string[]> hotDinnerData = null;
             _hotDinnerVenues = new List<Venue>();
+
+            //using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Planbow.Data.Files.FoursquareVenue.json"))
+            //{
+            //    using (var textReader = new StreamReader(stream))
+            //    {
+            //        _foursquareJson = textReader.ReadToEnd();
+            //    }
+            //}
 
             // Read in csv from resource
             lock (FileLock)
@@ -67,32 +78,37 @@ namespace Planbow.Data
                         }
                     }
                 }
-            }           
-
+            }       
         }
-
-        //public IEnumerable<Plan> GetPlans()
-        //{
-        //    var plans = new List<Plan>();
-
-        //    var activities = new List<Activity>();
-        //    activities.Add(new Activity { ActivityId = Guid.NewGuid().ToString(), Name = "Village East", Description = "Bar/Restaurant", Latitude = 100.123, Longitude = 100.123, StartDate = DateTime.Now.AddHours(47) });
-        //    activities.Add(new Activity { ActivityId = Guid.NewGuid().ToString(), Name = "Tower Bridge", Description = "Landmark", Latitude = 100.123, Longitude = 100.123, StartDate = DateTime.Now.AddHours(27) });
-        //    activities.Add(new Activity { ActivityId = Guid.NewGuid().ToString(), Name = "Borough Market", Description = "Market", Latitude = 100.123, Longitude = 100.123, StartDate = DateTime.Now.AddHours(17) });
-
-        //    plans.Add(new Plan { PlanId = Guid.NewGuid().ToString(), Name = "Dinner and movies", CreatedDate = DateTime.Now.AddDays(-3), Activities = activities });
-        //    plans.Add(new Plan { PlanId = Guid.NewGuid().ToString(), Name = "Day at the markets", CreatedDate = DateTime.Now.AddDays(-10), Activities = activities });
-        //    plans.Add(new Plan { PlanId = Guid.NewGuid().ToString(), Name = "Drinks and scenic walk in SE1s", CreatedDate = DateTime.Now.AddDays(-7), Activities = activities });
-
-        //    return plans;
-        //}
 
         public IEnumerable<Venue> HotDinnerVenues()
         {
             return _hotDinnerVenues;
         }
 
-        public FoursquareVenue GetVenue(string foursquareId)
+        public string GetVenue(string foursquareId)
+        {
+            Log.Info("Requesting FoursquareId {0}", foursquareId);
+
+            var venueInfo = string.Empty;
+
+            //venueInfo = _foursquareJson;
+            //return venueInfo;
+
+            if (_foursquareDictionary.ContainsKey(foursquareId))
+            {
+                venueInfo = _foursquareDictionary[foursquareId];
+            }
+            else
+            {
+                venueInfo = RequestFoursquareData(foursquareId);
+                _foursquareDictionary.Add(foursquareId, venueInfo);
+            }
+
+            return venueInfo;
+        }
+
+        private string RequestFoursquareData(string foursquareId)
         {
             var clientId = "Q3PBA3ZZ3WV4T4SOKCKBTOYAAACRYXOGGC5EKMHW2GL4V4MD";
             var clientSecret = "S4QKDK2E0I3MLS02IY0YU14YBQ5RQ1XGZAR2UVC11IHDF5ZZ";
@@ -104,7 +120,8 @@ namespace Planbow.Data
                                         clientId,
                                         clientSecret);
 
-            FoursquareVenue foursquareVenue = null;
+            var responseValue = string.Empty;
+
             try
             {
                 var request = WebRequest.Create(foursquareUrl);
@@ -115,15 +132,7 @@ namespace Planbow.Data
                     {
                         using (var reader = new StreamReader(stream))
                         {
-                            var json = reader.ReadToEnd();
-
-                            var fsJObject = JObject.Parse(json);
-
-                            var fsResponse = fsJObject["response"];
-
-                            var fsVenue = fsResponse["venue"];
-
-                            foursquareVenue = fsVenue.ToObject<FoursquareVenue>();
+                            responseValue = reader.ReadToEnd();
                         }
                     }
                 }
@@ -133,7 +142,7 @@ namespace Planbow.Data
                 Log.Error("Could not process Foursquare request", foursquareUrl, ex);
             }
 
-            return foursquareVenue;
+            return responseValue;
         }
     }
 }

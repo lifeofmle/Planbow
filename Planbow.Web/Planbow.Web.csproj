@@ -177,15 +177,26 @@
     <Content Include="css\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="img\fire_2X.png" />
+    <Content Include="img\globe.png" />
     <Content Include="img\glyphicons-halflings-white.png" />
     <Content Include="img\glyphicons-halflings.png" />
+    <Content Include="img\group.png" />
+    <Content Include="img\group_2X.png" />
     <Content Include="img\iphone4.png" />
+    <Content Include="img\marker.png" />
+    <Content Include="img\marker_2X.png" />
+    <Content Include="img\ok.png" />
+    <Content Include="img\ok_2X.png" />
+    <Content Include="img\phone.png" />
     <Content Include="img\planbowApp.PNG" />
     <Content Include="img\planbowBanner-small.jpg" />
     <Content Include="img\PlanbowDesign-Large-Create.jpg" />
     <Content Include="img\PlanbowDesign-Large-Discover.jpg" />
     <Content Include="img\PlanbowDesign-Large.jpg" />
+    <Content Include="img\poweredFoursquare_gray.png" />
     <Content Include="img\poweredFoursquare.png" />
+    <Content Include="img\twitter.png" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -201,6 +212,7 @@
     <None Include="Scripts\lib\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\hot4dinner.js" />
     <Content Include="Scripts\lib\jquery-1.7.1.js" />
     <Content Include="Scripts\lib\jquery-1.7.1.min.js" />
     <Content Include="Scripts\lib\kendo.mobile.min.js" />
@@ -235,9 +247,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Demo\Index.cshtml" />
     <Content Include="Views\Labs\Index.cshtml" />
-    <Content Include="Views\Labs\About.cshtml" />
     <Content Include="Views\Labs\Hot4Dinner.cshtml" />
   </ItemGroup>
   <ItemGroup>

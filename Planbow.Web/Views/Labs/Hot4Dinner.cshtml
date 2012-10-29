@@ -4,40 +4,26 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Planbow - Hot4Dinner</title>
+    
+    <!-- Using Google Fonts: Open Sans -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <script src='http://api.tiles.mapbox.com/mapbox.js/v0.6.6/mapbox.js'></script>
-    <link href='http://api.tiles.mapbox.com/mapbox.js/v0.6.6/mapbox.css' rel='stylesheet' />
     <style>
-        body { margin:0; padding:0; font-family: 'Open Sans', sans-serif; }
-        #map { position:absolute; top:0; bottom:0; width:100%; }
+        body { font-family: 'Open Sans', sans-serif; }
 
-        #sidebar {
-          position:absolute;
-          top:0px;
-          left:15px;
-          height:auto;
-          height:100%;
-          width:400px;
+        #mapContainer {
+          position:relative;
+          height:400px;
+          margin-top: 2px;
+        }
+
+        #map {
           background:#fff;
-          z-index:900;
-        }
-
-        #header {
-            height: 50px;
-            background: #008baa;
-            position:absolute; 
-            top:0px;
-            left:0px; 
-            overflow:hidden;
-        }
-
-        #restaurants {
-            position:absolute; 
-            top:50px; 
-            bottom:50px; 
-            left:0px; 
-            overflow:auto;
-        }
+          position:absolute;
+          width:100%;
+          height:100%;
+          top:0;
+          left:0;
+        }        
 
         #footer {
             height: 50px;
@@ -49,100 +35,227 @@
             overflow:hidden;
         }
 
-        #list { list-style:none; padding:0; margin:0; } 
+        .scrollable {
+            height: 100%;
+            overflow: auto;
+        }
+
+        #list { list-style:none; padding:0; margin:0;height:370px;overflow:auto;border:1px solid #cecece; } 
 		#list li { padding:5px;  } 
 		#list li:hover { background:#b3d4db; }
 
+        #tips { list-style:none; padding:0; margin:0px 0px 20px 0px; max-height:220px; overflow:auto;border:1px solid #cecece;  } 
+		#tips li { padding:3px; border-bottom:1px solid rgba(0,0,0,0.1);font-size:smaller; } 
+
         img.center {   display: block;   margin-left: auto; margin-right: auto; }
+
+        #fsq-attribution {
+            background-color:white;
+            opacity:0.7;
+          position: absolute;
+          right: 0;
+          bottom: 5px;
+          height: 48px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFF;
+            -webkit-box-shadow: inset 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #CCC;
+            -webkit-box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #AAA;
+        }
+        ::-webkit-scrollbar-thumb:active {
+            background: #888;
+            -webkit-box-shadow: inset 1px 1px 2px rgba(0,0,0,0.3);
+        }
     </style>
-    <style>
-        .zoomin {
-          left:430px;
-          }
-        .zoomout {
-          left:460px;
-          }
-    </style>
+
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">stLight.options({ publisher: "10c4168a-033d-44bd-b657-f0710422964e", doNotHash: false, doNotCopy: false, hashAddressBar: true });</script>
+    
+    <!-- Bootstrap -->
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/bootstrap-responsive.min.css" rel="stylesheet">
+    
 </head>
 <body>
-    <div id="sidebar">
-        <div id="header">
-            Hot4Dinner is a visualization of restaurant openings from Hot-Dinners.com in London
-        </div>
-        <div id="restaurants">
-            <ul id="list" data-bind="foreach: venues">
-                <li data-bind="text: name"></li>
-            </ul>
-        </div>
-        <div id="footer">
-            <a href="https://www.foursquare.com"><img class="center" src="/img/poweredFoursquare.png" width="200" /></a>
-        </div>
-    </div>
-    
 
-    <div id='map'>
+    <div class="navbar navbar-static-top">
+      <div class="navbar-inner">
+        <div class="container">
+ 
+          <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+ 
+          <!-- Be sure to leave the brand out there if you want it shown -->
+          <a class="brand" href="http://www.planbow.com">Planbow</a>
+ 
+          <!-- Everything you want hidden at 940px or less, place within here -->
+          <div class="nav-collapse pull-right">
+            <ul class="nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Labs <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="~/Labs/Hot4Dinner">Hot4Dinner</a></li>
+                    </ul>
+                </li>
+                <li><a href="http://blog.planbow.com/">Blog</a></li>
+                <li><a href="https://twitter.com/FindPlans" target="_blank">Twitter</a></li>
+                <li><a href="https://www.facebook.com/Planbow" target="_blank">Facebook</a></li>
+                    
+            </ul>
+            <!-- .nav, .navbar-search, .navbar-form, etc -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" style="max-height:100%; overflow:hidden;">
+        <div class="row">
+            <div class="span9">
+                <p style="font-size:medium; font-weight:700; margin-top:10px;">
+                    <img src="/img/fire_2X.png" style="height:16px;margin-bottom:5px;margin-right:5px;">Hot4Dinner 
+                </p>
+                <p style="font-size:14px; margin-top:-8px;">
+                    A visualization of restaurant openings from <a href="http://www.hot-dinners.com/" target="_blank">Hot-Dinners.com</a> in London
+                </p>
+            </div>
+
+            <div class="span3" style="text-align:right;">
+                <div style="margin-top:30px;">
+                    <span class='st_twitter_hcount' displayText='Tweet'></span>
+                    <span class='st_facebook_hcount' displayText='Facebook'></span>
+                </div>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="span3" >
+
+                <p style="font-size:large;">Recently opened restaurants</p> 
+                <ul id="list" data-bind="foreach: venues">
+                    <li  data-bind="click: $root.selectedVenue"><div data-bind="text: name" /></li>
+                </ul>
+                    
+            </div>
+            <div id="mapContainer" class="span9">
+                <div id="map"></div> 
+                <a href="https://www.foursquare.com"><img id="fsq-attribution" src="/img/poweredFoursquare_gray.png" /></a>
+            </div>
+        </div>
+
+        <div class="row"
+            style="margin-top:10px;"
+            data-bind="with: selectedVenue, visible: selectedVenue">
+
+            <div class="span3" >     
+                <span style="font-size:large; font-weight:700" data-bind="text: name"></span>
+
+                <div data-bind="with: $root.venueDetails, visible: $root.venueDetails">
+                    <div data-bind="template: { name: 'address-template', data: $root.venueDetails }"></div>
+                </div>           
+                
+            </div>
+
+            <div class="span4">
+                <div data-bind="with: $root.venueDetails, visible: $root.venueDetails">
+                    <div data-bind="template: { name: 'stats-template', data: $root.venueDetails }"></div>
+                </div>   
+
+                <div data-bind="with: $root.venuePhotos, visible: $root.venuePhotos" style="margin-top:10px;">
+                    <span style="font-weight:700">Photos</span> 
+                    <div id="myCarousel" class="carousel slide" style="overflow:hidden">
+                      <!-- Carousel items -->
+                      <div class="carousel-inner" data-bind="foreach: $root.venuePhotos" style="margin-left:75px;">                          
+                          <div class="item"><img data-bind="attr: { src: url }" style="width:225px; height:225px;" /></div>
+                      </div>
+                      <!-- Carousel nav -->
+                      <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                      <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="span5">
+                <p data-bind="text: hotDinnerData.description"></p>
+                <p style="text-align:right; margin-top:-10px;"> <a data-bind="attr: { href: 'http://www.hot-dinners.com' + hotDinnerData.url }">Find out more</a></p>
+
+                <div data-bind="with: $root.venueTips, visible: $root.venueTips">
+                    <span style="font-weight:700">Tips</span> 
+                    <ul id="tips" data-bind="foreach: $root.venueTips">
+                        <li><span data-bind="text: text" /></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
     </div>
     
+    <script src="http://api.tiles.mapbox.com/mapbox.js/v0.6.6/mapbox.js"></script>
+    <link href="http://api.tiles.mapbox.com/mapbox.js/v0.6.6/mapbox.css" rel="stylesheet" />
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.1.0.js"></script>
-    <script>
-        function VenueViewModel() {
-            var self = this;
-            self.name = "";
-        }
+    <script type="text/javascript" src="~/Scripts/bootstrap.js"></script>
 
-        function HotDinnersViewModel() {
-            var self = this;
-            self.venues = ko.observableArray();
-        }
-
-        var hotDinnersVM = new HotDinnersViewModel();
-        ko.applyBindings(hotDinnersVM)
-
-        var map = mapbox.map('map');
-        map.addLayer(mapbox.layer().id('lifeofmle.map-82k4zxio'));
-        map.ui.zoomer.add();
-        map.ui.zoombox.add();
-        // center the map on London
-        map.centerzoom({
-            lat: 51.50981475509015,
-            lon: -0.17317115611149933
-        }, 13);
-
-        // Create an empty markers layer
-        var markerLayer = mapbox.markers.layer();
-
-        mapbox.markers.interaction(markerLayer);
-        map.addLayer(markerLayer);
-
-        $(document).ready(function () {
-            $.ajax({
-                url: '/api/hotdinners',
-                success: function (data) {
-                    $.each(data, function (i, row) {
-                        
-                        markerLayer.add_feature({
-                            geometry: {
-                                coordinates: [row["latitude"], row["longitude"]]
-                            },
-                            properties: {
-                                'marker-color': '#008baa',
-                                'marker-symbol': 'restaurant',
-                                title: row["name"],
-                                description: row["hotDinnerData"]["shortDescription"]
-                            }
-                        });
-
-                        var venueVM = new VenueViewModel();
-                        venueVM.name = row["name"];
-
-                        hotDinnersVM.venues.push(venueVM);
-                    });
-                }
-            });
-        });
-
+    <script type="text/html" id="address-template">
+        
+        <div>
+            <span data-bind="text: location.address, visible: location.address"></span><br />
+            <span data-bind="text: location.city, visible: location.city"></span><br />
+            <span data-bind="text: location.postalCode, visible:location.postalCode"></span>
+            <br /><br />
+            <div data-bind="visible: contact.phone">
+                <img src="/img/phone.png" style="height:16px;margin-right:10px;"/><span data-bind="text: contact.phone"></span>
+            </div> 
+            <div data-bind="visible: contact.twitter">
+                <img src="/img/twitter.png" style="width:16px;height:16px;margin-right:3px;" /><a data-bind="attr: { href: 'http://www.twitter.com/'+ contact.twitter }"><span data-bind="text: contact.twitter, visible: contact.twitter"></span></a>
+            </div>                 
+            @*<div data-bind="visible: url">    
+                <img src="/img/globe.png" style="width:16px;height:16px;margin-right:3px;" /><a data-bind="attr: { href: url }">Go to Website</a>
+            </div> *@    
+            @*<br />            
+            Save to Foursquare *@       
+        </div>
+        
     </script>
+
+    <script type="text/html" id="stats-template">
+        <div style="text-align:center">
+            <div style="display:inline;">
+                <img src="/img/marker.png" /> 
+                
+                <span style="font-size:small" data-bind="text: stats.checkinsCount"></span>
+                <span style="font-size:small">Check-ins</span>
+            </div>
+            <div style="display:inline;margin-left:10px;">
+                <img src="/img/group.png" /> 
+                <span style="font-size:small" data-bind="text: stats.usersCount"></span>
+                <span style="font-size:small">Users</span>
+                
+            </div>
+            <div style="display:inline;margin-left:10px;">
+                <img src="/img/ok.png" /> 
+                <span style="font-size:small" data-bind="text: hereNow.count"></span>
+                <span style="font-size:small">Here Now</span>
+                
+            </div>
+        </div>
+        
+    </script>
+
+    <script src="~/Scripts/hot4dinner.js"></script>
 </body>
 </html>
 

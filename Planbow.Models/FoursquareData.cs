@@ -19,6 +19,10 @@ namespace Planbow.Models
         public FoursquareReservation Reservation { get; set; }
 
         public List<FoursquareCategory> Categories { get; set; }
+
+        //public List<FoursqureTip> Tips { get; set; }
+
+        //public List<FoursquarePhoto> Photos { get; set;}
     }
 
     public class FoursquareLocation
@@ -71,5 +75,14 @@ namespace Planbow.Models
     public class FoursquareReservation
     {
         public string Url { get; set; }
+    }
+
+    public class FoursqureTip
+    {
+
+    }
+
+    public class FoursquarePhoto
+    {
     }
 }

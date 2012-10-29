@@ -1,4 +1,5 @@
-﻿using Planbow.Models;
+﻿using Newtonsoft.Json.Linq;
+using Planbow.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,6 @@ namespace Planbow.Data.Interfaces
     {
         IEnumerable<Venue> HotDinnerVenues();
 
-        FoursquareVenue GetVenue(string venueId);
+        string GetVenue(string venueId);
     }
 }

@@ -14,7 +14,7 @@ namespace Planbow.Web.Controllers
             Uow = uow;
         }
 
-        public FoursquareVenue Get(string id)
+        public string Get(string id)
         {
             if (Uow == null)
                 return null;
