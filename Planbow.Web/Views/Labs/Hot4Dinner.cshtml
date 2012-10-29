@@ -133,13 +133,12 @@
                 </p>
             </div>
 
-            <div class="span3" style="text-align:right;">
+            @*<div class="span3" style="text-align:right;">
                 <div style="margin-top:30px;">
                     <span class='st_twitter_hcount' displayText='Tweet'></span>
                     <span class='st_facebook_hcount' displayText='Facebook'></span>
-                </div>
-                
-            </div>
+                </div>                
+            </div>*@
         </div>
         <div class="row">
             <div class="span3" >
@@ -160,30 +159,27 @@
             style="margin-top:10px;"
             data-bind="with: selectedVenue, visible: selectedVenue">
 
-            <div class="span3" >     
-                <span style="font-size:large; font-weight:700" data-bind="text: name"></span>
+            <div class="span4" >     
+                <span style="font-size:large; font-weight:700" data-bind="text: $root.venueName"></span>
 
                 <div data-bind="with: $root.venueDetails, visible: $root.venueDetails">
                     <div data-bind="template: { name: 'address-template', data: $root.venueDetails }"></div>
-                </div>           
+                </div>        
                 
             </div>
 
-            <div class="span4">
-                <div data-bind="with: $root.venueDetails, visible: $root.venueDetails">
-                    <div data-bind="template: { name: 'stats-template', data: $root.venueDetails }"></div>
-                </div>   
+            <div class="span3">                
 
                 <div data-bind="with: $root.venuePhotos, visible: $root.venuePhotos" style="margin-top:10px;">
-                    <span style="font-weight:700">Photos</span> 
+                    @*<span style="font-weight:700">Photos</span> *@
                     <div id="myCarousel" class="carousel slide" style="overflow:hidden">
                       <!-- Carousel items -->
-                      <div class="carousel-inner" data-bind="foreach: $root.venuePhotos" style="margin-left:75px;">                          
-                          <div class="item"><img data-bind="attr: { src: url }" style="width:225px; height:225px;" /></div>
+                      <div class="carousel-inner" data-bind="foreach: $root.venuePhotos" style="margin-left:35px;">                          
+                          <div class="item"><img data-bind="attr: { src: prefix + '200x200' + suffix }" /></div>
                       </div>
                       <!-- Carousel nav -->
-                      <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-                      <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+                      <a class="carousel-control left" href="#myCarousel" data-slide="prev" style="margin-left:-10px;">&lsaquo;</a>
+                      <a class="carousel-control right" href="#myCarousel" data-slide="next" style="margin-right:-10px;">&rsaquo;</a>
                     </div>
                 </div>
             </div>
@@ -214,8 +210,15 @@
         <div>
             <span data-bind="text: location.address, visible: location.address"></span><br />
             <span data-bind="text: location.city, visible: location.city"></span><br />
-            <span data-bind="text: location.postalCode, visible:location.postalCode"></span>
+            <span data-bind="text: location.postalCode, visible:location.postalCode"></span><br />
+            <img src="/img/foursquare-16x16.png" style="width:16px;height:16px;margin-right:5px;" /><a data-bind="attr: { href: 'https://foursquare.com/v/' + id }" target="_blank">See in Foursquare</a>
+            
             <br /><br />
+            
+            <div data-bind="template: { name: 'stats-template', data: $root.venueDetails }"></div>
+            
+            <br />
+            
             <div data-bind="visible: contact.phone">
                 <img src="/img/phone.png" style="height:16px;margin-right:10px;"/><span data-bind="text: contact.phone"></span>
             </div> 
@@ -224,7 +227,7 @@
             </div>                 
             @*<div data-bind="visible: url">    
                 <img src="/img/globe.png" style="width:16px;height:16px;margin-right:3px;" /><a data-bind="attr: { href: url }">Go to Website</a>
-            </div> *@    
+            </div>  *@   
             @*<br />            
             Save to Foursquare *@       
         </div>
@@ -232,7 +235,7 @@
     </script>
 
     <script type="text/html" id="stats-template">
-        <div style="text-align:center">
+        <div style="text-align:left">
             <div style="display:inline;">
                 <img src="/img/marker.png" /> 
                 

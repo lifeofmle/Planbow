@@ -16,6 +16,7 @@ map.addLayer(markerLayer);
 
 function HotDinnersViewModel() {
     var self = this;
+    self.venueName = ko.observable();
     self.venues = ko.observableArray();
     self.selectedVenue = ko.observable();    
     self.venueDetails = ko.observable();
@@ -25,6 +26,8 @@ function HotDinnersViewModel() {
     self.selectedVenue.subscribe(function (newVenue) {
         // TODO: Make map move into location
 
+        self.venueName(newVenue.name);
+
         // Look up Foursquare information
         if (newVenue.foursquareData.id != "") {
             var foursquareVenueUrl = "/api/foursquare/" + newVenue.foursquareData.id;
@@ -33,13 +36,31 @@ function HotDinnersViewModel() {
                 url: foursquareVenueUrl,
                 success: function (data) {
                     var foursquareData = $.parseJSON(data);
-                    self.venueDetails(foursquareData.response.venue);
+
+                    if (typeof foursquareData.response.venue === "undefined")
+                        self.venueDetails('');
+                    else
+                        self.venueDetails(foursquareData.response.venue);
 
                     var tipArray = foursquareData['response']['venue']['tips']['groups'][0]['items'];
-                    self.venueTips(tipArray);
 
-                    var photoArray = foursquareData['response']['venue']['photos']['groups'][1]['items'];
-                    self.venuePhotos(photoArray);
+                    if (typeof tipArray === "undefined")
+                        self.venueTips('');
+                    else
+                        self.venueTips(tipArray);
+
+                    var photoArray = foursquareData['response']['venue']['photos']['groups'];
+
+                    if (typeof photoArray === "undefined")
+                        self.venuePhotos('');
+                    else {
+                        if (photoArray.length == 1) {
+                            self.venuePhotos(photoArray[0]['items']);
+                        }
+                        else {
+                            self.venuePhotos(photoArray[1]['items']);
+                        }
+                    }
 
                     $('.carousel').carousel('next');
                 }

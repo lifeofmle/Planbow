@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +21,28 @@ namespace Planbow.Models
 
         public List<FoursquareCategory> Categories { get; set; }
 
-        //public List<FoursqureTip> Tips { get; set; }
+        public string Phone { get; set; }
 
-        //public List<FoursquarePhoto> Photos { get; set;}
+        public string Twitter { get; set; }
+
+        public string Website { get; set; }
+
+        public bool HasTips { get; set; }
+
+        public int TipsCount { get; set; }
+
+        public List<string> TipTexts { get; set; }
+
+        public bool HasPhotos { get; set; }
+
+        public int PhotosCount { get; set; }
+
+        public List<string> PhotoUrls { get; set; }
+
+        public void PopulateValues(JContainer json)
+        {
+
+        }
     }
 
     public class FoursquareLocation
@@ -77,12 +97,4 @@ namespace Planbow.Models
         public string Url { get; set; }
     }
 
-    public class FoursqureTip
-    {
-
-    }
-
-    public class FoursquarePhoto
-    {
-    }
 }

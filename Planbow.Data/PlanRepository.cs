@@ -112,7 +112,7 @@ namespace Planbow.Data
         {
             var clientId = "Q3PBA3ZZ3WV4T4SOKCKBTOYAAACRYXOGGC5EKMHW2GL4V4MD";
             var clientSecret = "S4QKDK2E0I3MLS02IY0YU14YBQ5RQ1XGZAR2UVC11IHDF5ZZ";
-            var date = DateTime.Now.ToString("yyyyMMdd");
+            var date = "20121029";
 
             var foursquareUrl = string.Format("https://api.foursquare.com/v2/venues/{0}?v={1}&client_id={2}&client_secret={3}",
                                         foursquareId,
