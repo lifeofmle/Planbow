@@ -1,23 +1,24 @@
-﻿var map = mapbox.map('map');
-map.addLayer(mapbox.layer().id('lifeofmle.map-82k4zxio'));
-map.ui.zoomer.add();
-map.ui.zoombox.add();
-// center the map on London
-map.centerzoom({
-    lat: 51.510,
-    lon: -0.126
-}, 13);
-
-// Create an empty markers layer
-var markerLayer = mapbox.markers.layer();
-
-mapbox.markers.interaction(markerLayer);
-map.addLayer(markerLayer);
+﻿// Make a new map in #map
+var main = Map('map', {
+    api: 'http://a.tiles.mapbox.com/v3/lifeofmle.map-82k4zxio.jsonp',
+    center: {
+        lat: 51.510,
+        lon: -0.126,
+        zoom: 13
+    },
+    zoomRange: [1, 17],
+    features: [
+        'zoomwheel',
+        'zoombox',
+        'zoompan',
+        'zoom'
+    ]
+});
 
 function HotDinnersViewModel() {
     var self = this;
     self.venueName = ko.observable();
-    self.venues = ko.observableArray();
+    self.venues = ko.observableArray([]);
     self.selectedVenue = ko.observable();    
     self.venueDetails = ko.observable();
     self.venueTips = ko.observable();
@@ -65,12 +66,23 @@ function HotDinnersViewModel() {
                     $('.carousel').carousel('next');
                 }
             });
+
+            // Move map to adjusted center
+            MM_map.easey = easey().map(MM_map)
+                .to(MM_map.locationCoordinate(locationOffset({
+                    lat: newVenue.longitude,
+                    lon: newVenue.latitude
+                })).zoomTo(MM_map.getZoom())).run(500, function () {
+                    $('#' + newVenue.foursquareData.id).addClass('active');
+                });
         }
         else {
             self.venueDetails('');
             self.venueTips('');
             self.venuePhotos('');
         }
+
+        
 
     }.bind(self));
 }
@@ -84,30 +96,84 @@ $(document).ready(function () {
         interval: 5000
     });
 
+    populateRestaurants();
+});
+
+function populateRestaurants() {
     $.ajax({
         url: '/api/hotdinners',
         success: function (data) {
-            $.each(data, function (i, row) {
 
-                var lat = row.latitude;
-                var lng = row.longitude;
+            ko.utils.arrayPushAll(hotDinnersVM.venues(), data);
+            hotDinnersVM.venues.valueHasMutated();
 
-                markerLayer.add_feature({
+            var points = {
+                'type': 'FeatureCollection',
+                'features': []
+            };
+
+            $.each(data, function (i, venue) {
+                points.features.push({
+                    id: venue.id,
                     geometry: {
-                        coordinates: [lat, lng]
+                        coordinates: [venue.latitude, venue.longitude]
                     },
                     properties: {
                         'marker-color': '#008baa',
                         'marker-symbol': 'restaurant',
-                        title: row.name,
-                        description: row.hotDinnerData.shortDescription
+                        name: venue.name,
+                        description: venue.hotDinnerData.shortDescription
                     }
                 });
-
-                hotDinnersVM.venues.push(row);
             });
 
-            hotDinnersVM.selectedVenue(hotDinnersVM.venues[0]);
+            if (MM_map.venueLayer) {
+                MM_map.venueLayer.geojson(points);
+            }
+            else {
+                MM_map.venueLayer = mmg().factory(function (x) {
+                    var d = document.createElement('div'),
+                        overlay = document.createElement('div'),
+                        anchor = document.createElement('div');
+
+                    var template = _.template(
+                        '<div class="location">' +
+                            '<span class="name fn"><%= name %></span>' +
+                        '</div>'
+                    );
+                    overlay.className = 'overlay';
+                    overlay.innerHTML = template(x.properties);
+
+                    anchor.className = 'anchor';
+                    anchor.appendChild(overlay);
+
+                    d.id = x.id;
+                    d.className = 'mmg vcard';
+                    d.appendChild(anchor);
+
+                    return d;
+                }).geojson(points);
+
+                MM_map.addLayer(MM_map.venueLayer);
+            }
+
+            MM_map.setCenter({
+                lat: MM_map.getCenter().lat,
+                lon: MM_map.getCenter().lon
+            });
         }
     });
-});
+}
+
+// Calculate offset given #content
+function locationOffset(location) {
+    var offset = MM_map.locationPoint({
+        lat: location.lat,
+        lon: location.lon
+    });
+    offset = MM_map.pointLocation({
+        x: offset.x - $('#list').width() / 2,
+        y: offset.y
+    });
+    return offset;
+}

@@ -213,6 +213,16 @@
     <None Include="Scripts\lib\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\ext\easey.handlers.js" />
+    <Content Include="Scripts\ext\easey.js" />
+    <Content Include="Scripts\ext\jquery.min.js" />
+    <Content Include="Scripts\ext\mmg.js" />
+    <Content Include="Scripts\ext\modestmaps.min.js" />
+    <Content Include="Scripts\ext\underscore.min.js" />
+    <Content Include="Scripts\ext\wax\theme\blank.gif" />
+    <Content Include="Scripts\ext\wax\theme\controls.css" />
+    <Content Include="Scripts\ext\wax\wax.ext.js" />
+    <Content Include="Scripts\ext\wax\wax.mm.js" />
     <Content Include="Scripts\hot4dinner.js" />
     <Content Include="Scripts\lib\jquery-1.7.1.js" />
     <Content Include="Scripts\lib\jquery-1.7.1.min.js" />
@@ -221,6 +231,7 @@
     <Content Include="Scripts\lib\knockout-2.1.0.js" />
     <Content Include="Scripts\lib\knockout-kendo.min.js" />
     <Content Include="Scripts\lib\sammy.js" />
+    <Content Include="Scripts\script.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
