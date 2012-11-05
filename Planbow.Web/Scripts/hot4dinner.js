@@ -1,179 +1,184 @@
-﻿// Make a new map in #map
-var main = Map('map', {
-    api: 'http://a.tiles.mapbox.com/v3/lifeofmle.map-82k4zxio.jsonp',
-    center: {
-        lat: 51.510,
-        lon: -0.126,
-        zoom: 13
-    },
-    zoomRange: [1, 17],
-    features: [
-        'zoomwheel',
-        'zoombox',
-        'zoompan',
-        'zoom'
-    ]
+﻿var map = mapbox.map('map');
+map.addLayer(mapbox.layer().id('lifeofmle.map-82k4zxio'));
+map.ui.zoomer.add();
+map.ui.zoombox.add();
+// center the map on London
+map.centerzoom({
+    lat: 51.510,
+    lon: -0.126
+}, 13);
+
+// Create an empty markers layer
+var markerLayer = mapbox.markers.layer();
+
+markerLayer.factory(function (m) {
+
+    // Create a marker using the simplestyle factory
+    var elem = mapbox.markers.simplestyle_factory(m);
+
+    // Add function that centers marker on click
+    MM.addEvent(elem, 'click', function (e) {
+        map.ease.location({
+            lat: m.geometry.coordinates[1],
+            lon: m.geometry.coordinates[0]
+        }).zoom(map.zoom()).optimal();
+
+        viewModel.setVenue(m.id);        
+    });
+
+    return elem;
 });
+
+mapbox.markers.interaction(markerLayer);
+map.addLayer(markerLayer);
 
 function HotDinnersViewModel() {
     var self = this;
+
+    // Properties
+    self.showMode = ko.observable('opened');
     self.venueName = ko.observable();
-    self.venues = ko.observableArray([]);
-    self.selectedVenue = ko.observable();    
+    self.venues = ko.observableArray();
+    self.selectedVenue = ko.observable();
     self.venueDetails = ko.observable();
     self.venueTips = ko.observable();
     self.venuePhotos = ko.observable();
 
+    // Set up subscribing properties
+    self.showMode.subscribe(function (mode) {
+        // self.loadData();
+    });
+
     self.selectedVenue.subscribe(function (newVenue) {
-        // TODO: Make map move into location
 
         self.venueName(newVenue.name);
 
         // Look up Foursquare information
         if (newVenue.foursquareData.id != "") {
-            var foursquareVenueUrl = "/api/foursquare/" + newVenue.foursquareData.id;
-
-            $.ajax({
-                url: foursquareVenueUrl,
-                success: function (data) {
-                    var foursquareData = $.parseJSON(data);
-
-                    if (typeof foursquareData.response.venue === "undefined")
-                        self.venueDetails('');
-                    else
-                        self.venueDetails(foursquareData.response.venue);
-
-                    var tipArray = foursquareData['response']['venue']['tips']['groups'][0]['items'];
-
-                    if (typeof tipArray === "undefined")
-                        self.venueTips('');
-                    else
-                        self.venueTips(tipArray);
-
-                    var photoArray = foursquareData['response']['venue']['photos']['groups'];
-
-                    if (typeof photoArray === "undefined")
-                        self.venuePhotos('');
-                    else {
-                        if (photoArray.length == 1) {
-                            self.venuePhotos(photoArray[0]['items']);
-                        }
-                        else {
-                            self.venuePhotos(photoArray[1]['items']);
-                        }
-                    }
-
-                    $('.carousel').carousel('next');
-                }
-            });
-
-            // Move map to adjusted center
-            MM_map.easey = easey().map(MM_map)
-                .to(MM_map.locationCoordinate(locationOffset({
-                    lat: newVenue.longitude,
-                    lon: newVenue.latitude
-                })).zoomTo(MM_map.getZoom())).run(500, function () {
-                    $('#' + newVenue.foursquareData.id).addClass('active');
-                });
+            
+            self.loadVenue(newVenue.foursquareData.id);
+           
+            self.showOnMap(newVenue);            
         }
         else {
             self.venueDetails('');
             self.venueTips('');
             self.venuePhotos('');
         }
+    });
 
+    // Methods
+    self.setMode = function () {
+        console.log(self.showMode());
+    };
+
+    self.loadData = function () {
+
+        self.setMode();
+
+        $.ajax({
+            url: '/api/hotdinners',
+            success: function (data) {
+
+                ko.utils.arrayPushAll(viewModel.venues(), data);
+                viewModel.venues.valueHasMutated();
+
+                $.each(data, function (i, row) {
+
+                    var lat = row.latitude;
+                    var lng = row.longitude;
+
+                    markerLayer.add_feature({
+                        id: row.foursquareData.id,
+                        geometry: {
+                            coordinates: [lat, lng]
+                        },
+                        properties: {
+                            'marker-color': '#008baa',
+                            'marker-symbol': 'restaurant',
+                            title: row.name,
+                            description: row.hotDinnerData.shortDescription
+                        }
+                    });
+                });
+            }
+        });
+    };
+
+    self.showOnMap = function (venue) {
+
+        // Move map to adjusted center
+        map.ease.location({ lat: venue.longitude, lon: venue.latitude }).zoom(map.zoom()).optimal();
+
+        var markers = markerLayer.markers();
+
+        var match = ko.utils.arrayFirst(markers, function (item) {
+            return item.data.id === venue.foursquareData.id;
+        });
+
+        if (match)
+            match.showTooltip();
+    };
+
+    self.setVenue = function (venueId) {
+        // Get the venue from the event data
+        var match = ko.utils.arrayFirst(self.venues(), function (item) {
+            return item.foursquareData.id === venueId;
+        });
+
+        if (match)
+            self.selectedVenue(match);
+    };
+
+    self.loadVenue = function (foursquareId) {
+        var foursquareVenueUrl = "/api/foursquare/" + foursquareId;
+
+        $.ajax({
+            url: foursquareVenueUrl,
+            success: function (data) {
+                var foursquareData = $.parseJSON(data);
+
+                if (typeof foursquareData.response.venue === "undefined")
+                    self.venueDetails('');
+                else
+                    self.venueDetails(foursquareData.response.venue);
+
+                var tipArray = foursquareData['response']['venue']['tips']['groups'][0]['items'];
+
+                if (typeof tipArray === "undefined")
+                    self.venueTips('');
+                else
+                    self.venueTips(tipArray);
+
+                var photoArray = foursquareData['response']['venue']['photos']['groups'];
+
+                if (typeof photoArray === "undefined")
+                    self.venuePhotos('');
+                else {
+                    if (photoArray.length == 1) {
+                        self.venuePhotos(photoArray[0]['items']);
+                    }
+                    else {
+                        self.venuePhotos(photoArray[1]['items']);
+                    }
+                }
+
+                $('.carousel').carousel('next');
+            }
+        });
         
-
-    }.bind(self));
+        console.log(foursquareId);
+    };
 }
 
-var hotDinnersVM = new HotDinnersViewModel();
-ko.applyBindings(hotDinnersVM);
+var viewModel = new HotDinnersViewModel();
+ko.applyBindings(viewModel);
 
 $(document).ready(function () {
 
-    $('.carousel').carousel({
-        interval: 5000
-    });
+    // set up filter routing
+    Router({ '/:filter': viewModel.showMode }).init();  
 
-    populateRestaurants();
+    viewModel.loadData();  
+
 });
-
-function populateRestaurants() {
-    $.ajax({
-        url: '/api/hotdinners',
-        success: function (data) {
-
-            ko.utils.arrayPushAll(hotDinnersVM.venues(), data);
-            hotDinnersVM.venues.valueHasMutated();
-
-            var points = {
-                'type': 'FeatureCollection',
-                'features': []
-            };
-
-            $.each(data, function (i, venue) {
-                points.features.push({
-                    id: venue.id,
-                    geometry: {
-                        coordinates: [venue.latitude, venue.longitude]
-                    },
-                    properties: {
-                        'marker-color': '#008baa',
-                        'marker-symbol': 'restaurant',
-                        name: venue.name,
-                        description: venue.hotDinnerData.shortDescription
-                    }
-                });
-            });
-
-            if (MM_map.venueLayer) {
-                MM_map.venueLayer.geojson(points);
-            }
-            else {
-                MM_map.venueLayer = mmg().factory(function (x) {
-                    var d = document.createElement('div'),
-                        overlay = document.createElement('div'),
-                        anchor = document.createElement('div');
-
-                    var template = _.template(
-                        '<div class="location">' +
-                            '<span class="name fn"><%= name %></span>' +
-                        '</div>'
-                    );
-                    overlay.className = 'overlay';
-                    overlay.innerHTML = template(x.properties);
-
-                    anchor.className = 'anchor';
-                    anchor.appendChild(overlay);
-
-                    d.id = x.id;
-                    d.className = 'mmg vcard';
-                    d.appendChild(anchor);
-
-                    return d;
-                }).geojson(points);
-
-                MM_map.addLayer(MM_map.venueLayer);
-            }
-
-            MM_map.setCenter({
-                lat: MM_map.getCenter().lat,
-                lon: MM_map.getCenter().lon
-            });
-        }
-    });
-}
-
-// Calculate offset given #content
-function locationOffset(location) {
-    var offset = MM_map.locationPoint({
-        lat: location.lat,
-        lon: location.lon
-    });
-    offset = MM_map.pointLocation({
-        x: offset.x - $('#list').width() / 2,
-        y: offset.y
-    });
-    return offset;
-}

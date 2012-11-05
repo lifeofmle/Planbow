@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -7,12 +8,15 @@
     
     <!-- Using Google Fonts: Open Sans -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="/css/map.css" type="text/css" />
+
     <style>
         body { font-family: 'Open Sans', sans-serif; }
 
         #mapContainer {
           position:relative;
-          height:400px;
+          height:300px;
           margin-top: 2px;
         }
 
@@ -35,16 +39,51 @@
             overflow:hidden;
         }
 
+        .stylish {
+            display:block;
+            width:100px; height:100px;
+            border-radius:66px;
+            border:4px double #ccc;
+            font-size:20px;
+            color:#666;
+            line-height:100px;
+            text-align:center;
+            text-decoration:none;
+            text-shadow:0 1px 0 #fff;
+            background:#ddd;
+        }
+
         .scrollable {
             height: 100%;
             overflow: auto;
         }
 
-        #list { list-style:none; padding:0; margin:0;height:370px;overflow:auto;border:1px solid #cecece; } 
-		#list li { padding:5px;  } 
-		#list li:hover { background:#b3d4db; }
+        #list { 
+            list-style:none; 
+            padding:0; margin:0;
+            min-height:100%;
+            height:auto; 
+            overflow:auto;
+        } 
+		#list li { 
+            padding:5px;
 
-        #tips { list-style:none; padding:0; margin:0px 0px 20px 0px; max-height:220px; overflow:auto;border:1px solid #cecece;  } 
+		} 
+		#list li:hover { background:#b3d4db; }
+        #list li:active {
+            background: #008baa;
+        }
+
+        .info {
+            height: 400px;
+            overflow:auto;
+            border-left: 1px solid #dddddd;
+            border-right: 1px solid #dddddd;
+            border-bottom: 1px solid #dddddd; 
+            border-top:0px;
+        }
+
+        #tips { list-style:none; padding:0; margin:0px 0px 20px 0px; max-height:220px; overflow:auto;border:0px solid #cecece;  } 
 		#tips li { padding:3px; border-bottom:1px solid rgba(0,0,0,0.1);font-size:smaller; } 
 
         img.center {   display: block;   margin-left: auto; margin-right: auto; }
@@ -52,10 +91,10 @@
         #fsq-attribution {
             background-color:white;
             opacity:0.7;
-          position: absolute;
-          right: 0;
-          bottom: 5px;
-          height: 48px;
+            position: absolute;
+            right: 0;
+            bottom: 5px;
+            height: 48px;
         }
 
         ::-webkit-scrollbar {
@@ -82,12 +121,11 @@
     <script type="text/javascript">stLight.options({ publisher: "10c4168a-033d-44bd-b657-f0710422964e", doNotHash: false, doNotCopy: false, hashAddressBar: true });</script>
     
     <!-- Bootstrap -->
-    <link href="~/css/bootstrap.min.css" rel="stylesheet">
-    <link href="~/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
     
 </head>
 <body>
-
     <div class="navbar navbar-static-top">
       <div class="navbar-inner">
         <div class="container">
@@ -108,7 +146,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Labs <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="~/Labs/Hot4Dinner">Hot4Dinner</a></li>
+                        <li><a href="/Labs/Hot4Dinner">Hot4Dinner</a></li>
                     </ul>
                 </li>
                 <li><a href="http://blog.planbow.com/">Blog</a></li>
@@ -133,88 +171,110 @@
                 </p>
             </div>
 
-            @*<div class="span3" style="text-align:right;">
-                <div style="margin-top:30px;">
-                    <span class='st_twitter_hcount' displayText='Tweet'></span>
-                    <span class='st_facebook_hcount' displayText='Facebook'></span>
-                </div>                
-            </div>*@
-        </div>
-        <div class="row">
-            <div class="span3" >
-
-                <p style="font-size:large;">Recently opened restaurants</p> 
-                <ul id="list" data-bind="foreach: venues">
-                    <li  data-bind="click: $root.selectedVenue"><div data-bind="text: name" /></li>
-                </ul>
-                    
-            </div>
-            <div id="mapContainer" class="span9">
-                <div id="map"></div> 
-                <a href="https://www.foursquare.com"><img id="fsq-attribution" src="/img/poweredFoursquare_gray.png" /></a>
-            </div>
-        </div>
-
-        <div class="row"
-            style="margin-top:10px;"
-            data-bind="with: selectedVenue, visible: selectedVenue">
-
-            <div class="span4" >     
-                <span style="font-size:large; font-weight:700" data-bind="text: $root.venueName"></span>
-
-                <div data-bind="with: $root.venueDetails, visible: $root.venueDetails">
-                    <div data-bind="template: { name: 'address-template', data: $root.venueDetails }"></div>
-                </div>        
+            <div class="span3" style="text-align:right;">
+                 <div style="margin-top:30px;">
+                     <span class='st_twitter_hcount' displayText='Tweet'></span>
+                     <span class='st_facebook_hcount' displayText='Facebook'></span>
+                </div>
                 
             </div>
-
-            <div class="span3">                
-
-                <div data-bind="with: $root.venuePhotos, visible: $root.venuePhotos" style="margin-top:10px;">
-                    @*<span style="font-weight:700">Photos</span> *@
-                    <div id="myCarousel" class="carousel slide" style="overflow:hidden">
-                      <!-- Carousel items -->
-                      <div class="carousel-inner" data-bind="foreach: $root.venuePhotos" style="margin-left:35px;">                          
-                          <div class="item"><img data-bind="attr: { src: prefix + '200x200' + suffix }" /></div>
-                      </div>
-                      <!-- Carousel nav -->
-                      <a class="carousel-control left" href="#myCarousel" data-slide="prev" style="margin-left:-10px;">&lsaquo;</a>
-                      <a class="carousel-control right" href="#myCarousel" data-slide="next" style="margin-right:-10px;">&rsaquo;</a>
+        </div>
+        <div class="row">
+            <div class="span3" style="height:100%;height:auto;">
+                <div style="margin-bottom:-20px">
+                    <ul class="nav nav-tabs">
+                        <li data-bind="css: { active: showMode() == 'opened' }" >
+						    <a class="active" href="#/opened">Opened</a>
+					    </li>
+					    <li data-bind="css: { active: showMode() == 'soon' }">
+						    <a href="#/soon">Soon</a>
+					    </li>
+					    @*<li data-bind="css: { active: showMode() == 'trends' }">
+						    <a href="#/trends">Trends</a>
+					    </li>*@
+                    </ul>                    
+                </div>                 
+                
+                <div class="info">
+                    <ul id="list" data-bind="foreach: venues">
+                        <li  data-bind="click: $root.selectedVenue"><div data-bind="text: name" /></li>
+                    </ul>
+                </div>    
+            </div>
+            <div class="span9">
+                <!-- Map -->
+                <div class="row">
+                    <div id="mapContainer" class="span9">
+                        <div id="map"></div> 
+                        <a href="https://www.foursquare.com"><img id="fsq-attribution" src="/img/poweredFoursquare_gray.png" /></a>
                     </div>
                 </div>
-            </div>
+                @*<!-- Venue Info -->
+                <div 
+                    class="row"
+                    style="margin-top:10px;"
+                    data-bind="with: $root.selectedVenue, visible: selectedVenue">
 
-            <div class="span5">
-                <p data-bind="text: hotDinnerData.description"></p>
-                <p style="text-align:right; margin-top:-10px;"> <a data-bind="attr: { href: 'http://www.hot-dinners.com' + hotDinnerData.url }">Find out more</a></p>
+                    <div class="span3" >     
+                        <span style="font-size:large; font-weight:700" data-bind="text: $root.venueName"></span>
 
-                <div data-bind="with: $root.venueTips, visible: $root.venueTips">
-                    <span style="font-weight:700">Tips</span> 
-                    <ul id="tips" data-bind="foreach: $root.venueTips">
-                        <li><span data-bind="text: text" /></li>
-                    </ul>
+                        <div data-bind="with: $root.venueDetails, visible: $root.venueDetails">
+                            <div data-bind="template: { name: 'address-template', data: $root.venueDetails }"></div>
+                        </div>        
+                
+                    </div>
                 </div>
-            </div>
+                <!-- Pictures/Tips -->
+                <div class="row">
+                    <div class="span3">              
+                        <div data-bind="with: $root.venuePhotos, visible: $root.venuePhotos" style="margin-top:10px;">
+                    
+                            <div id="myCarousel" class="carousel slide" style="overflow:hidden">
+                                <!-- Carousel items -->
+                                <div class="carousel-inner" data-bind="foreach: $root.venuePhotos" style="margin-left:35px;">                          
+                                    <div class="item"><img data-bind="attr: { src: prefix + '200x200' + suffix }" /></div>
+                                </div>
+                                <!-- Carousel nav -->
+                                <a class="carousel-control left" href="#myCarousel" data-slide="prev" style="margin-left:-10px;">&lsaquo;</a>
+                                <a class="carousel-control right" href="#myCarousel" data-slide="next" style="margin-right:-10px;">&rsaquo;</a>
+                            </div>
+                        </div>
+                    </div>
 
-        </div>
+                    <div class="span3">
+                        <p data-bind="text: $root.selectedVenue.hotDinnerData.description"></p>
+                        <p style="text-align:right; margin-top:-10px;"> <a data-bind="attr: { href: 'http://www.hot-dinners.com' + hotDinnerData.url }">Find out more</a></p>
+                    </div>
+
+                    <div class="span3">
+                        <div data-bind="with: $root.venueTips, visible: $root.venueTips">                  
+                            <ul id="tips" data-bind="foreach: $root.venueTips">
+                                <li><span data-bind="text: text" /></li>
+                            </ul>
+                        </div>
+                    </div>*@                    
+                </div>
+                       
+        </div>        
     </div>
-
-    <!-- External libraries and site script -->
-    <script src="~/Scripts/ext/jquery.min.js"></script>
-    <script src="~/Scripts/ext/underscore.min.js"></script>
-    <script src="~/Scripts/ext/modestmaps.min.js"></script>
-    <script src="~/Scripts/ext/wax/wax.mm.js"></script>
-    <script src="~/Scripts/ext/wax/wax.ext.js"></script>
-    <script src="~/Scripts/ext/easey.js"></script>
-    <script src="~/Scripts/ext/easey.handlers.js"></script>
-    <script src="~/Scripts/ext/mmg.js"></script>
-    <script src="~/Scripts/script.js"></script>
-    @*<script src="foursquare.js"></script>*@
     
-    @*<script src="http://api.tiles.mapbox.com/mapbox.js/v0.6.6/mapbox.js"></script>*@
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/Scripts/lib/jquery-1.7.1.min.js"></script>
+    <script src="/Scripts/lib/director-1.1.6.min.js"></script>
+    
+    @*<script src="/Scripts/ext/underscore.min.js"></script>
+    <script src="/Scripts/ext/modestmaps.min.js"></script>
+    <script src="/Scripts/ext/wax/wax.mm.js"></script>
+    <script src="/Scripts/ext/wax/wax.ext.js"></script>
+    <script src="/Scripts/ext/easey.js"></script>
+    <script src="/Scripts/ext/easey.handlers.js"></script>
+    <script src="/Scripts/ext/mmg.js"></script>
+    <script src="/Scripts/script.js"></script>*@
+    
+    <script src="http://api.tiles.mapbox.com/mapbox.js/v0.6.6/mapbox.js"></script>
+    <link href="http://api.tiles.mapbox.com/mapbox.js/v0.6.6/mapbox.css" rel="stylesheet" /> 
+
     <script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.1.0.js"></script>
-    <script type="text/javascript" src="~/Scripts/bootstrap.js"></script>
+    <script src="/Scripts/bootstrap.js"></script>
 
     <script type="text/html" id="address-template">
         
@@ -236,11 +296,8 @@
             <div data-bind="visible: contact.twitter">
                 <img src="/img/twitter.png" style="width:16px;height:16px;margin-right:3px;" /><a data-bind="attr: { href: 'http://www.twitter.com/'+ contact.twitter }"><span data-bind="text: contact.twitter, visible: contact.twitter"></span></a>
             </div>                 
-            @*<div data-bind="visible: url">    
-                <img src="/img/globe.png" style="width:16px;height:16px;margin-right:3px;" /><a data-bind="attr: { href: url }">Go to Website</a>
-            </div>  *@   
-            @*<br />            
-            Save to Foursquare *@       
+               
+                   
         </div>
         
     </script>
@@ -267,10 +324,11 @@
             </div>
         </div>
         
-    </script>
+    </script>   
 
-    <script src="~/Scripts/hot4dinner.js"></script>
+    <script src="/Scripts/hot4dinner.js"></script>
 </body>
 </html>
+
 
 

@@ -175,6 +175,7 @@
     <Content Include="css\bootstrap-responsive.min.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\map.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="img\fire_2X.png" />
@@ -224,6 +225,7 @@
     <Content Include="Scripts\ext\wax\wax.ext.js" />
     <Content Include="Scripts\ext\wax\wax.mm.js" />
     <Content Include="Scripts\hot4dinner.js" />
+    <Content Include="Scripts\lib\director-1.1.6.min.js" />
     <Content Include="Scripts\lib\jquery-1.7.1.js" />
     <Content Include="Scripts\lib\jquery-1.7.1.min.js" />
     <Content Include="Scripts\lib\kendo.mobile.min.js" />
