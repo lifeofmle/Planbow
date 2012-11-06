@@ -43,11 +43,42 @@ function HotDinnersViewModel() {
     self.venueDetails = ko.observable();
     self.venueTips = ko.observable();
     self.venuePhotos = ko.observable();
+    self.venueFilter = ko.observable("");
 
     // Set up subscribing properties
     self.showMode.subscribe(function (mode) {
         // self.loadData();
     });
+
+    self.validVenues = ko.computed(function () {
+        switch (self.showMode()) {
+            case 'opened':
+                return self.venues().filter(function (venue) {
+                    return venue.hotDinnerData.isOpen;
+                });
+            case 'soon':
+                return self.venues().filter(function (venue) {
+                    return !venue.hotDinnerData.isOpen;
+                });
+            default:
+                return self.venues().filter(function (venue) {
+                    return venue.hotDinnerData.isOpen;
+                });
+        }
+    });
+
+    //filter the items using the filter text
+    self.filteredVenues = ko.computed(function () {
+        var filter = self.venueFilter().toLowerCase();
+        if (!filter) {
+            return self.validVenues();
+        } else {
+            return ko.utils.arrayFilter(self.validVenues(), function (item) {
+
+                return String(item.name).toLowerCase().indexOf(filter) >= 0;
+            });
+        }
+    });    
 
     self.selectedVenue.subscribe(function (newVenue) {
 
@@ -83,25 +114,31 @@ function HotDinnersViewModel() {
                 ko.utils.arrayPushAll(viewModel.venues(), data);
                 viewModel.venues.valueHasMutated();
 
-                $.each(data, function (i, row) {
+                self.mapVenues(data);
 
-                    var lat = row.latitude;
-                    var lng = row.longitude;
-
-                    markerLayer.add_feature({
-                        id: row.foursquareData.id,
-                        geometry: {
-                            coordinates: [lat, lng]
-                        },
-                        properties: {
-                            'marker-color': '#008baa',
-                            'marker-symbol': 'restaurant',
-                            title: row.name,
-                            description: row.hotDinnerData.shortDescription
-                        }
-                    });
-                });
+                self.setVenue(self.filteredVenues[0].foursquareData.id);
             }
+        });
+    };
+
+    self.mapVenues = function (venues) {
+        $.each(venues, function (i, venue) {
+
+            var lat = venue.latitude;
+            var lng = venue.longitude;
+
+            markerLayer.add_feature({
+                id: venue.foursquareData.id,
+                geometry: {
+                    coordinates: [lat, lng]
+                },
+                properties: {
+                    'marker-color': '#008baa',
+                    'marker-symbol': 'restaurant',
+                    title: venue.name,
+                    description: venue.hotDinnerData.shortDescription
+                }
+            });
         });
     };
 
@@ -167,11 +204,11 @@ function HotDinnersViewModel() {
             }
         });
         
-        console.log(foursquareId);
     };
 }
 
 var viewModel = new HotDinnersViewModel();
+
 ko.applyBindings(viewModel);
 
 $(document).ready(function () {

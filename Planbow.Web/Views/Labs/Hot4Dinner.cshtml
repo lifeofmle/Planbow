@@ -70,32 +70,48 @@
 
 		} 
 		#list li:hover { background:#b3d4db; }
-        #list li:active {
-            background: #008baa;
-        }
 
         .info {
-            height: 400px;
-            overflow:auto;
+            
             border-left: 1px solid #dddddd;
             border-right: 1px solid #dddddd;
             border-bottom: 1px solid #dddddd; 
             border-top:0px;
         }
 
-        #tips { list-style:none; padding:0; margin:0px 0px 20px 0px; max-height:220px; overflow:auto;border:0px solid #cecece;  } 
-		#tips li { padding:3px; border-bottom:1px solid rgba(0,0,0,0.1);font-size:smaller; } 
+        #tips { list-style:none; padding:0; margin:0px 0px 20px 0px; overflow:auto;border:0px solid #cecece; } 
+		#tips li { min-width: 250px;
+                   margin: 2px 0px 2px 0px;
+                   padding:5px 3px 5px 3px; 
+                   border-bottom:1px solid rgba(0,0,0,0.1);
+                   font-size:smaller; } 
 
         img.center {   display: block;   margin-left: auto; margin-right: auto; }
 
         #fsq-attribution {
-            background-color:white;
-            opacity:0.7;
+            background-color: white;
+            opacity: 0.7;
             position: absolute;
             right: 0;
             bottom: 5px;
             height: 48px;
         }
+
+        .circle {
+            vertical-align:top;
+            display: inline-block;
+            height: 40px;
+            width: 40px;
+            line-height: 40px;
+
+            -moz-border-radius: 40px;
+            border-radius: 40px;
+
+            background-color: black;
+            color: white;
+            text-align: center;
+            font-size: 12pt;
+        }​
 
         ::-webkit-scrollbar {
             width: 10px;
@@ -193,13 +209,17 @@
 						    <a href="#/trends">Trends</a>
 					    </li>*@
                     </ul>                    
-                </div>                 
-                
-                <div class="info">
-                    <ul id="list" data-bind="foreach: venues">
-                        <li  data-bind="click: $root.selectedVenue"><div data-bind="text: name" /></li>
-                    </ul>
-                </div>    
+                </div>
+                <div class="info" >
+                    <input type="text" data-bind="value: venueFilter, valueUpdate: 'afterkeydown'" placeholder="Restaurant lookup..." 
+                            style="margin-left:15px; margin-top: 5px;">
+                    <div style="height: 400px; overflow:auto;">                        
+                        <ul id="list" data-bind="foreach: filteredVenues">
+                            <li  data-bind="click: $root.selectedVenue"><div data-bind="text: name" /></li>
+                        </ul>
+                    </div>   
+                </div>
+                 
             </div>
             <div class="span9">
                 <!-- Map -->
@@ -209,11 +229,10 @@
                         <a href="https://www.foursquare.com"><img id="fsq-attribution" src="/img/poweredFoursquare_gray.png" /></a>
                     </div>
                 </div>
-                @*<!-- Venue Info -->
+                <!-- Venue Info -->
                 <div 
                     class="row"
-                    style="margin-top:10px;"
-                    data-bind="with: $root.selectedVenue, visible: selectedVenue">
+                    style="margin-top:10px;">
 
                     <div class="span3" >     
                         <span style="font-size:large; font-weight:700" data-bind="text: $root.venueName"></span>
@@ -223,11 +242,21 @@
                         </div>        
                 
                     </div>
+
+                    <div class="span4" data-bind="with: $root.selectedVenue, visible: $root.selectedVenue">
+                        <p data-bind="text: hotDinnerData.description"></p>
+                        <p style="text-align:right; margin-top:-15px;font-size:10px;"> <a data-bind="attr: { href: 'http://www.hot-dinners.com' + hotDinnerData.url }">Find out more</a></p>       
+                    </div>
+
+                    <div class="span2" data-bind="with: $root.venueDetails, visible: $root.venueDetails">
+                        <div data-bind="template: { name: 'stats-template', data: $root.venueDetails }"></div>
+                    </div>
+
                 </div>
                 <!-- Pictures/Tips -->
                 <div class="row">
                     <div class="span3">              
-                        <div data-bind="with: $root.venuePhotos, visible: $root.venuePhotos" style="margin-top:10px;">
+                        <div data-bind="with: $root.venuePhotos, visible: $root.venueDetails" style="margin-top:10px;">
                     
                             <div id="myCarousel" class="carousel slide" style="overflow:hidden">
                                 <!-- Carousel items -->
@@ -241,34 +270,22 @@
                         </div>
                     </div>
 
-                    <div class="span3">
-                        <p data-bind="text: $root.selectedVenue.hotDinnerData.description"></p>
-                        <p style="text-align:right; margin-top:-10px;"> <a data-bind="attr: { href: 'http://www.hot-dinners.com' + hotDinnerData.url }">Find out more</a></p>
-                    </div>
-
-                    <div class="span3">
+                    <div class="span6">
                         <div data-bind="with: $root.venueTips, visible: $root.venueTips">                  
                             <ul id="tips" data-bind="foreach: $root.venueTips">
-                                <li><span data-bind="text: text" /></li>
+                                <li>
+                                    <span data-bind="text: text" /><br /><br />
+                                </li>
                             </ul>
                         </div>
-                    </div>*@                    
+                    </div>                    
                 </div>
-                       
+            </div>              
         </div>        
     </div>
     
     <script src="/Scripts/lib/jquery-1.7.1.min.js"></script>
     <script src="/Scripts/lib/director-1.1.6.min.js"></script>
-    
-    @*<script src="/Scripts/ext/underscore.min.js"></script>
-    <script src="/Scripts/ext/modestmaps.min.js"></script>
-    <script src="/Scripts/ext/wax/wax.mm.js"></script>
-    <script src="/Scripts/ext/wax/wax.ext.js"></script>
-    <script src="/Scripts/ext/easey.js"></script>
-    <script src="/Scripts/ext/easey.handlers.js"></script>
-    <script src="/Scripts/ext/mmg.js"></script>
-    <script src="/Scripts/script.js"></script>*@
     
     <script src="http://api.tiles.mapbox.com/mapbox.js/v0.6.6/mapbox.js"></script>
     <link href="http://api.tiles.mapbox.com/mapbox.js/v0.6.6/mapbox.css" rel="stylesheet" /> 
@@ -277,50 +294,53 @@
     <script src="/Scripts/bootstrap.js"></script>
 
     <script type="text/html" id="address-template">
-        
         <div>
-            <span data-bind="text: location.address, visible: location.address"></span><br />
-            <span data-bind="text: location.city, visible: location.city"></span><br />
-            <span data-bind="text: location.postalCode, visible:location.postalCode"></span><br />
-            <img src="/img/foursquare-16x16.png" style="width:16px;height:16px;margin-right:5px;" /><a data-bind="attr: { href: 'https://foursquare.com/v/' + id }" target="_blank">See in Foursquare</a>
+            <div style="display:inline-block;vertical-align:top">
+                <a data-bind="attr: { href: 'https://foursquare.com/v/' + id }" target="_blank"><img src="/img/foursquare-16x16.png" style="width:16px;height:16px;margin-right:5px;" /></a>
+            </div>
+            <div style="display:inline-block">
             
-            <br /><br />
+                <span data-bind="text: location.address, visible: location.address"></span><br />
+                <span data-bind="text: location.city, visible: location.city"></span><br />
+                <span data-bind="text: location.postalCode, visible:location.postalCode"></span><br />
             
-            <div data-bind="template: { name: 'stats-template', data: $root.venueDetails }"></div>
-            
-            <br />
-            
-            <div data-bind="visible: contact.phone">
-                <img src="/img/phone.png" style="height:16px;margin-right:10px;"/><span data-bind="text: contact.phone"></span>
-            </div> 
-            <div data-bind="visible: contact.twitter">
-                <img src="/img/twitter.png" style="width:16px;height:16px;margin-right:3px;" /><a data-bind="attr: { href: 'http://www.twitter.com/'+ contact.twitter }"><span data-bind="text: contact.twitter, visible: contact.twitter"></span></a>
-            </div>                 
+                <div data-bind="visible: contact.phone">
+                    <img src="/img/phone.png" style="height:16px;margin-right:10px;"/><span data-bind="text: contact.phone"></span>
+                </div> 
+                <div data-bind="visible: contact.twitter">
+                    <img src="/img/twitter.png" style="width:16px;height:16px;margin-right:3px;" /><a data-bind="attr: { href: 'http://www.twitter.com/'+ contact.twitter }"><span data-bind="text: contact.twitter, visible: contact.twitter"></span></a>
+                </div>                 
                
                    
+            </div>
         </div>
-        
     </script>
 
     <script type="text/html" id="stats-template">
         <div style="text-align:left">
-            <div style="display:inline;">
-                <img src="/img/marker.png" /> 
+            <div>
+                <div style="display:inline-block">
+                    <img src="/img/marker.png" style="text-align:center;margin-left:14px;" /><br />
+                    <span style="font-size:10px;text-align:center">Check-ins</span>
+                </div>                
                 
-                <span style="font-size:small" data-bind="text: stats.checkinsCount"></span>
-                <span style="font-size:small">Check-ins</span>
+                <span class="circle" style="font-size:small;background:#008baa;" data-bind="text: stats.checkinsCount"></span>
             </div>
-            <div style="display:inline;margin-left:10px;">
-                <img src="/img/group.png" /> 
-                <span style="font-size:small" data-bind="text: stats.usersCount"></span>
-                <span style="font-size:small">Users</span>
+            <div>
+                <div style="display:inline-block; margin-right:3px;">
+                    <img src="/img/group.png" style="text-align:center;margin-left:6px;" /><br />
+                    <span style="font-size:10px;text-align:center;margin-left:10px;">Users</span>
+                </div>  
                 
+                <span class="circle" style="font-size:small;background:#62b2a9;" data-bind="text: stats.usersCount"></span>                
             </div>
-            <div style="display:inline;margin-left:10px;">
-                <img src="/img/ok.png" /> 
-                <span style="font-size:small" data-bind="text: hereNow.count"></span>
-                <span style="font-size:small">Here Now</span>
+            <div>
+                <div style="display:inline-block">
+                    <img src="/img/ok.png" style="text-align:center;margin-left:10px;" /><br />
+                    <span style="font-size:10px;text-align:center">Here Now</span>
+                </div>
                 
+                <span class="circle" style="font-size:small;background:#3b76bf;" data-bind="text: hereNow.count"></span>                
             </div>
         </div>
         

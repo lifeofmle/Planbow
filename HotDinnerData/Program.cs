@@ -31,9 +31,9 @@ namespace HotDinnerData
             // Track check-ins and discuss trends of food and which restaurant has been successful
             // Correlate against twitter to see if hype is sustained
 
-            // ScrapeHotDinnersData();
+            ScrapeHotDinnersData();
 
-            GenerateHotDinnersFoursquareMapping(@"Files\HotDinnersLocations_20121027.csv");                                  
+            // GenerateHotDinnersFoursquareMapping(@"Files\HotDinnersLocations_20121027.csv");                                  
 
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
@@ -41,34 +41,11 @@ namespace HotDinnerData
 
         public static void ScrapeHotDinnersData()
         {
-            var hotRestaurants = new List<HotDinnerData>();
+            var hotRestaurants = new List<HotDinnerData>();            
 
             var htmlDocument = new HtmlDocument();
-            htmlDocument.Load("hotDinnerOpened.html");
-            var html = htmlDocument.DocumentNode;
-
-            // Opened restaurants
-            var openedRestaurants = new List<HotDinnerData>();
-            var restaurants = html.SelectNodes("//div[@style='margin-left: 150px;']");
-
-            foreach (var restaurant in restaurants)
-            {
-                try
-                {
-                    var hotDinnerData = HotDinnerDataParser.Parse(restaurant, true);
-                    openedRestaurants.Add(hotDinnerData);
-                }
-                catch (Exception ex)
-                {
-                    Log.Error("Could not parse restaurant data", ex, restaurant.OuterHtml);
-                }
-            }
-
-            hotRestaurants.AddRange(openedRestaurants);
-
-            htmlDocument = new HtmlDocument();
             htmlDocument.Load("hotDinnerComingSoon.html");
-            html = htmlDocument.DocumentNode;
+            var html = htmlDocument.DocumentNode;
 
             var comingSoon = new List<HotDinnerData>();
 
@@ -76,7 +53,7 @@ namespace HotDinnerData
             var restaurantNameNodes = html.SelectNodes("//span[@class=\"articleheading\"]");
             foreach (var nameNode in restaurantNameNodes)
             {
-                if (string.IsNullOrEmpty(nameNode.InnerText))
+                if (string.IsNullOrEmpty(nameNode.InnerText) || nameNode.InnerText.Contains("See the latest openings"))
                     continue;
 
                 if (nameNode.InnerHtml.Contains("<br>"))
@@ -107,7 +84,30 @@ namespace HotDinnerData
 
             hotRestaurants.AddRange(comingSoon);
 
-            using (var fileStream = new FileStream(@"hotDinner_2.csv", FileMode.OpenOrCreate, FileAccess.ReadWrite))
+            htmlDocument = new HtmlDocument();
+            htmlDocument.Load("hotDinnerOpened.html");
+            html = htmlDocument.DocumentNode;
+
+            // Opened restaurants
+            var openedRestaurants = new List<HotDinnerData>();
+            var restaurants = html.SelectNodes("//div[@style='margin-left: 150px;']");
+
+            foreach (var restaurant in restaurants)
+            {
+                try
+                {
+                    var hotDinnerData = HotDinnerDataParser.Parse(restaurant, true);
+                    openedRestaurants.Add(hotDinnerData);
+                }
+                catch (Exception ex)
+                {
+                    Log.Error("Could not parse restaurant data", ex, restaurant.OuterHtml);
+                }
+            }
+
+            hotRestaurants.AddRange(openedRestaurants);
+
+            using (var fileStream = new FileStream(@"hotDinner_20121106.csv", FileMode.OpenOrCreate, FileAccess.ReadWrite))
             {
                 using (var streamWriter = new StreamWriter(fileStream))
                 {

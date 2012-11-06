@@ -41,7 +41,7 @@ namespace Planbow.Data
             // Read in csv from resource
             lock (FileLock)
             {
-                using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Planbow.Data.Files.mappedDinners_20121027.csv"))
+                using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Planbow.Data.Files.mappedDinners_20121106.csv"))
                 {
                     CsvReader reader = new CsvReader(stream);
 
