@@ -8,6 +8,8 @@ namespace Planbow.Models
 {
     public class Venue : Location
     {
+        public string Id { get; set; }
+
         public FoursquareVenue FoursquareData { get; set; }
 
         public HotDinnerData HotDinnerData { get; set; }

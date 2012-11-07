@@ -22,5 +22,13 @@ namespace Planbow.Web.Controllers
 
             return Uow.Plans.HotDinnerVenues();
         }
+
+        public Venue Get(string id)
+        {
+            if (Uow == null)
+                return null;
+
+            return Uow.Plans.GetHotDinner(id);
+        }
     }
 }

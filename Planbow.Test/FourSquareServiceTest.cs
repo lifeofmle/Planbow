@@ -29,75 +29,75 @@ namespace Planbow.Test
                     var venue = fsVenue.ToObject<FoursquareVenue>();
 
                     var tips = fsVenue["tips"];
-                    if (tips.HasValues)
-                    {
-                        venue.HasTips = true;
-                        venue.TipsCount = tips["count"].Value<int>();
+                    //////if (tips.HasValues)
+                    //////{
+                    //////    venue.HasTips = true;
+                    //////    venue.TipsCount = tips["count"].Value<int>();
 
-                        venue.TipTexts = new List<string>();
-                        if (venue.TipsCount > 0)
-                        {
-                            var tipsList = new List<string>();
-                            var groups = tips["groups"];
+                    //////    venue.TipTexts = new List<string>();
+                    //////    if (venue.TipsCount > 0)
+                    //////    {
+                    //////        var tipsList = new List<string>();
+                    //////        var groups = tips["groups"];
 
-                            if (groups.HasValues)
-                            {
-                                var items = groups["items"];
+                    //////        if (groups.HasValues)
+                    //////        {
+                    //////            var items = groups["items"];
 
-                                if (items.HasValues)
-                                {
-                                    foreach (var item in items)
-                                    {
-                                        if (item["type"].Value<string>() == "others")
-                                        {
-                                            foreach (var data in item["items"])
-                                            {
-                                                tipsList.Add(data["text"].Value<string>());
-                                            }
-                                        }
-                                    }
-                                }
-                            }                            
+                    //////            if (items.HasValues)
+                    //////            {
+                    //////                foreach (var item in items)
+                    //////                {
+                    //////                    if (item["type"].Value<string>() == "others")
+                    //////                    {
+                    //////                        foreach (var data in item["items"])
+                    //////                        {
+                    //////                            tipsList.Add(data["text"].Value<string>());
+                    //////                        }
+                    //////                    }
+                    //////                }
+                    //////            }
+                    //////        }                            
 
-                            venue.TipTexts = tipsList;
-                        }
-                    }
+                    //////        venue.TipTexts = tipsList;
+                    //////    }
+                    //////}
 
-                    if (fsVenue["photos"].HasValues)
-                    {
-                        venue.HasPhotos = true;
+                    //////if (fsVenue["photos"].HasValues)
+                    //////{
+                    //////    venue.HasPhotos = true;
 
-                        venue.PhotosCount = tips["count"].Value<int>();
+                    //////    venue.PhotosCount = tips["count"].Value<int>();
 
-                        venue.PhotoUrls = new List<string>();
-                        if (venue.TipsCount > 0)
-                        {
-                            var photoUrls = new List<string>();
-                            var groups = tips["groups"];
+                    //////    venue.PhotoUrls = new List<string>();
+                    //////    if (venue.TipsCount > 0)
+                    //////    {
+                    //////        var photoUrls = new List<string>();
+                    //////        var groups = tips["groups"];
 
-                            if (groups.HasValues)
-                            {
-                                var items = groups["items"];
+                    //////        if (groups.HasValues)
+                    //////        {
+                    //////            var items = groups["items"];
 
-                                if (items.HasValues)
-                                {
-                                    foreach (var item in items)
-                                    {
-                                        if (item["type"].Value<string>() == "venue")
-                                        {
-                                            foreach (var data in item["items"])
-                                            {
-                                                photoUrls.Add(data["url"].Value<string>());
-                                            }
-                                        }
-                                    }
-                                }
-                            }    
+                    //////            if (items.HasValues)
+                    //////            {
+                    //////                foreach (var item in items)
+                    //////                {
+                    //////                    if (item["type"].Value<string>() == "venue")
+                    //////                    {
+                    //////                        foreach (var data in item["items"])
+                    //////                        {
+                    //////                            photoUrls.Add(data["url"].Value<string>());
+                    //////                        }
+                    //////                    }
+                    //////                }
+                    //////            }
+                    //////        }    
 
-                            venue.PhotoUrls = photoUrls;
-                        }                  
+                    //////        venue.PhotoUrls = photoUrls;
+                    //////    }                  
 
-                    }
+                    //}
                 }
             }
         }

@@ -11,6 +11,8 @@ namespace Planbow.Data.Interfaces
     {
         IEnumerable<Venue> HotDinnerVenues();
 
+        Venue GetHotDinner(string hotDinnerId);
+
         string GetVenue(string venueId);
     }
 }

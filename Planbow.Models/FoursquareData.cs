@@ -12,37 +12,37 @@ namespace Planbow.Models
         [JsonProperty("id")]
         public string FoursquareId { get; set; }
 
-        public FoursquareLocation Location { get; set; }
+        //public FoursquareLocation Location { get; set; }
 
-        public FoursquareStatistic Stats { get; set; }
+        //public FoursquareStatistic Stats { get; set; }
 
-        [JsonProperty("reservations")]
-        public FoursquareReservation Reservation { get; set; }
+        //[JsonProperty("reservations")]
+        //public FoursquareReservation Reservation { get; set; }
 
-        public List<FoursquareCategory> Categories { get; set; }
+        //public List<FoursquareCategory> Categories { get; set; }
 
-        public string Phone { get; set; }
+        //public string Phone { get; set; }
 
-        public string Twitter { get; set; }
+        //public string Twitter { get; set; }
 
-        public string Website { get; set; }
+        //public string Website { get; set; }
 
-        public bool HasTips { get; set; }
+        //public bool HasTips { get; set; }
 
-        public int TipsCount { get; set; }
+        //public int TipsCount { get; set; }
 
-        public List<string> TipTexts { get; set; }
+        //public List<string> TipTexts { get; set; }
 
-        public bool HasPhotos { get; set; }
+        //public bool HasPhotos { get; set; }
 
-        public int PhotosCount { get; set; }
+        //public int PhotosCount { get; set; }
 
-        public List<string> PhotoUrls { get; set; }
+        //public List<string> PhotoUrls { get; set; }
 
-        public void PopulateValues(JContainer json)
-        {
+        //public void PopulateValues(JContainer json)
+        //{
 
-        }
+        //}
     }
 
     public class FoursquareLocation

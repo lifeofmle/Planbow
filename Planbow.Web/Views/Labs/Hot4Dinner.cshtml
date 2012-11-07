@@ -1,11 +1,31 @@
-﻿
+﻿@*  *@
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Planbow - Hot4Dinner</title>
+
+    <meta name="description" content="A map of Hot-Dinner restaurants in London. We used this with Mapbox, the Foursquare API and the data from Hot-Dinners.com. Helping you find out what's hot for dinner" />
+
+    <meta name="keywords" content="hot dinner mapped, dinner London, mapbox london, mapbox foursquare, hot for dinner, hot4dinner"  />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-34789441-2']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
     <!-- Using Google Fonts: Open Sans -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 
@@ -162,7 +182,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Labs <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/Labs/Hot4Dinner">Hot4Dinner</a></li>
+                        <li><a href="/Labs/Hot4Dinner#/opened">Hot4Dinner</a></li>
                     </ul>
                 </li>
                 <li><a href="http://blog.planbow.com/">Blog</a></li>
@@ -217,16 +237,23 @@
                         <ul id="list" data-bind="foreach: filteredVenues">
                             <li  data-bind="click: $root.selectedVenue"><div data-bind="text: name" /></li>
                         </ul>
-                    </div>   
+                    </div> 
+                    
                 </div>
-                 
+                <p style="font-size:x-small">
+                    <br />*Planbow is not affliated with Hot-Dinners. Data is sourced from Hot-Dinners.com as of Nov 6 2012.
+                        
+                </p>
+                
+                <a class="btn btn-info" href="mailto:info@planbow.com"><i class="icon-envelope icon-white" style="margin-right:5px;"></i>Feedback?</a>
+                  
             </div>
             <div class="span9">
                 <!-- Map -->
                 <div class="row">
                     <div id="mapContainer" class="span9">
                         <div id="map"></div> 
-                        <a href="https://www.foursquare.com"><img id="fsq-attribution" src="/img/poweredFoursquare_gray.png" /></a>
+                        <a href="https://www.foursquare.com" target="_blank"><img id="fsq-attribution" src="/img/poweredFoursquare_gray.png" /></a>
                     </div>
                 </div>
                 <!-- Venue Info -->
@@ -239,13 +266,22 @@
 
                         <div data-bind="with: $root.venueDetails, visible: $root.venueDetails">
                             <div data-bind="template: { name: 'address-template', data: $root.venueDetails }"></div>
-                        </div>        
+                        </div>       
+                        
+                        <div data-bind="with: $root.selectedVenue, visible: !$root.selectedVenue.isOpen">                            
+                            <div data-bind="visible: $root.venueWhere">
+                                <span data-bind="text: $root.venueWhere"></span>
+                            </div> 
+                            <div style="margin-top:10px;" data-bind="visible: $root.venueWhen">
+                                <i class="icon-calendar" style="margin-right: 5px;"></i><span style="font-size:small" data-bind="text: $root.venueWhen"></span>                                
+                            </div>  
+                        </div>
                 
                     </div>
 
                     <div class="span4" data-bind="with: $root.selectedVenue, visible: $root.selectedVenue">
-                        <p data-bind="text: hotDinnerData.description"></p>
-                        <p style="text-align:right; margin-top:-15px;font-size:10px;"> <a data-bind="attr: { href: 'http://www.hot-dinners.com' + hotDinnerData.url }">Find out more</a></p>       
+                        <p data-bind="text: $root.venueDescription"></p>
+                        <p style="text-align:right; margin-top:-15px;font-size:10px;"> <a data-bind="attr: { href: 'http://www.hot-dinners.com' + hotDinnerData.url }"  target="_blank">Find out more</a></p>       
                     </div>
 
                     <div class="span2" data-bind="with: $root.venueDetails, visible: $root.venueDetails">

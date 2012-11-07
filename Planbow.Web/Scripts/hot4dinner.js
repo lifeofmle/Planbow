@@ -38,6 +38,9 @@ function HotDinnersViewModel() {
     // Properties
     self.showMode = ko.observable('opened');
     self.venueName = ko.observable();
+    self.venueWhen = ko.observable();
+    self.venueWhere = ko.observable();
+    self.venueDescription = ko.observable();
     self.venues = ko.observableArray();
     self.selectedVenue = ko.observable();
     self.venueDetails = ko.observable();
@@ -47,7 +50,19 @@ function HotDinnersViewModel() {
 
     // Set up subscribing properties
     self.showMode.subscribe(function (mode) {
-        // self.loadData();
+
+        markerLayer.filter(function (f) {
+            // Returning true for all markers shows everything.
+            switch (mode) {
+                case 'opened':
+                    return f.properties['open'] === true;
+                case 'soon':
+                    return f.properties['open'] === false;
+                default:
+                    return true;
+            }
+
+        });
     });
 
     self.validVenues = ko.computed(function () {
@@ -84,18 +99,26 @@ function HotDinnersViewModel() {
 
         self.venueName(newVenue.name);
 
-        // Look up Foursquare information
-        if (newVenue.foursquareData.id != "") {
+        self.venueDetails('');
+        self.venueTips('');
+        self.venuePhotos('');
+        self.loadDescription(newVenue.id);
+
+        if (newVenue.hotDinnerData.isOpen) {
+            self.venueWhen('');
+            self.venueWhere('');
+
+            if (newVenue.foursquareData.id != "") {
+                self.loadVenue(newVenue.foursquareData.id);
+            }        
             
-            self.loadVenue(newVenue.foursquareData.id);
-           
-            self.showOnMap(newVenue);            
         }
         else {
-            self.venueDetails('');
-            self.venueTips('');
-            self.venuePhotos('');
+            self.venueWhen(newVenue.hotDinnerData.when);
+            self.venueWhere(newVenue.hotDinnerData.where);
         }
+
+        self.showOnMap(newVenue);
     });
 
     // Methods
@@ -126,19 +149,37 @@ function HotDinnersViewModel() {
 
             var lat = venue.latitude;
             var lng = venue.longitude;
-
-            markerLayer.add_feature({
-                id: venue.foursquareData.id,
-                geometry: {
-                    coordinates: [lat, lng]
-                },
-                properties: {
-                    'marker-color': '#008baa',
-                    'marker-symbol': 'restaurant',
-                    title: venue.name,
-                    description: venue.hotDinnerData.shortDescription
-                }
-            });
+           
+            if (!venue.hotDinnerData.isOpen){
+                markerLayer.add_feature({
+                    id: venue.foursquareData.id,
+                    geometry: {
+                        coordinates: [lat, lng]
+                    },
+                    properties: {
+                        'marker-color': '#ffae00',
+                        'marker-symbol': 'restaurant',
+                        title: venue.name,
+                        description: venue.hotDinnerData.shortDescription,
+                        open: venue.hotDinnerData.isOpen
+                    }
+                });
+            }
+            else {
+                markerLayer.add_feature({
+                    id: venue.foursquareData.id,
+                    geometry: {
+                        coordinates: [lat, lng]
+                    },
+                    properties: {
+                        'marker-color': '#008baa',
+                        'marker-symbol': 'restaurant',
+                        title: venue.name,
+                        description: venue.hotDinnerData.shortDescription,
+                        open: venue.hotDinnerData.isOpen
+                    }
+                });
+            }
         });
     };
 
@@ -167,8 +208,19 @@ function HotDinnersViewModel() {
             self.selectedVenue(match);
     };
 
+    self.loadDescription = function (venueId) {
+        $.ajax({
+            url: '/api/hotdinners/' + venueId,
+            success: function (data) {
+                self.venueDescription(data.hotDinnerData.description);
+            }
+        });
+    }
+
     self.loadVenue = function (foursquareId) {
         var foursquareVenueUrl = "/api/foursquare/" + foursquareId;
+
+        self.loadDescription();
 
         $.ajax({
             url: foursquareVenueUrl,

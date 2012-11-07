@@ -20,6 +20,7 @@ namespace Planbow.Data
 
         private List<Venue> _hotDinnerVenues;
         private Dictionary<string, string> _foursquareDictionary = new Dictionary<string,string>();
+        private Dictionary<string, Venue> _venueDictionary;
 
         private string _foursquareJson;
 
@@ -27,6 +28,8 @@ namespace Planbow.Data
 
         public PlanRepository(DbContext context) : base(context) 
         {
+            _venueDictionary = new Dictionary<string, Venue>();              
+
             List<string[]> hotDinnerData = null;
             _hotDinnerVenues = new List<Venue>();
 
@@ -45,6 +48,7 @@ namespace Planbow.Data
                 {
                     CsvReader reader = new CsvReader(stream);
 
+                    var count = 0;
                     foreach (var data in reader.RowEnumerator)
                     {
                         if (data is string[])
@@ -52,10 +56,15 @@ namespace Planbow.Data
                             var restaurant = data as string[];
 
                             var venue = new Venue();
+                            venue.Id = (++count).ToString();
 
                             venue.Name = CsvUtility.Escape(restaurant[0]);                            
 
                             var foursquareId = restaurant[1];
+
+                            if (string.IsNullOrEmpty(foursquareId))
+                                foursquareId = Guid.NewGuid().ToString();
+
                             venue.FoursquareData = new FoursquareVenue() { FoursquareId = foursquareId };
 
                             if (!string.IsNullOrEmpty(restaurant[2]))
@@ -75,6 +84,9 @@ namespace Planbow.Data
                             venue.HotDinnerData = hotDinner;
 
                             _hotDinnerVenues.Add(venue);
+
+                            if (!_venueDictionary.ContainsKey(venue.Id))
+                                _venueDictionary.Add(venue.Id, venue);
                         }
                     }
                 }
@@ -83,7 +95,28 @@ namespace Planbow.Data
 
         public IEnumerable<Venue> HotDinnerVenues()
         {
-            return _hotDinnerVenues;
+            var venues = new List<Venue>();
+
+            foreach (var venue in _hotDinnerVenues)
+            {
+                venue.HotDinnerData.Description = null;
+                venues.Add(venue);
+            }
+
+            return venues;
+        }        
+
+        public Venue GetHotDinner(string hotDinnerId)
+        {
+            if (string.IsNullOrEmpty(hotDinnerId))
+                return null;
+
+            var key = hotDinnerId;
+
+            if (_venueDictionary.ContainsKey(key))
+                return _venueDictionary[key];
+
+            return null;
         }
 
         public string GetVenue(string foursquareId)

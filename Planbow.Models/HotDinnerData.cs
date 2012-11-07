@@ -8,10 +8,10 @@ namespace Planbow.Models
 {
     public class HotDinnerData : SocialPlatform
     {
-        [JsonProperty("id")]
-        public string HotDinnerId { get; set; }
+        //[JsonProperty("id")]
+        //public string HotDinnerId { get; set; }
 
-        public string RestaurantName { get; set; }
+        //public string RestaurantName { get; set; }
 
         public string Where { get; set; }
 
