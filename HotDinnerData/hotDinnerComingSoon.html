@@ -7,55 +7,55 @@
 <!-- START GUARDIAN ONLINE BEHAVIOURAL TARGETING CODE --> 
 <!-- START QUANTCAST AD TAG -->
 <script type="text/javascript">
-var quantSegs="";
-var quant_segs_beg = document.cookie.indexOf('quant_segs');
-if (quant_segs_beg >= 0) {
-quant_segs_beg = document.cookie.indexOf('=', quant_segs_beg) + 1;
-if (quant_segs_beg > 0) {
-var quant_segs_end = document.cookie.indexOf(';', quant_segs_beg);
-if (quant_segs_end == -1) quant_segs_end = document.cookie.length;
-quantSegs = unescape(document.cookie.substring(quant_segs_beg, quant_segs_end));
-}
-}
+    var quantSegs = "";
+    var quant_segs_beg = document.cookie.indexOf('quant_segs');
+    if (quant_segs_beg >= 0) {
+        quant_segs_beg = document.cookie.indexOf('=', quant_segs_beg) + 1;
+        if (quant_segs_beg > 0) {
+            var quant_segs_end = document.cookie.indexOf(';', quant_segs_beg);
+            if (quant_segs_end == -1) quant_segs_end = document.cookie.length;
+            quantSegs = unescape(document.cookie.substring(quant_segs_beg, quant_segs_end));
+        }
+    }
 
-function qc_results(result) {
-var qc = "";
-for (var i = 0; i < result.segments.length; i++) {
-     qc += "qc=" + result.segments[i].id + "&"; //customizable per your ad server
-  }
+    function qc_results(result) {
+        var qc = "";
+        for (var i = 0; i < result.segments.length; i++) {
+            qc += "qc=" + result.segments[i].id + "&"; //customizable per your ad server
+        }
 
-  document.cookie = "quant_segs=" + escape(qc);
-}
+        document.cookie = "quant_segs=" + escape(qc);
+    }
 
 </script>
 <!-- END QUANTCAST AD TAG -->
 <!-- AUDIENCESCIENCE AD TAG CODE -->
 <script type="text/javascript">
 <!--
-var rsi_segs = [];
-var segs_beg=document.cookie.indexOf('rsi_segs=');
-if (segs_beg>=0){
-segs_beg=document.cookie.indexOf('=',segs_beg)+1;
-if(segs_beg>0){
-var segs_end=document.cookie.indexOf(';',segs_beg);
-if(segs_end==-1) segs_end=document.cookie.length;
-rsi_segs=document.cookie.substring(segs_beg,segs_end).split('|');
+    var rsi_segs = [];
+    var segs_beg = document.cookie.indexOf('rsi_segs=');
+    if (segs_beg >= 0) {
+        segs_beg = document.cookie.indexOf('=', segs_beg) + 1;
+        if (segs_beg > 0) {
+            var segs_end = document.cookie.indexOf(';', segs_beg);
+            if (segs_end == -1) segs_end = document.cookie.length;
+            rsi_segs = document.cookie.substring(segs_beg, segs_end).split('|');
 
-}
-}
-var segLen=100;
-segQS="";
-if (rsi_segs.length<segLen){segLen=rsi_segs.length}
-for (var i=0;i<segLen;i++){
-segQS+=("a"+"="+rsi_segs[i])
-}
-//-->
+        }
+    }
+    var segLen = 100;
+    segQS = "";
+    if (rsi_segs.length < segLen) { segLen = rsi_segs.length }
+    for (var i = 0; i < segLen; i++) {
+        segQS += ("a" + "=" + rsi_segs[i])
+    }
+    //-->
 </script>
 
 <script type="text/javascript">
 
-var gsegQS = "";
-gsegQS=segQS.replace(/E0/g,'&a=E0').replace("a=&","")+'&';
+    var gsegQS = "";
+    gsegQS = segQS.replace(/E0/g, '&a=E0').replace("a=&", "") + '&';
 
 </script>
 <!-- END AUDIENCESCIENCE AD TAG CODE -->
@@ -110,15 +110,15 @@ gsegQS=segQS.replace(/E0/g,'&a=E0').replace("a=&","")+'&';
 
 <body>
     <div id='fb-root'></div><script type='text/javascript'>
-    
-    // Load the SDK Asynchronously
-    (function(d){
-     var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
-     js = d.createElement('script'); js.id = id; js.async = true;
-     js.src = '//connect.facebook.net/en_GB/all.js';
-     d.getElementsByTagName('head')[0].appendChild(js);
-    }(document));
-    
+
+                                // Load the SDK Asynchronously
+                                (function (d) {
+                                    var js, id = 'facebook-jssdk'; if (d.getElementById(id)) { return; }
+                                    js = d.createElement('script'); js.id = id; js.async = true;
+                                    js.src = '//connect.facebook.net/en_GB/all.js';
+                                    d.getElementsByTagName('head')[0].appendChild(js);
+                                }(document));
+
     </script>
     <!-- Begin Wrapper -->
     <div id="wrapper">
@@ -131,7 +131,7 @@ gsegQS=segQS.replace(/E0/g,'&a=E0').replace("a=&","")+'&';
 <div style="float:left; margin-right:15px; width:728px;">
 <!-- Guardian Select: Life and Style Tag Begins -- Leaderboard ATF --> 
 <script src="http://resource.guim.co.uk/global/adcode/generate?partner=hot-dinners.com&n=lifeandstyle&s=food&slot=x20"></script>
-<!-- Guardian Select: Life and Style Tag Ends -- Leaderboard --> <div id='beacon_8a75ec25b2' style='position: absolute; left: 0px; top: 0px; visibility: hidden;'><img src='http://www.hot-dinners.com/openx/www/delivery/lg.php?bannerid=27&amp;campaignid=3&amp;zoneid=3&amp;loc=http%3A%2F%2Fwww.google.com%2Furl%3Fsa%3Dt%26rct%3Dj%26q%3D%26esrc%3Ds%26source%3Dweb%26cd%3D3%26ved%3D0CDMQFjAC%26url%3Dhttp%253A%252F%252Fwww.hot-dinners.com%252FFeatures%252FArticles%252Fcoming-soon-new-restaurants-opening-in-london%26ei%3D7lmYUK-xMofV0QW5vYGoDQ%26usg%3DAFQjCNGU1VdPXNmnNB6iJn0Z9YM0JYhPLw&amp;cb=8a75ec25b2' width='0' height='0' alt='' style='width: 0px; height: 0px;' /></div></div>
+<!-- Guardian Select: Life and Style Tag Ends -- Leaderboard --> <div id='beacon_21b8ece493' style='position: absolute; left: 0px; top: 0px; visibility: hidden;'><img src='http://www.hot-dinners.com/openx/www/delivery/lg.php?bannerid=27&amp;campaignid=3&amp;zoneid=3&amp;loc=http%3A%2F%2Fwww.hot-dinners.com%2FFeatures%2FArticles%2Fnew-and-recently-opened-london-restaurants&amp;cb=21b8ece493' width='0' height='0' alt='' style='width: 0px; height: 0px;' /></div></div>
 <div id="social">
 <div style="width:200px; border-color:#D9D9D9; border-style:solid; float:right;">
 <div>
@@ -184,48 +184,48 @@ on facebook</span></span></strong></a></p>
                     <div style="float:left;padding-top:3px;">Search Hot Dinners&nbsp;&nbsp;</div>
                     
 <script type="text/javascript">
-	window.addEvent('domready', function() {
-		var value;
+    window.addEvent('domready', function () {
+        var value;
 
-		// Set the input value if not already set.
-		if (!$('mod_finder_q75').getProperty('value')) {
-			$('mod_finder_q75').setProperty('value', 'search...');
-		}
+        // Set the input value if not already set.
+        if (!$('mod_finder_q75').getProperty('value')) {
+            $('mod_finder_q75').setProperty('value', 'search...');
+        }
 
-		// Get the current value.
-		value = $('mod_finder_q75').getProperty('value');
+        // Get the current value.
+        value = $('mod_finder_q75').getProperty('value');
 
-		// If the current value equals the previous value, clear it.
-		$('mod_finder_q75').addEvent('focus', function() {
-			if (this.getProperty('value') == value) {
-				this.setProperty('value', '');
-			}
-		});
+        // If the current value equals the previous value, clear it.
+        $('mod_finder_q75').addEvent('focus', function () {
+            if (this.getProperty('value') == value) {
+                this.setProperty('value', '');
+            }
+        });
 
-		// If the current value is empty, set the previous value.
-		$('mod_finder_q75').addEvent('blur', function() {
-			if (!this.getProperty('value')) {
-				this.setProperty('value', value);
-			}
-		});
+        // If the current value is empty, set the previous value.
+        $('mod_finder_q75').addEvent('blur', function () {
+            if (!this.getProperty('value')) {
+                this.setProperty('value', value);
+            }
+        });
 
-		
-		$('mod-finder-75').addEvent('submit', function(e){
-			e = new Event(e);
-			e.stop();
 
-			// Disable select boxes with no value selected.
-			if ($chk($('mod-finder-75-advanced'))) {
-				$('mod-finder-75-advanced').getElements('select').each(function(s){
-					if (!s.getProperty('value')) {
-						s.setProperty('disabled', 'disabled');
-					}
-				});
-			}
+        $('mod-finder-75').addEvent('submit', function (e) {
+            e = new Event(e);
+            e.stop();
 
-			$('mod-finder-75').submit();
-		});
-	});
+            // Disable select boxes with no value selected.
+            if ($chk($('mod-finder-75-advanced'))) {
+                $('mod-finder-75-advanced').getElements('select').each(function (s) {
+                    if (!s.getProperty('value')) {
+                        s.setProperty('disabled', 'disabled');
+                    }
+                });
+            }
+
+            $('mod-finder-75').submit();
+        });
+    });
 </script>
 
 <div class="finder">
@@ -253,7 +253,7 @@ on facebook</span></span></strong></a></p>
 <tr ><td><a href="/Features/" class="mainlevel" id="active_menu">Features</a>
 
 <div style="padding-left: 4px"><a href="/Features/Interviews/" class="sublevel" >Interviews</a></div>
-<div style="padding-left: 4px"><a href="/Features/Articles/" class="sublevel" id="active_menu">Articles</a></div>
+<div style="padding-left: 4px"><a href="/Features/Articles/" class="sublevel" id="a1">Articles</a></div>
 <div style="padding-left: 4px"><a href="/Features/Hot-Dinners-recommends/" class="sublevel" >Hot Dinners recommends</a></div>
 <div style="padding-left: 4px"><a href="/Features/Articles/new-and-recently-opened-london-restaurants" class="sublevel" >New London restaurants</a></div>
 <div style="padding-left: 4px"><a href="/Features/Articles/coming-soon-new-restaurants-opening-in-london" class="sublevel" >London restaurants opening soon</a></div>
@@ -272,8 +272,8 @@ on facebook</span></span></strong></a></p>
 <input type="hidden" name="return" value="B:aHR0cDovL3d3dy5ob3QtZGlubmVycy5jb20vaW5kZXgucGhwP29wdGlvbj1jb21fY29udGVudCZhbXA7SXRlbWlkPTY0JmFtcDtjYXRpZD0yMSZhbXA7aWQ9MjA3JmFtcDtsYW5nPWVuJmFtcDt2aWV3PWFydGljbGU=" />
 <input type="hidden" name="message" value="0" />
 <input type="hidden" name="loginfrom" value="loginmodule" />
-<input type="hidden" name="cbsecuritym3" value="cbm_59b3dcf3_37da07fd_9a74223b7a336d8b14ca6a889b5f9a4a" />
-<input type="hidden" name="jd4e5296c3e5959ef55cdd1b275af177a" value="1" />
+<input type="hidden" name="cbsecuritym3" value="cbm_4866caf5_0ad5c5f7_b06338602cfc92322fe7ecab9b356b5a" />
+<input type="hidden" name="jfd6fac7453b59dae80bc562004342380" value="1" />
 <span class="cbLoginButtonSpan"><input type="submit" name="Submit" class="button" value="Login" /></span></td></tr>
 <tr><td><a href="http://www.hot-dinners.com/index.php?option=com_comprofiler&amp;task=lostpassword&amp;Itemid=109" class="mod_login">Forgot login?</a></td></tr>
 <tr><td><a href="http://www.hot-dinners.com/index.php?option=com_comprofiler&amp;task=registers&amp;Itemid=109" class="mod_login">Register</a></td></tr>
@@ -308,7 +308,7 @@ on facebook</span></span></strong></a></p>
 
 <tr>
 	<td valign="top" class="createdate">
-		Sunday, 04 November 2012	</td>
+		Monday, 12 November 2012	</td>
 </tr>
 
 
@@ -318,8 +318,8 @@ on facebook</span></span></strong></a></p>
 <!-- BEGIN: ValAddThis Plugin -->
 <script charset="utf-8" type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js"></script>
 <script type="text/javascript" language="javascript">
-var addthis_pub = "hotdinners";
-var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use_addressbook: false,data_track_linkback: false,data_use_flash: false,data_use_cookies: true,ui_use_embeddable_services_beta: false}; </script>
+    var addthis_pub = "hotdinners";
+    var addthis_config = { ui_cobrand: "Hot Dinners", ui_hover_direction: false, ui_use_addressbook: false, data_track_linkback: false, data_use_flash: false, data_use_cookies: true, ui_use_embeddable_services_beta: false }; </script>
 <div class="addthis_toolbox">
 <div class="valaddthis_id207 addthis_default_style">
 <div class="share">&nbsp;</div><a class="addthis_button_tweet"></a>
@@ -328,7 +328,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <a class="addthis_button_pinterest"></a>
 </div>
 <script type="text/javascript">
- addthis.toolbox(".valaddthis_id207", {}, {url: "http://www.hot-dinners.com/Features/Articles/coming-soon-new-restaurants-opening-in-london", title: "Coming soon - hot new London restaurants opening soon", description: "All about the best new London restaurants that are coming soon to London."});
+    addthis.toolbox(".valaddthis_id207", {}, { url: "http://www.hot-dinners.com/Features/Articles/coming-soon-new-restaurants-opening-in-london", title: "Coming soon - hot new London restaurants opening soon", description: "All about the best new London restaurants that are coming soon to London." });
 </script></div>
 
 <!-- END: ValAddThis Plugin -->
@@ -345,52 +345,47 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <p><em>Want to have your finger on the pulse of what's new in the London restaurant scene? Enjoy keeping one step ahead of friends and colleagues on where's going to be the next must-try new place to eat? </em></p>
 <p><em>This is where you'll find constantly updated news and gossip on what gastronomic delights are heading our way as we take you through the best new London restaurants coming to the capital.</em></p>
 <p><em>Dates are subject to change (and some are "TBC" - if exact dates are waiting to be confirmed) but we update this page on a daily basis, so always check back for the latest info.</em></p>
-<br clear="all" /> <!-- article starts here --><strong><span class="articleheading"><br /> GrEAT British</span></strong><br />
-<p><strong>In a nutshell: </strong>British themed all-day restaurant<br /> <strong>Where is it? </strong>14 North Audley Street, W1<br /> <strong>Why should you care? </strong>Urban Retreat owner George Hammer is joining up with Tony Zoccola of the Dulwich Deli to launch this informal all-day restaurant serving all British fare like bacon butties, shepherd's pie and fish &amp; chips. Expect plenty of English wines too. <a href="/Gastroblog/Latest-news/the-great-british-restaurant-aims-to-bring-british-cuisine-to-the-west-end"><strong>Find out more</strong></a><br /> <strong>When can you try it for yourself? </strong>November 5</p>
+<br clear="all" /> <!-- article starts here --> <strong><span class="articleheading"><br /> Quality Chop House</span></strong><br />
+<p><strong>In a nutshell: </strong>British institution reborn<br /> <strong>Where is it? </strong>92â€“94 Farringdon Road, London EC1R 3EA<strong><br /> Why should you care?</strong> The original Quality Chop House was one of London's much loved restaurants, so it was a shame when it closed down a few years ago. Now, after a brief life as "Meatballs" it's returned under the new ownership of Will Lander &amp; Josie Stead, who have previously worked for St John, Dinner by Heston and Sketch. As Will told us "we wanted to open somewhere focused on great service, simple produce-driven food and very good wine at reasonable prices." <a href="/Gastroblog/Latest-news/quality-chop-house-reopens-its-doors-in-farringdon"><strong>Find out more</strong></a><br /> <strong>When can you try it for yourself? </strong>November 12</p>
 <p class="article_separator">&nbsp;</p>
-<!-- article ends here --> <!-- article starts here --><strong><span class="articleheading"><br /> Rosita</span></strong>
-<p><strong>In a nutshell: </strong>Lolo Roja opens a tapas bar<br /> <strong>Where is it? </strong>Northcote Road, Battersea<strong><br /> Why should you care? </strong> Lola Roja in Battersea has won a heap of awards as a top neighbourhood restaurant. Now they're expanding down the road to a restaurant focusing on tapas, charcoal grills and a lot of sherry. <a href="/Gastroblog/Latest-news/lola-rojo-expands-with-rosita-serving-sherry-and-tapas-in-battersea"><strong>Find out more</strong></a></p>
-<p><strong>When can you try it for yourself? </strong>November 6</p>
-<p class="article_separator">&nbsp;</p>
-<!-- article ends here --> <!-- article starts here --><strong><span class="articleheading"><br /> Opium Cocktail and Dim Sum Parlour</span></strong>
-<p><strong>In a nutshell: </strong>Hidden cocktail and dim sum bar in Chinatown<br /> <strong>Where is it? </strong>15-16 Gerrard Street, Chinatown, W1<strong><br /> Why should you care? </strong> This new cocktail bar will serve seasonal cocktails and traditional dim sum from an open kitchen in the bar. They'll also be teaching cocktail masterclasses upstairs and the room will be a modern twist on a chinese opium den.</p>
-<p><strong>When can you try it for yourself? </strong>Early November</p>
+<!-- article ends here --> <!-- article starts here --><strong><span class="articleheading"><br /> Ben Spalding @ John Salt</span></strong><br />
+<p><strong>In a nutshell: </strong>Ex Roganic chef in six month residency <strong><br /> Where is it? </strong>Upstairs at the John Salt (formerly Keston Lodge) on Upper Street, Islington<strong><br /> Why should you care? </strong>Ben Spalding has been one of London's top chefs ever since his stint at Roganic last year. This sees him take over the upstairs of the revamped Keston Lodge - now called John Salt - in Islington (we talked to him about it <a href="/Gastroblog/Latest-news/ben-spalding-to-start-six-month-restaurant-residency-at-john-salt-in-islington">earlier this year</a>). He'll be managing the restaurant upstairs five days a week and the bar snacks too. <a href="/Gastroblog/Latest-news/brick-licking-good-food-to-come-at-islingtons-john-salt"><strong>Find out more</strong></a><br /> <strong>When can you try it for yourself? </strong>Pub November 9<em> (downstairs bar - with Ben's bar food)</em>, restaurant November 13<em> </em></p>
 <p class="article_separator">&nbsp;</p>
 <!-- article ends here --> <!-- article starts here --> <strong><span class="articleheading"><br /> Newman Street Tavern</span></strong><br />
 <p><strong>In a nutshell: </strong>British tavern<br /> <strong>Where is it? </strong>48 Newman St, Soho, W1T 1QD<strong><br /> Why should you care?</strong> This new opening in Fitzrovia will be serving British seasonal food, wines from small producers, cocktails and local beers.<strong><a href="/Gastroblog/Latest-news/new-yorks-stk-steakhouse-to-open-at-the-me-by-melia-london"></a></strong><br /> <strong>When can you try it for yourself? </strong>November 12</p>
 <p class="article_separator">&nbsp;</p>
-<!-- article ends here --> <!-- article starts here --><strong><span class="articleheading"><br /> Ben Spalding @ John Salt</span></strong><br />
-<p><strong>In a nutshell: </strong>Ex Roganic chef in six month residency <strong><br /> Where is it? </strong>Upstairs at the John Salt (formerly Keston Lodge) on Upper Street, Islington<strong><br /> Why should you care? </strong>Ben Spalding has been one of London's top chefs ever since his stint at Roganic last year. This sees him take over the upstairs of the revamped Keston Lodge - now called John Salt - in Islington. He'll be managing the restaurant upstairs five days a week and the bar snacks too. <a href="/Gastroblog/Latest-news/ben-spalding-to-start-six-month-restaurant-residency-at-john-salt-in-islington"><strong>Find out more</strong></a>.<br /> <strong>When can you try it for yourself? </strong>November 13<em> (downstairs bar - with Ben's bar food - open from November 9)</em></p>
-<p class="article_separator">&nbsp;</p>
 <!-- article ends here --> <!-- article starts here --><strong><span class="articleheading"><br /> Wishbone</span></strong><br />
-<p><strong>In a nutshell: </strong>Dirty wings &amp; cocktails in Brixton<br /> <strong>Where is it? </strong>Brixton Market <strong><br /> Why should you care?</strong> This new fried chicken restaurant is from William Leigh and Scott Collins (who's also behind Meat Liquor). Expect fried chicken done as best as it can be plus plenty of cocktails, craft beer and more. <a href="/Gastroblog/Latest-news/wishbone-brings-fried-chicken-to-brixton-market"><strong>Find out more</strong></a><br /> <strong>When can you try it for yourself? </strong>November 14</p>
+<p><strong>In a nutshell: </strong>Dirty wings &amp; cocktails in Brixton<br /> <strong>Where is it? </strong>Brixton Market <strong><br /> Why should you care?</strong> This new fried chicken restaurant is from William Leigh and Scott Collins (who's also behind Meat Liquor). Expect fried chicken done as best as it can be plus plenty of cocktails, craft beer and more. <a href="/Gastroblog/Latest-news/wishbone-brings-fried-chicken-to-brixton-market"><strong>Find out more</strong></a><br /> <strong>When can you try it for yourself? </strong>November 13</p>
 <p class="article_separator">&nbsp;</p>
-<!-- article ends here --> <!-- article starts here --><strong><span class="articleheading"><br /> Wabi London </span></strong><br />
-<p><strong>In a nutshell: </strong>Contemporary Japanese moves into London <br /> <strong>Where is it? </strong>Lincoln’s Inn Fields<strong><br /> Why should you care </strong>This popular Horsham restaurant is opening a second venue in London this Autumn and has two Nobu alumni at the helm, Head Chef Scott Hallsworth and Taiji Maruyama who will be in charge of the Wabi sushi bar. Expect foie gras martini with umeshu jelly from the restaurant and butter poached Spanish red shrimp with yuzu from the sushi bar, among other dishes. <a href="/Gastroblog/Latest-news/japanese-restaurant-wabi-moves-into-london-with-ex-nobu-chefs"><strong>Find out more</strong></a><br /> <strong>When can you try it for yourself? </strong> November 14</p>
+<!-- article ends here --> <!-- article ends here --> <!-- article ends here --> <strong><span class="articleheading"><br /> Spit &amp; Roast at the Princess Alice</span></strong><br />
+<p><strong>In a nutshell: </strong>Long term chicken pop-up<br /> <strong>Where is it? </strong>Princess Alice pub on 40 Commercial Street, E1 <strong><br /> Why should you care?</strong> Selling from their food truck, Spit &amp; Roast are known to many as purveyors of the finest rotisserie chickens. You can see at London's top street food gatherings including KERB and Brockley Market selling their extremely popular buttermilk fried chicken. Now they'll be setting up shop in the Princess Alice on Commercial St every Thursday to Sunday where that buttermilk chicken will be the primary focus on the menu, but with loads more added too. <a href="/Gastroblog/Latest-news/spit-a-roast-popping-up-at-the-princess-alice-on-commercial-st"><strong>Find out more</strong></a><br /> <strong>When can you try it for yourself? </strong>November 16</p>
 <p class="article_separator">&nbsp;</p>
 <!-- article ends here --> <!-- article ends here --> <!-- article ends here --> <strong><span class="articleheading"><br /> Coya</span></strong><br />
-<p><strong>In a nutshell: </strong>Arjun Waney does Peruvian<br /> <strong>Where is it? </strong>118 Piccadilly, W1J<strong><br /> Why should you care?</strong> Arjun Waney, one of the people behind Zuma, is opening this Peruvian restaurant in Piccadilly, with influences from all over South America. It'll be a more high-end affair that recent Peruvian restaurants with a private members' bar, dining area and terrace.<span xml:lang="EN-GB" lang="EN-GB"> The downstairs restaurant and bar is open to everyone and is run by Sanjay Dwivedi, formerly at Le Caprice and The Ivy and who has been spending time in the kitchens of Lima such as Cala, Astrid and Gaston. Expect plenty of <span xml:lang="EN-GB" lang="EN-GB">ceviches and tiraditos and anticuchos or grilled skewered meat, including ox heart with parsley and aj</span>í<span xml:lang="EN-GB" lang="EN-GB"> rocoto, and parrillada dishes such as pechuga de pato – duck breast with l</span>ú<span xml:lang="EN-GB" lang="EN-GB">cuma, soya sauce and coriander shoots. </span></span><br /> <strong>When can you try it for yourself? </strong>November 16</p>
+<p><strong>In a nutshell: </strong>Arjun Waney does Peruvian<br /> <strong>Where is it? </strong>118 Piccadilly, W1J<strong><br /> Why should you care?</strong> Arjun Waney, one of the people behind Zuma, is opening this Peruvian restaurant in Piccadilly, with influences from all over South America. It'll be a more high-end affair that recent Peruvian restaurants with a private members' bar, dining area and terrace.<span xml:lang="EN-GB" lang="EN-GB"> The downstairs restaurant and bar is open to everyone and is run by Sanjay Dwivedi, formerly at Le Caprice and The Ivy and who has been spending time in the kitchens of Lima such as Cala, Astrid and Gaston. Expect plenty of <span xml:lang="EN-GB" lang="EN-GB">ceviches and tiraditos and anticuchos or grilled skewered meat, including ox heart with parsley and aj</span>Ã­<span xml:lang="EN-GB" lang="EN-GB"> rocoto, and parrillada dishes such as pechuga de pato â€“ duck breast with l</span>Ãº<span xml:lang="EN-GB" lang="EN-GB">cuma, soya sauce and coriander shoots. </span></span><br /> <strong>When can you try it for yourself? </strong>November 16</p>
 <p class="article_separator">&nbsp;</p>
 <!-- article ends here --> <!-- article ends here --> <!-- article starts here --><strong><span class="articleheading"><br /> Naamyaa Cafe</span></strong><br />
 <p><strong>In a nutshell: </strong>Alan Yau launches a cafe <br /> <strong>Where is it? </strong>Angel Building, Islington<strong><br /> Why should you care? </strong>Alan Yau (who launched both Hakkasan and Yauatcha) is launching a new "Bangkok style cafe" in Islington (already home to Jamie's Italian and Hummingbird Bakery). Open all day, it will focus on noodles served in Naamyaa sauce, and the building will be a blend of traditional Thai style wit modern touches.<br /> <strong>When can you try it for yourself? </strong>November 16</p>
 <p class="article_separator">&nbsp;</p>
 <!-- article ends here --> <!-- article starts here --><strong><span class="articleheading"><br /> Disco Bistro EC4</span></strong><br />
-<p><strong>In a nutshell: </strong>Carl Clarke residency<br /> <strong>Where is it? </strong>The Rising Sun, 61 Carter Lane, EC4<strong><br /> Why should you care? </strong>Carl Clarke, the talented chef behind the God save the Clam and Rock Lobsta pop-up experiences is starting a 6 month residency at The Rising Sun pub in St. Paul's. Working with long-term collaborator Glyn Gordon (ex L'Enclume and Roganic), Clarke will serve 'upmarket British fare' Monday to Saturday, both lunch and dinner services plus Clarke’s ‘trash food’ creations in the pub downstairs. <a href="/Gastroblog/Latest-news/punk-chef-carl-clarke-announces-six-month-residency-at-the-rising-sun-pub"><strong>Find out more</strong></a><br /> <strong>When can you try it for yourself? </strong>November 19</p>
+<p><strong>In a nutshell: </strong>Carl Clarke residency<br /> <strong>Where is it? </strong>The Rising Sun, 61 Carter Lane, EC4<strong><br /> Why should you care? </strong>Carl Clarke, the talented chef behind the God save the Clam and Rock Lobsta pop-up experiences is starting a 6 month residency at The Rising Sun pub in St. Paul's. Working with long-term collaborator Glyn Gordon (ex L'Enclume and Roganic), Clarke will serve 'upmarket British fare' Monday to Saturday, both lunch and dinner services plus Clarkeâ€™s â€˜trash foodâ€™ creations in the pub downstairs. <a href="/Gastroblog/Latest-news/punk-chef-carl-clarke-announces-six-month-residency-at-the-rising-sun-pub"><strong>Find out more</strong></a><br /> <strong>When can you try it for yourself? </strong>November 19</p>
 <p class="article_separator">&nbsp;</p>
-<!-- article ends here --> <!-- article starts here --> <strong><span class="articleheading"><br /> STK</span></strong><br />
-<p><strong>In a nutshell: </strong>BBC building becomes a hotel and hosts a steakhouse<br /> <strong>Where is it? </strong>Marconi House, The Strand, W2 <strong><br /> Why should you care?</strong> This new hotel designed by (Norman) Foster + Partners takes over the old BBC Marconi building. As well as a rooftop bar offering great views of London, it'll be the first non-US outpost of New York steakhouse STK, which will take over the ground floor restaurant. STK aims to be a more "female friendly" steakhouse, with an emphasis on lighter meals. <strong><a href="/Gastroblog/Latest-news/new-yorks-stk-steakhouse-to-open-at-the-me-by-melia-london">Find out more</a></strong><br /> <strong>When can you try it for yourself? </strong>Mid November</p>
-<p class="article_separator">&nbsp;</p>
-<!-- article ends here --> <!-- article starts here --><strong><span class="articleheading"><br /> MEATmission</span></strong><br />
-<p><strong>In a nutshell: </strong>Burgers go east <br /> <strong>Where is it? </strong>14-15 Hoxton Market, N1<strong><br /> Why should you care? </strong>It's the next from MEATliquor - so what more do you need to know? (OK - it will allegedly be the second outing of the HUGELY popular burger joint currently behind Debenhams and arguably the most famous food queue in London). Exactly how it will differ to the original - only the name is confirmed - is still under wraps but we hear it will take bookings and that it apparently has a MASH like theme (the TV show, not the restaurant).</p>
-<p><strong>When can you try it for yourself? </strong>Mid-late November</p>
-<p class="article_separator">&nbsp;</p>
-<!-- article ends here --> <!-- article starts here --><strong><span class="articleheading"><br /> Patty &amp; Bun</span></strong>
-<p><strong>In a nutshell: </strong>Pop up burgers go permanent<br /> <strong>Where is it? </strong>54 James Street, London W1<strong><br /> Why should you care? </strong>They've been one of the kings of pop-ups and residencies and have a great following. Now Patty &amp; Bun are going permanent with a restaurant just off Oxford Street, very near both Tommi's and MEATliquor. Expect a 'short, focused and affordable menu using the best of British ingredients wherever possible' with eccentrically-titled numbers such as the 'Ari Gold' cheeseburger and 'Jose jose' chilli burger popular at previous pop-up events. <a href="/Gastroblog/Latest-news/patty-and-bun-announces-new-west-end-burger-restaurant"><strong>Find out more</strong></a></p>
-<p><strong>When can you try it for yourself? </strong>Late November</p>
+<!-- article ends here --> <!-- article starts here --><strong><span class="articleheading"><br /> Opium Cocktail and Dim Sum Parlour</span></strong>
+<p><strong>In a nutshell: </strong>Hidden cocktail and dim sum bar in Chinatown<br /> <strong>Where is it? </strong>15-16 Gerrard Street, Chinatown, W1<strong><br /> Why should you care? </strong> This new cocktail bar will serve seasonal cocktails and traditional dim sum from an open kitchen in the bar. They'll also be teaching cocktail masterclasses upstairs and the room will be a modern twist on a chinese opium den.</p>
+<p><strong>When can you try it for yourself? </strong> November 20</p>
 <p class="article_separator">&nbsp;</p>
 <!-- article ends here --> <!-- article starts here --><strong><span class="articleheading"><br /> Moo Grill</span></strong>
 <p><strong>In a nutshell: </strong>Argentinean grill in the City<br /> <strong>Where is it? </strong>42-44 Middlesex St, EC1<strong><br /> Why should you care? </strong>The tiny City grill is getting another outpost on Middlesex Street.</p>
-<p><strong>When can you try it for yourself? </strong>Late November</p>
+<p><strong>When can you try it for yourself? </strong>November 22</p>
+<p class="article_separator">&nbsp;</p>
+<!-- article ends here --> <!-- article starts here --><strong><span class="articleheading"><br /> Wabi London </span></strong><br />
+<p><strong>In a nutshell: </strong>Contemporary Japanese moves into London <br /> <strong>Where is it? </strong>Lincolnâ€™s Inn Fields<strong><br /> Why should you care </strong>This popular Horsham restaurant is opening a second venue in London this Autumn and has two Nobu alumni at the helm, Head Chef Scott Hallsworth and Taiji Maruyama who will be in charge of the Wabi sushi bar. Expect foie gras martini with umeshu jelly from the restaurant and butter poached Spanish red shrimp with yuzu from the sushi bar, among other dishes. <a href="/Gastroblog/Latest-news/japanese-restaurant-wabi-moves-into-london-with-ex-nobu-chefs"><strong>Find out more</strong></a><br /> <strong>When can you try it for yourself? </strong> November 26</p>
+<p class="article_separator">&nbsp;</p>
+<!-- article ends here --> <!-- article starts here --><strong><span class="articleheading"><br /> Patty &amp; Bun</span></strong>
+<p><strong>In a nutshell: </strong>Pop up burgers go permanent<br /> <strong>Where is it? </strong>54 James Street, London W1<strong><br /> Why should you care? </strong>They've been one of the kings of pop-ups and residencies and have a great following. Now Patty &amp; Bun are going permanent with a restaurant just off Oxford Street, very near both Tommi's and MEATliquor. Expect a 'short, focused and affordable menu using the best of British ingredients wherever possible' with eccentrically-titled numbers such as the 'Ari Gold' cheeseburger and 'Jose jose' chilli burger popular at previous pop-up events. <a href="/Gastroblog/Latest-news/patty-and-bun-announces-new-west-end-burger-restaurant"><strong>Find out more</strong></a></p>
+<p><strong>When can you try it for yourself? </strong>November 30</p>
+<p class="article_separator">&nbsp;</p>
+<!-- article ends here --> <!-- article starts here --> <strong><span class="articleheading"><br /> STK</span></strong><br />
+<p><strong>In a nutshell: </strong>BBC building becomes a hotel and hosts a steakhouse<br /> <strong>Where is it? </strong>Marconi House, The Strand, W2 <strong><br /> Why should you care?</strong> This new hotel designed by (Norman) Foster + Partners takes over the old BBC Marconi building. As well as a rooftop bar offering great views of London, it'll be the first non-US outpost of New York steakhouse STK, which will take over the ground floor restaurant. STK aims to be a more "female friendly" steakhouse, with an emphasis on lighter meals. <strong><a href="/Gastroblog/Latest-news/new-yorks-stk-steakhouse-to-open-at-the-me-by-melia-london">Find out more</a></strong><br /> <strong>When can you try it for yourself? </strong>Mid November</p>
 <p class="article_separator">&nbsp;</p>
 <!-- article ends here --> <!-- article starts here --><strong><span class="articleheading"><br /> Pelt Trader</span></strong>
 <p><strong>In a nutshell: </strong>Craft beer and food in the city<br /> <strong>Where is it? </strong>Cannon Street, EC2<strong><br /> Why should you care? </strong>Little is known about this place yet, possibly from the people behind Bloomsbury Lanes and the Holborn Whippet - other than they're planning to serve a range of craft beer and food.</p>
@@ -402,8 +397,15 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <!-- article ends here --> <!-- article starts here --><strong><span class="articleheading"><br /> Bo London</span></strong><br />
 <p><strong>In a nutshell: </strong>X-treme Michelin starred Chinese cooking <br /> <strong>Where is it? </strong>4 Mill Street, Mayfair, W1<strong><br /> Why should you care?</strong> Hong Kong chef Alvin Leung is bringing his two starred Michelin restaurant, Bo Innovation, to the UK. Details are thin on the ground but expect a similar menu and experience to the Hong Kong original. <a href="/Gastroblog/Latest-news/alvin-leung-to-open-bo-london-in-mayfair"><strong>Find out more</strong></a><br /> <strong>When can you try it for yourself? </strong> December 6</p>
 <p class="article_separator">&nbsp;</p>
+<!-- article ends here --> <!-- article starts here --><strong><span class="articleheading"><br /> Salon</span></strong><br />
+<p><strong>In a nutshell: </strong>X-treme Michelin starred Chinese cooking <br /> <strong>Where is it? </strong>Upstairs at Cannon &amp; Cannon, 18 Market Row, Brixton SW9<strong><br /> Why should you care?</strong> The former Head Chef at Brunswick House, whoâ€™s also done time with the Young Turks, is opening up a restaurant called Salon on Brixton Market above the Cannon &amp; Cannon Deli. And with dishes planned like rosehip fizz, razor clams &amp; sobrasada, duck hearts with celeriac &amp; lardo or pheasant, cauliflower &amp; pine on the menu it'll definitely be one to watch. <a href="/Gastroblog/Latest-news/former-brunswick-house-chef-to-open-salon-at-brixton-market"><strong>Find out more</strong></a><br /> <strong>When can you try it for yourself? </strong> December 6</p>
+<p class="article_separator">&nbsp;</p>
 <!-- article ends here --> <!-- article starts here --><strong><span class="articleheading"><br /> HKK</span></strong><br />
 <p><strong>In a nutshell: </strong>Hakkasan tasting <br /> <strong>Where is it? </strong>Snowden Street, EC2<strong><br /> Why should you care?</strong> Following the opening of Chrysan next door, this will be another Hakkasan restaurant. This time, they'll be serving a single tasting menu of Chinese and Cantonese dishes. The menu will be created by Hakkasan executive chef Tong Chee Hwee. <br /> <strong>When can you try it for yourself? </strong>December 6</p>
+<p class="article_separator">&nbsp;</p>
+<!-- article ends here --> <!-- article starts here --><strong><span class="articleheading"><br /> MEATmission</span></strong><br />
+<p><strong>In a nutshell: </strong>Burgers go east <br /> <strong>Where is it? </strong>14-15 Hoxton Market, N1<strong><br /> Why should you care? </strong>It's the next from MEATliquor - so what more do you need to know? (OK - it will allegedly be the second outing of the HUGELY popular burger joint currently behind Debenhams and arguably the most famous food queue in London). Exactly how it will differ to the original - only the name is confirmed - is still under wraps but we hear it will take bookings and that it apparently has a MASH like theme (the TV show, not the restaurant).</p>
+<p><strong>When can you try it for yourself? </strong>Early December</p>
 <p class="article_separator">&nbsp;</p>
 <!-- article ends here --> <!-- article starts here --><strong><span class="articleheading"><br /> Flat Iron</span></strong><br />
 <p><strong>In a nutshell: </strong>Steak for a tenner in Soho<br /> <strong>Where is it? </strong>17 Beak Street, Soho, W1<strong><br /> Why should you care?</strong> Earlier in 2012, Flat Iron ran a very successfuly residency above the Owl and Pussycat in Shoreditch. They're now taking steak-for-a-tenner into the heart of Soho with a much bigger restaurant and separate bar. Expect a revamped approach to the steak and chips, more specials and the signature cleavers as curlery. <a href="/Gastroblog/Latest-news/flat-iron-to-open-new-steak-restaurant-in-soho"><strong>Find out more</strong></a>.<br /> <strong>When can you try it for yourself? </strong>Early December</p>
@@ -441,8 +443,8 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <!-- article ends here --> <!-- article starts here --><strong><span class="articleheading"><br /> The Social Eating House</span></strong><br />
 <p><strong>In a nutshell: </strong>Jason Atherton's follow-up to Pollen St Social <br /> <strong>Where is it? </strong>58-59 Poland Street, Soho, W1 <strong><br /> Why should you care?</strong> Jason Atherton's next London restaurant, following the hugely successful Pollen St Social, will be in Soho with Pollen Street Head Chef Paul Hood taking the reins. <a href="/Gastroblog/Latest-news/social-eating-house-confirmed-as-jason-athertons-new-london-restaurant"><strong>Find out more</strong></a><br /> <strong>When can you try it for yourself? </strong>Feb/March 2013</p>
 <p class="article_separator">&nbsp;</p>
-<!-- article ends here --> <!-- article starts here --><strong><span class="articleheading"><br /> The Social Eating House</span></strong><br />
-<p><strong>In a nutshell: </strong>Jason Atherton's follow-up to Pollen St Social <br /> <strong>Where is it? </strong>58-59 Poland Street, Soho, W1 <strong><br /> Why should you care?</strong> Jason Atherton's next London restaurant, following the hugely successful Pollen St Social, will be in Soho with Pollen Street Head Chef Paul Hood taking the reins. <a href="/Gastroblog/Latest-news/social-eating-house-confirmed-as-jason-athertons-new-london-restaurant"><strong>Find out more</strong></a><br /> <strong>When can you try it for yourself? </strong>Feb/March 2013</p>
+<!-- article ends here --> <!-- article starts here --><strong><span class="articleheading"><br /> Story</span></strong><br />
+<p><strong>In a nutshell: </strong>Book themed restaurant <br /> <strong>Where is it? </strong>Near Tower Bridge<strong><br /> Why should you care? </strong>He's worked with the likes of Rene Redzepi at Noma, and previously with Tom Aikens, Adam Byatt and Thomas Keller. Now Tom Sellers is planning to launch his own restaurant in London called Story. Expect "humble ingredients but throws them together in a creative, inspired way." <a href="/Gastroblog/Latest-news/tom-sellers-previews-new-restaurant-story-with-foreword-pop-up"><strong>Find out more</strong></a><br /> <strong>When can you try it for yourself? </strong>Feb 2013</p>
 <p class="article_separator">&nbsp;</p>
 <!-- article ends here --> <!-- article starts here --><strong><span class="articleheading"><br /> Chabrot Smithfield</span></strong><br />
 <p><strong>In a nutshell: </strong>French bistro in Smithfiled <br /> <strong>Where is it? </strong>Smithfiled, TBC<strong> <br /> Why should you care?</strong> The original Chabrot in Knightsbridge opened quietly, but quickly gained a healthy following and <a href="/Restaurant-Reviews/Chelsea-Kensington/chabrot-bistrot-d-amis-knightsbridge-london">decent reviews</a>. This will follow the same French bistro style, with some changes unique to Smithfield promised.<br /> <strong>When can you try it for yourself? </strong>March 2013</p>
@@ -464,7 +466,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <p><strong>When can you try it for yourself? </strong> 2013 TBC</p>
 <p class="article_separator">&nbsp;</p>
 <!-- article ends here --> <!-- article starts here --><strong><span class="articleheading"><br /> Skye Gyngell London restaurant</span></strong><br />
-<p><strong>In a nutshell: </strong>Skye comes back to London<strong><br /> Where is it? </strong>Devonshire Square, near Liverpool Street <strong><br /> Why should you care? </strong>It came as quite a surprise when she left the Michelin starred Petersham Nurseries Café earlier this year, but Skye Gyngell hasn't stayed away for too long. In addition to working as Culinary Director at Heckfield Place in Hampshire, she's planning to open her own restaurant in town which will also be in partnership with Heckfield. All we know so far is that the bulk of it will be for walk-ins only and it will be supplied with produce from Heckfield Place’s estate. <br /> <strong>When can you try it for yourself? </strong>2013</p>
+<p><strong>In a nutshell: </strong>Skye comes back to London<strong><br /> Where is it? </strong>Devonshire Square, near Liverpool Street <strong><br /> Why should you care? </strong>It came as quite a surprise when she left the Michelin starred Petersham Nurseries CafÃ© earlier this year, but Skye Gyngell hasn't stayed away for too long. In addition to working as Culinary Director at Heckfield Place in Hampshire, she's planning to open her own restaurant in town which will also be in partnership with Heckfield. All we know so far is that the bulk of it will be for walk-ins only and it will be supplied with produce from Heckfield Placeâ€™s estate. <br /> <strong>When can you try it for yourself? </strong>2013</p>
 <p class="article_separator">&nbsp;</p>
 <!-- article ends here --> <!-- article starts here --><strong><span class="articleheading"><br /> Andre Balazs un-named restaurant</span></strong><br />
 <p><strong>In a nutshell: </strong>NYC meatpacking glam in Marylebone <br /> <strong>Where is it? </strong>Chiltern St, Marylebone W1<strong><br /> Why should you care?</strong> Andre Balazs, whose hotels The Standard and The Mercer are top destinations for NYC's hippest visitors is due to open a boutique hotel in Marylebone, taking over a disused fire station. The hotel itself won't be a "Standard" but it's yet to be it decided what restaurant will be featured in the hotel, with many hoping for a second outing for his NYC meatpacking district eaterie, The Standard Grill. We'll have to see if the A-list guests make it to Marylebone too. <br /> <strong>When can you try it for yourself? </strong>Late 2013</p>
@@ -549,14 +551,14 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
     </div>
     <!-- End Wrapper -->
 <script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
 </script>
 <script type="text/javascript">
-try {
-var pageTracker = _gat._getTracker("UA-9027444-1");
-pageTracker._trackPageview();
-} catch(err) {}</script>
+    try {
+        var pageTracker = _gat._getTracker("UA-9027444-1");
+        pageTracker._trackPageview();
+    } catch (err) { }</script>
 <!-- START GUARDIAN ONLINE BEHAVIOURAL TARGETING CODE --> 
 <script type="text/javascript"
 src="http://pixel.quantserve.com/api/segments.json?a=p-73ktnlRTKQPTw&callback=qc_results"></script>
@@ -565,22 +567,22 @@ src="http://pixel.quantserve.com/api/segments.json?a=p-73ktnlRTKQPTw&callback=qc
 
 <!-- Quantcast Measurement --> 
 <script type="text/javascript">
-  var _qevents = _qevents || [];
+    var _qevents = _qevents || [];
 
-  (function() {
-   var elem = document.createElement('script');
+    (function () {
+        var elem = document.createElement('script');
 
-   elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
-   elem.async = true;
-   elem.type = "text/javascript";
-   var scpt = document.getElementsByTagName('script')[0];
-   scpt.parentNode.insertBefore(elem, scpt);  
-  })();
-</script><script type="text/javascript"> 
-_qevents.push({ 
-qacct:"p-73ktnlRTKQPTw", 
-labels:"select-lifeandstyle" 
-}); 
+        elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+        elem.async = true;
+        elem.type = "text/javascript";
+        var scpt = document.getElementsByTagName('script')[0];
+        scpt.parentNode.insertBefore(elem, scpt);
+    })();
+</script><script type="text/javascript">
+             _qevents.push({
+                 qacct: "p-73ktnlRTKQPTw",
+                 labels: "select-lifeandstyle"
+             });
 </script> 
 
 <noscript> 

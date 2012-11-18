@@ -7,55 +7,55 @@
 <!-- START GUARDIAN ONLINE BEHAVIOURAL TARGETING CODE --> 
 <!-- START QUANTCAST AD TAG -->
 <script type="text/javascript">
-var quantSegs="";
-var quant_segs_beg = document.cookie.indexOf('quant_segs');
-if (quant_segs_beg >= 0) {
-quant_segs_beg = document.cookie.indexOf('=', quant_segs_beg) + 1;
-if (quant_segs_beg > 0) {
-var quant_segs_end = document.cookie.indexOf(';', quant_segs_beg);
-if (quant_segs_end == -1) quant_segs_end = document.cookie.length;
-quantSegs = unescape(document.cookie.substring(quant_segs_beg, quant_segs_end));
-}
-}
+    var quantSegs = "";
+    var quant_segs_beg = document.cookie.indexOf('quant_segs');
+    if (quant_segs_beg >= 0) {
+        quant_segs_beg = document.cookie.indexOf('=', quant_segs_beg) + 1;
+        if (quant_segs_beg > 0) {
+            var quant_segs_end = document.cookie.indexOf(';', quant_segs_beg);
+            if (quant_segs_end == -1) quant_segs_end = document.cookie.length;
+            quantSegs = unescape(document.cookie.substring(quant_segs_beg, quant_segs_end));
+        }
+    }
 
-function qc_results(result) {
-var qc = "";
-for (var i = 0; i < result.segments.length; i++) {
-     qc += "qc=" + result.segments[i].id + "&"; //customizable per your ad server
-  }
+    function qc_results(result) {
+        var qc = "";
+        for (var i = 0; i < result.segments.length; i++) {
+            qc += "qc=" + result.segments[i].id + "&"; //customizable per your ad server
+        }
 
-  document.cookie = "quant_segs=" + escape(qc);
-}
+        document.cookie = "quant_segs=" + escape(qc);
+    }
 
 </script>
 <!-- END QUANTCAST AD TAG -->
 <!-- AUDIENCESCIENCE AD TAG CODE -->
 <script type="text/javascript">
 <!--
-var rsi_segs = [];
-var segs_beg=document.cookie.indexOf('rsi_segs=');
-if (segs_beg>=0){
-segs_beg=document.cookie.indexOf('=',segs_beg)+1;
-if(segs_beg>0){
-var segs_end=document.cookie.indexOf(';',segs_beg);
-if(segs_end==-1) segs_end=document.cookie.length;
-rsi_segs=document.cookie.substring(segs_beg,segs_end).split('|');
+    var rsi_segs = [];
+    var segs_beg = document.cookie.indexOf('rsi_segs=');
+    if (segs_beg >= 0) {
+        segs_beg = document.cookie.indexOf('=', segs_beg) + 1;
+        if (segs_beg > 0) {
+            var segs_end = document.cookie.indexOf(';', segs_beg);
+            if (segs_end == -1) segs_end = document.cookie.length;
+            rsi_segs = document.cookie.substring(segs_beg, segs_end).split('|');
 
-}
-}
-var segLen=100;
-segQS="";
-if (rsi_segs.length<segLen){segLen=rsi_segs.length}
-for (var i=0;i<segLen;i++){
-segQS+=("a"+"="+rsi_segs[i])
-}
-//-->
+        }
+    }
+    var segLen = 100;
+    segQS = "";
+    if (rsi_segs.length < segLen) { segLen = rsi_segs.length }
+    for (var i = 0; i < segLen; i++) {
+        segQS += ("a" + "=" + rsi_segs[i])
+    }
+    //-->
 </script>
 
 <script type="text/javascript">
 
-var gsegQS = "";
-gsegQS=segQS.replace(/E0/g,'&a=E0').replace("a=&","")+'&';
+    var gsegQS = "";
+    gsegQS = segQS.replace(/E0/g, '&a=E0').replace("a=&", "") + '&';
 
 </script>
 <!-- END AUDIENCESCIENCE AD TAG CODE -->
@@ -110,15 +110,15 @@ gsegQS=segQS.replace(/E0/g,'&a=E0').replace("a=&","")+'&';
 
 <body>
     <div id='fb-root'></div><script type='text/javascript'>
-    
-    // Load the SDK Asynchronously
-    (function(d){
-     var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
-     js = d.createElement('script'); js.id = id; js.async = true;
-     js.src = '//connect.facebook.net/en_GB/all.js';
-     d.getElementsByTagName('head')[0].appendChild(js);
-    }(document));
-    
+
+                                // Load the SDK Asynchronously
+                                (function (d) {
+                                    var js, id = 'facebook-jssdk'; if (d.getElementById(id)) { return; }
+                                    js = d.createElement('script'); js.id = id; js.async = true;
+                                    js.src = '//connect.facebook.net/en_GB/all.js';
+                                    d.getElementsByTagName('head')[0].appendChild(js);
+                                }(document));
+
     </script>
     <!-- Begin Wrapper -->
     <div id="wrapper">
@@ -131,7 +131,7 @@ gsegQS=segQS.replace(/E0/g,'&a=E0').replace("a=&","")+'&';
 <div style="float:left; margin-right:15px; width:728px;">
 <!-- Guardian Select: Life and Style Tag Begins -- Leaderboard ATF --> 
 <script src="http://resource.guim.co.uk/global/adcode/generate?partner=hot-dinners.com&n=lifeandstyle&s=food&slot=x20"></script>
-<!-- Guardian Select: Life and Style Tag Ends -- Leaderboard --> <div id='beacon_d45fba7b19' style='position: absolute; left: 0px; top: 0px; visibility: hidden;'><img src='http://www.hot-dinners.com/openx/www/delivery/lg.php?bannerid=27&amp;campaignid=3&amp;zoneid=3&amp;loc=http%3A%2F%2Fwww.google.com%2Furl%3Fsa%3Dt%26rct%3Dj%26q%3D%26esrc%3Ds%26source%3Dweb%26cd%3D3%26ved%3D0CEYQFjAC%26url%3Dhttp%253A%252F%252Fwww.hot-dinners.com%252FFeatures%252FArticles%252Fnew-and-recently-opened-london-restaurants%26ei%3DMFqYUIGVO4mr0QX90oG4Aw%26usg%3DAFQjCNF5H24Vab3-mixJOU9v_hl0MvqMow%26sig2%3DV6C-d-hRGiCft5vlQz7eNw&amp;cb=d45fba7b19' width='0' height='0' alt='' style='width: 0px; height: 0px;' /></div></div>
+<!-- Guardian Select: Life and Style Tag Ends -- Leaderboard --> <div id='beacon_163890986a' style='position: absolute; left: 0px; top: 0px; visibility: hidden;'><img src='http://www.hot-dinners.com/openx/www/delivery/lg.php?bannerid=27&amp;campaignid=3&amp;zoneid=3&amp;loc=http%3A%2F%2Fwww.hot-dinners.com%2FFeatures%2FArticles%2Fcoming-soon-new-restaurants-opening-in-london&amp;cb=163890986a' width='0' height='0' alt='' style='width: 0px; height: 0px;' /></div></div>
 <div id="social">
 <div style="width:200px; border-color:#D9D9D9; border-style:solid; float:right;">
 <div>
@@ -184,48 +184,48 @@ on facebook</span></span></strong></a></p>
                     <div style="float:left;padding-top:3px;">Search Hot Dinners&nbsp;&nbsp;</div>
                     
 <script type="text/javascript">
-	window.addEvent('domready', function() {
-		var value;
+    window.addEvent('domready', function () {
+        var value;
 
-		// Set the input value if not already set.
-		if (!$('mod_finder_q75').getProperty('value')) {
-			$('mod_finder_q75').setProperty('value', 'search...');
-		}
+        // Set the input value if not already set.
+        if (!$('mod_finder_q75').getProperty('value')) {
+            $('mod_finder_q75').setProperty('value', 'search...');
+        }
 
-		// Get the current value.
-		value = $('mod_finder_q75').getProperty('value');
+        // Get the current value.
+        value = $('mod_finder_q75').getProperty('value');
 
-		// If the current value equals the previous value, clear it.
-		$('mod_finder_q75').addEvent('focus', function() {
-			if (this.getProperty('value') == value) {
-				this.setProperty('value', '');
-			}
-		});
+        // If the current value equals the previous value, clear it.
+        $('mod_finder_q75').addEvent('focus', function () {
+            if (this.getProperty('value') == value) {
+                this.setProperty('value', '');
+            }
+        });
 
-		// If the current value is empty, set the previous value.
-		$('mod_finder_q75').addEvent('blur', function() {
-			if (!this.getProperty('value')) {
-				this.setProperty('value', value);
-			}
-		});
+        // If the current value is empty, set the previous value.
+        $('mod_finder_q75').addEvent('blur', function () {
+            if (!this.getProperty('value')) {
+                this.setProperty('value', value);
+            }
+        });
 
-		
-		$('mod-finder-75').addEvent('submit', function(e){
-			e = new Event(e);
-			e.stop();
 
-			// Disable select boxes with no value selected.
-			if ($chk($('mod-finder-75-advanced'))) {
-				$('mod-finder-75-advanced').getElements('select').each(function(s){
-					if (!s.getProperty('value')) {
-						s.setProperty('disabled', 'disabled');
-					}
-				});
-			}
+        $('mod-finder-75').addEvent('submit', function (e) {
+            e = new Event(e);
+            e.stop();
 
-			$('mod-finder-75').submit();
-		});
-	});
+            // Disable select boxes with no value selected.
+            if ($chk($('mod-finder-75-advanced'))) {
+                $('mod-finder-75-advanced').getElements('select').each(function (s) {
+                    if (!s.getProperty('value')) {
+                        s.setProperty('disabled', 'disabled');
+                    }
+                });
+            }
+
+            $('mod-finder-75').submit();
+        });
+    });
 </script>
 
 <div class="finder">
@@ -253,7 +253,7 @@ on facebook</span></span></strong></a></p>
 <tr ><td><a href="/Features/" class="mainlevel" id="active_menu">Features</a>
 
 <div style="padding-left: 4px"><a href="/Features/Interviews/" class="sublevel" >Interviews</a></div>
-<div style="padding-left: 4px"><a href="/Features/Articles/" class="sublevel" id="active_menu">Articles</a></div>
+<div style="padding-left: 4px"><a href="/Features/Articles/" class="sublevel" id="a1">Articles</a></div>
 <div style="padding-left: 4px"><a href="/Features/Hot-Dinners-recommends/" class="sublevel" >Hot Dinners recommends</a></div>
 <div style="padding-left: 4px"><a href="/Features/Articles/new-and-recently-opened-london-restaurants" class="sublevel" >New London restaurants</a></div>
 <div style="padding-left: 4px"><a href="/Features/Articles/coming-soon-new-restaurants-opening-in-london" class="sublevel" >London restaurants opening soon</a></div>
@@ -272,8 +272,8 @@ on facebook</span></span></strong></a></p>
 <input type="hidden" name="return" value="B:aHR0cDovL3d3dy5ob3QtZGlubmVycy5jb20vaW5kZXgucGhwP29wdGlvbj1jb21fY29udGVudCZhbXA7SXRlbWlkPTY0JmFtcDtjYXRpZD0yMSZhbXA7aWQ9OTAxJmFtcDtsYW5nPWVuJmFtcDt2aWV3PWFydGljbGU=" />
 <input type="hidden" name="message" value="0" />
 <input type="hidden" name="loginfrom" value="loginmodule" />
-<input type="hidden" name="cbsecuritym3" value="cbm_65eede28_51a6aae1_ce59dda1e4bd69df87f16c9b91d3f2aa" />
-<input type="hidden" name="jd4e5296c3e5959ef55cdd1b275af177a" value="1" />
+<input type="hidden" name="cbsecuritym3" value="cbm_5e768e55_1f4c4052_11c51e882c6d86a246eacf3b6c0c1702" />
+<input type="hidden" name="jfd6fac7453b59dae80bc562004342380" value="1" />
 <span class="cbLoginButtonSpan"><input type="submit" name="Submit" class="button" value="Login" /></span></td></tr>
 <tr><td><a href="http://www.hot-dinners.com/index.php?option=com_comprofiler&amp;task=lostpassword&amp;Itemid=109" class="mod_login">Forgot login?</a></td></tr>
 <tr><td><a href="http://www.hot-dinners.com/index.php?option=com_comprofiler&amp;task=registers&amp;Itemid=109" class="mod_login">Register</a></td></tr>
@@ -308,7 +308,7 @@ on facebook</span></span></strong></a></p>
 
 <tr>
 	<td valign="top" class="createdate">
-		Sunday, 04 November 2012	</td>
+		Friday, 09 November 2012	</td>
 </tr>
 
 
@@ -318,8 +318,8 @@ on facebook</span></span></strong></a></p>
 <!-- BEGIN: ValAddThis Plugin -->
 <script charset="utf-8" type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js"></script>
 <script type="text/javascript" language="javascript">
-var addthis_pub = "hotdinners";
-var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use_addressbook: false,data_track_linkback: false,data_use_flash: false,data_use_cookies: true,ui_use_embeddable_services_beta: false}; </script>
+    var addthis_pub = "hotdinners";
+    var addthis_config = { ui_cobrand: "Hot Dinners", ui_hover_direction: false, ui_use_addressbook: false, data_track_linkback: false, data_use_flash: false, data_use_cookies: true, ui_use_embeddable_services_beta: false }; </script>
 <div class="addthis_toolbox">
 <div class="valaddthis_id901 addthis_default_style">
 <div class="share">&nbsp;</div><a class="addthis_button_tweet"></a>
@@ -328,7 +328,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <a class="addthis_button_pinterest"></a>
 </div>
 <script type="text/javascript">
- addthis.toolbox(".valaddthis_id901", {}, {url: "http://www.hot-dinners.com/Features/Articles/new-and-recently-opened-london-restaurants", title: "New and recently opened London restaurants", description: "All about the best new London restaurants that have just opened in London."});
+    addthis.toolbox(".valaddthis_id901", {}, { url: "http://www.hot-dinners.com/Features/Articles/new-and-recently-opened-london-restaurants", title: "New and recently opened London restaurants", description: "All about the best new London restaurants that have just opened in London." });
 </script></div>
 
 <!-- END: ValAddThis Plugin -->
@@ -348,10 +348,42 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <br clear="all" />
 <div class="componentheading">Opened in November <!-- article starts here --></div>
 <!-- article starts here -->
+<div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/hot-dinners-no-image.jpg" alt="Quality Chop House" height="99" width="130" /></div>
+<div style="margin-left: 150px;">
+<p><strong><span class="articleheading">Quality Chop House</span></strong></p>
+<p><strong>In a nutshell: </strong>British institution reborn<br /> <strong>Where is it? </strong>92â€“94 Farringdon Road, London EC1R 3EA<strong><br /> Why should you care?</strong> The original Quality Chop House was one of London's much loved restaurants, so it was a shame when it closed down a few years ago. Now, after a brief life as "Meatballs" it's returned under the new ownership of Will Lander &amp; Josie Stead, who have previously worked for St John, Dinner by Heston and Sketch. As Will told us "we wanted to open somewhere focused on great service, simple produce-driven food and very good wine at reasonable prices."</p>
+<p><a href="/Gastroblog/Latest-news/quality-chop-house-reopens-its-doors-in-farringdon"><strong>Find out more</strong></a></p>
+</div>
+<p class="article_separator">&nbsp;</p>
+<!-- article ends here --> <!-- article starts here -->
+<div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/hot-dinners-no-image.jpg" alt="Ben Spalding @ John Salt" height="99" width="130" /></div>
+<div style="margin-left: 150px;">
+<p><strong><span class="articleheading">Ben Spalding @ John Salt</span></strong></p>
+<p><strong>In a nutshell: </strong>Ex Roganic chef in six month residency <strong><br /> Where is it? </strong>Upstairs at the John Salt (formerly Keston Lodge) on Upper Street, Islington<strong><br /> Why should you care? </strong>Ben Spalding has been one of London's top chefs ever since his stint at Roganic last year. This sees him take over the upstairs of the revamped Keston Lodge - now called John Salt - in Islington (we talked to him about it <a href="/Gastroblog/Latest-news/ben-spalding-to-start-six-month-restaurant-residency-at-john-salt-in-islington">earlier this year</a>). He'll be managing the restaurant upstairs five days a week and the bar snacks too <em>(downstairs bar open now with Ben's bar food, upstairs restaurant opens November 13). </em></p>
+<p><a href="/Gastroblog/Latest-news/brick-licking-good-food-to-come-at-islingtons-john-salt"><strong>Find out more</strong></a></p>
+</div>
+<p class="article_separator">&nbsp;</p>
+<!-- article ends here --> <!-- article starts here -->
+<div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/hot-dinners-no-image.jpg" alt="Rosita " height="99" width="130" /></div>
+<div style="margin-left: 150px;">
+<p><strong><span class="articleheading">Rosita</span></strong></p>
+<p><strong>In a nutshell: </strong>Lolo Roja opens a tapas bar<br /> <strong>Where is it? </strong>Northcote Road, Battersea<strong><br /> Why should you care? </strong> Lolo Roja in Battersea has won a heap of awards as a top neighbourhood restaurant. Now they've expanded down the road to a restaurant focusing on tapas, charcoal grills and a lot of sherry.</p>
+<p><a href="/Gastroblog/Latest-news/lola-rojo-expands-with-rosita-serving-sherry-and-tapas-in-battersea"><strong>Find out more</strong></a></p>
+</div>
+<p class="article_separator">&nbsp;</p>
+<!-- article ends here --> <!-- article starts here -->
+<div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/hot-dinners-no-image.jpg" alt="GrEAT British" height="99" width="130" /></div>
+<div style="margin-left: 150px;">
+<p><strong><span class="articleheading">GrEAT British</span></strong></p>
+<p><strong>In a nutshell: </strong>British themed all-day restaurant<br /> <strong>Where is it? </strong>14 North Audley Street, W1<br /> <strong>Why should you care? </strong>Urban Retreat owner George Hammer has joined up with Tony Zoccola of the Dulwich Deli to launch this informal all-day restaurant serving all British fare like bacon butties, shepherd's pie and fish &amp; chips. Expect plenty of English wines too.</p>
+<p><a href="/Gastroblog/Latest-news/the-great-british-restaurant-aims-to-bring-british-cuisine-to-the-west-end"><strong>Find out more</strong></a></p>
+</div>
+<p class="article_separator">&nbsp;</p>
+<!-- article ends here --> <!-- article starts here -->
 <div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/hot-dinners-no-image.jpg" alt="MASH London" height="99" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">MASH London</span></strong></p>
-<p><strong>In a nutshell: </strong>American steakhouse from Denmark comes to London<br /> <strong>Where is it? </strong>Brewer Street, W1<strong><br /> Why should you care? </strong> Taking over the old site of Titanic is this Modern American SteakHouse which hails from Denmark. The original is in Copenhagen and looks to offer an American steakhouse with "a twist of Danish informal eating and drinking". The menu looks to offer the usual wide range of steaks while veal sweetbreads, foie gras terrine and salmon ceviche standing out among the starters. <em>(Soft launch till November 12 with 50% off food)</em></p>
+<p><strong>In a nutshell: </strong>American steakhouse from Denmark comes to London<br /> <strong>Where is it? </strong>Brewer Street, W1<strong><br /> Why should you care? </strong> Taking over the old site of Titanic is this Modern American SteakHouse which hails from Denmark. The original is in Copenhagen and this looks to offer an American steakhouse with "a twist of Danish informal eating and drinking". The menu offers the usual wide range of steaks while veal sweetbreads, foie gras terrine and salmon ceviche standing out among the starters. <em>(Soft launch till November 12 with 50% off food)</em></p>
 <p><a href="/Gastroblog/Latest-news/danish-steakhouse-mash-to-open-in-piccadilly"><strong>Find out more</strong></a></p>
 </div>
 <p class="article_separator">&nbsp;</p>
@@ -367,16 +399,16 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/hot-dinners-no-image.jpg" alt="Lupita Spitalfields" height="99" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Lupita Spitalfields</span></strong></p>
-<p><strong>In a nutshell: </strong>Popular Mexican comes to Spitalfields<strong><br /> Where is it? </strong>60-62 Commercial Street, E1<strong><br /> Why should you care? </strong>Lupita's been hit in Villiers Street (just near Charing Cross) and in its original Mexico City setting and now the Mexican restaurant is moving across town. Expect made-to-order tacos, tostadas, quesadillas, enchiladas and churros con chocolate as well as Lupita’s margaritas and cocktails, made with 100% agave tequila, and a selection of South American wines and rare Mexican beers.</p>
+<p><strong>In a nutshell: </strong>Popular Mexican comes to Spitalfields<strong><br /> Where is it? </strong>60-62 Commercial Street, E1<strong><br /> Why should you care? </strong>Lupita's been hit in Villiers Street (just near Charing Cross) and in its original Mexico City setting and now the Mexican restaurant has moved across town. Expect made-to-order tacos, tostadas, quesadillas, enchiladas and churros con chocolate as well as Lupitaâ€™s margaritas and cocktails, made with 100% agave tequila, and a selection of South American wines and rare Mexican beers.</p>
 </div>
 <p class="article_separator">&nbsp;</p>
 <!-- article ends here -->
 <div class="componentheading">Opened in October <!-- article starts here --></div>
 <!-- article starts here -->
-<div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/hot-dinners-no-image.jpg" alt="Zoilo" height="99" width="130" /></div>
+<div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/zoilo.jpg" alt="Zoilo" height="97" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Zoilo</span></strong></p>
-<p><strong>In a nutshell: </strong>Argentinean catering gets a permanent home <br /> <strong>Where is it? </strong>9 Duke Street, W1<strong><br /> Why should you care?</strong> Argentine catering company Zoilo, who are also behind Casa Malevo, have been a big name at prestigious sporting events throughout the country, and now they're coming to Marylebone.</p>
+<p><strong>In a nutshell: </strong>Argentinean catering gets a permanent home <br /> <strong>Where is it? </strong>9 Duke Street, W1<strong><br /> Why should you care?</strong> Argentine catering company Zoilo, who are also behind Casa Malevo, have been a big name at prestigious sporting events throughout the country, and now they've coming to Marylebone with this new Argentinean restaurant focusing on sharing dishes.</p>
 <p><a href="/Gastroblog/Latest-news/zoilo-brings-argentinian-sharing-dishes-to-marylebone"><strong>Find out more</strong></a>.</p>
 </div>
 <p class="article_separator">&nbsp;</p>
@@ -384,7 +416,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/hot-dinners-no-image.jpg" alt="Giaconda Dining Room" height="99" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Giaconda Dining Room</span></strong></p>
-<p><strong>In a nutshell: </strong>Relaunched foodie fave <br /> <strong>Where is it? </strong>Denmark Street, W1<strong><br /> Why should you care?</strong> The Giaconda Dining room has long been a favourite of many in London since it opened four years ago. Now it's undergoing a revamp which will double the space, add a new kitchen and let it stay open seven days a week.</p>
+<p><strong>In a nutshell: </strong>Relaunched foodie fave <br /> <strong>Where is it? </strong>Denmark Street, W1<strong><br /> Why should you care?</strong> The Giaconda Dining room has long been a favourite of many in London since it opened four years ago. Now it's finished a revamp which has doubled the space, added a new kitchen and which will let it stay open seven days a week.</p>
 <p><a href="/Gastroblog/Latest-news/giaconda-dining-room-undergoing-revamp-and-will-re-open-seven-days-a-week"><strong>Find out more</strong></a></p>
 </div>
 <p class="article_separator">&nbsp;</p>
@@ -408,14 +440,14 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/hot-dinners-no-image.jpg" alt="Cabana at Westfield London " height="99" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Cabana at Westfield London </span></strong></p>
-<p><strong>In a nutshell: </strong>Brasilian in Westfield (in White City)<strong><br /> Where is it? </strong>Westfield, 3 Ariel Way, W12<strong><br /> Why should you care? </strong>Following success at Stratford and St GIles, this 140-seat restaurant menu will offer the best of Brasil. Dishes carried over from the existing restaurants include the cheese dough balls Pao de Queijo as well as crispy pastels (pastry pockets stuffed with cheese) and Chicken Coxinhas (croquettes of shredded chicken and spices). There will be barbecue skewers like spicy malagueta chicken, pork tenderloin with parmesan crust and Chimichurri Black Gold Rump Steak. Also on the menu will be Ribs and Brasilian homeslaw, as featured at this year’s Ribstock, and the Cabana Brasilian Burger, a spicy malagueta chicken breast with avocado, tomato, lettuce and chilli mayonnaise in half a brioche bun topped with a grilled chilli.</p>
+<p><strong>In a nutshell: </strong>Brasilian in Westfield (in White City)<strong><br /> Where is it? </strong>Westfield, 3 Ariel Way, W12<strong><br /> Why should you care? </strong>Following success at Stratford and St GIles, this 140-seat restaurant menu will offer the best of Brasil. Dishes carried over from the existing restaurants include the cheese dough balls Pao de Queijo as well as crispy pastels (pastry pockets stuffed with cheese) and Chicken Coxinhas (croquettes of shredded chicken and spices). There will be barbecue skewers like spicy malagueta chicken, pork tenderloin with parmesan crust and Chimichurri Black Gold Rump Steak. Also on the menu will be Ribs and Brasilian homeslaw, as featured at this yearâ€™s Ribstock, and the Cabana Brasilian Burger, a spicy malagueta chicken breast with avocado, tomato, lettuce and chilli mayonnaise in half a brioche bun topped with a grilled chilli.</p>
 </div>
 <p class="article_separator">&nbsp;</p>
 <!-- article ends here --> <!-- article starts here -->
 <div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/tonteria.gif" alt="Tonteria" height="87" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Tonteria</span></strong></p>
-<p><strong>In a nutshell: </strong>Mahiki boss does Mexican<strong><br /> Where is it? </strong>7-12 Sloane Square, SW1 <strong><br /> Why should you care? </strong>Guy Pelly, the man behind Mahiki and Chelsea nightclub Public is opening this Mexican bar and restaurant on Sloane Square. It will feature a Mexican inspired menu and large range of cocktails including sharing cocktails including glasses in the shape of skulls or those in the shape of the masks used by Mexican wrestlers.</p>
+<p><strong>In a nutshell: </strong>Mahiki boss does Mexican<strong><br /> Where is it? </strong>7-12 Sloane Square, SW1 <strong><br /> Why should you care? </strong>Guy Pelly, the man behind Mahiki and Chelsea nightclub Public has opened this Mexican bar and restaurant on Sloane Square. It features a Mexican inspired menu and large range of cocktails including sharing cocktails including glasses in the shape of skulls or those in the shape of the masks used by Mexican wrestlers.</p>
 <p><a href="/Gastroblog/Latest-news/guy-pelly-to-open-tonteria-mexican-bar-on-sloane-square"><strong>Find out more</strong></a>.</p>
 </div>
 <p class="article_separator">&nbsp;</p>
@@ -431,15 +463,15 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/shed.jpg" alt="The Shed" height="90" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">The Shed</span></strong></p>
-<p><strong>In a nutshell: </strong>Brothers Gladwin bring small British plates to Notting Hill<strong><br /> Where is it? </strong>122 Palace Gardens Terrace, W8 <strong><br /> Why should you care? </strong>The Gladwin brothers, who are each a farmer, a chef and a restaurateur are joining up to create this new British restaurant and bar. Richard Gladwin (who launched Brawn and Bunga Bunga) will manage the place, Gregory Gladwin will supply the restaurant with from the family farm, and chef Oliver Gladwin (who's worked at Launceston Place and River Cottage) will be inventing "spontaneous dishes from produce that is readily available in a flamboyant fashion". Expect West Mersea Rock Oysters, sharing plates of home-cured Nutbourne fennel seed salami, slow cooked dishes of rabbit ravioli, cured hotsmoked pheasant breast and more.</p>
+<p><strong>In a nutshell: </strong>Brothers Gladwin bring small British plates to Notting Hill<strong><br /> Where is it? </strong>122 Palace Gardens Terrace, W8 <strong><br /> Why should you care? </strong>The Gladwin brothers, who are each a farmer, a chef and a restaurateur have joined up to create this new British restaurant and bar. Richard Gladwin (who launched Brawn and Bunga Bunga) will manage the place, Gregory Gladwin will supply the restaurant with from the family farm, and chef Oliver Gladwin (who's worked at Launceston Place and River Cottage) will be inventing "spontaneous dishes from produce that is readily available in a flamboyant fashion". Expect West Mersea Rock Oysters, sharing plates of home-cured Nutbourne fennel seed salami, slow cooked dishes of rabbit ravioli, cured hotsmoked pheasant breast and more.</p>
 <p><a href="/Restaurant-Reviews/The-City/the-shed-palace-gardens-notting-hill-gladwin"><strong>Find out more</strong></a></p>
 </div>
 <p class="article_separator">&nbsp;</p>
 <!-- article ends here --> <!-- article starts here -->
-<div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/hot-dinners-no-image.jpg" alt="Parlour" height="99" width="130" /></div>
+<div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/parlour.jpg" alt="Parlour" height="81" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Parlour</span></strong></p>
-<p><strong>In a nutshell: </strong>Jesse Dunford Wood comes to Kensal Green<br /> <strong>Where is it? </strong>Regent Street, Kensal Green<br /> <strong>Why should you care?</strong> He's had a big hit with the Mall Tavern and now Jesse Dunford Wood is expanding further to Kensal Green.</p>
+<p><strong>In a nutshell: </strong>Jesse Dunford Wood comes to Kensal Green<br /> <strong>Where is it? </strong>Regent Street, Kensal Green<br /> <strong>Why should you care?</strong> He's had a big hit with the Mall Tavern and now Jesse Dunford Wood has expanded further to Kensal Green.</p>
 <p><a href="/Gastroblog/Latest-news/jesse-dunford-wood-to-open-the-parlour-in-kensal-green"><strong>Find out more</strong></a></p>
 </div>
 <p class="article_separator">&nbsp;</p>
@@ -447,7 +479,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/hot-dinners-no-image.jpg" alt="Burger &amp; Lobster Farringdon" height="99" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Burger &amp; Lobster Farringdon</span></strong></p>
-<p><strong>In a nutshell: </strong>B&amp;L goes East <br /> <strong>Where is it? </strong>38 St John Street, EC1 <strong><br /> Why should you care?</strong> It's the second venue that B&amp;L bought from Bistro Du Vin serving the same lobster. lobster roll or burger and chips that's doing so well elsewhere.</p>
+<p><strong>In a nutshell: </strong>B&amp;L goes East <br /> <strong>Where is it? </strong>38 St John Street, EC1 <strong><br /> Why should you care?</strong> It's the second venue that B&amp;L bought from Bistro Du Vin serving the same lobster, lobster roll or burger and chips that's doing so well elsewhere.</p>
 <p><a href="/Gastroblog/Latest-news/burger-and-lobster-to-open-in-soho-and-farringdon-and-take-bookings"><strong>Find out more</strong></a>.</p>
 </div>
 <p class="article_separator">&nbsp;</p>
@@ -459,7 +491,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 </div>
 <p class="article_separator">&nbsp;</p>
 <!-- article ends here --> <!-- article starts here -->
-<div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/hot-dinners-no-image.jpg" alt="Garufin" height="99" width="130" /></div>
+<div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/garufin.jpg" alt="Garufin" height="85" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Garufin</span></strong></p>
 <p><strong>In a nutshell: </strong>Argentinian in Holborn<br /> <strong>Where is it? </strong>Lambs Conduit Passage, Holborn<strong><br /> Why should you care?</strong> Argentinian grill Garufa is hugely popular in Highbury, and this sees them expanding to Holborn. Opening on Lambs Conduit Passage, this is an "Argentine kitchen" specialising in regional Argentine food and wine.</p>
@@ -467,7 +499,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 </div>
 <p class="article_separator">&nbsp;</p>
 <!-- article ends here --> <!-- article starts here -->
-<div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/hot-dinners-no-image.jpg" alt="Beard to Tail" height="99" width="130" /></div>
+<div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/beardtotail.jpg" alt="Beard to Tail" height="87" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Beard to Tail</span></strong></p>
 <p><strong>In a nutshell: </strong>Meaty pop-up turns permanent<strong><br /> Where is it? </strong>The City<strong><br /> Why should you care? </strong>The team behind the Shoreditch cocktail institution, Callooh Callay, previewed this restaurant with a pop-up which gave us an idea of what the real thing will deliver. Expect a big focus on meat (tartare, pulled beef, pigs trotters, pork loin) and plenty of strong cocktails and waistline busting alcoholic desserts.</p>
@@ -478,7 +510,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/colbert.jpg" alt="Colbert" height="86" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Colbert</span></strong></p>
-<p><strong>In a nutshell: </strong>The Oriel reborn <br /> <strong>Where is it? </strong><span dir="ltr"><span property="v:street-address">50-51 Sloane Square</span></span>, SW1<strong><br /> Why should you care?</strong> After the previous restaurant, the Oriel, was closed down by the owner Earl Cadogan for <a href="/Gastroblog/Latest-news/anima-chef-pizza-express-francesco-mazzei-cadogan-oriel-closing-news-update">not being good enough</a>, Corbin and King have snatched up the space. The new 6000 square restaurant is "a true all-day ‘grand cafe’, providing eating and grazing from breakfast through to later evening".</p>
+<p><strong>In a nutshell: </strong>The Oriel reborn <br /> <strong>Where is it? </strong><span dir="ltr"><span property="v:street-address">50-51 Sloane Square</span></span>, SW1<strong><br /> Why should you care?</strong> After the previous restaurant, the Oriel, was closed down by the owner Earl Cadogan for <a href="/Gastroblog/Latest-news/anima-chef-pizza-express-francesco-mazzei-cadogan-oriel-closing-news-update">not being good enough</a>, Corbin and King have snatched up the space. The new 6000 square restaurant is "a true all-day â€˜grand cafeâ€™, providing eating and grazing from breakfast through to later evening".</p>
 <p><a href="/Restaurant-Reviews/Chelsea-Kensington/colbert-sloane-square-corbin-king-london-cafe"><strong>Find out more</strong></a></p>
 </div>
 <p class="article_separator">&nbsp;</p>
@@ -491,7 +523,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 </div>
 <p class="article_separator">&nbsp;</p>
 <!-- article ends here --><!-- article starts here -->
-<div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/hot-dinners-no-image.jpg" alt="Dishoom Shoreditch" height="99" width="130" /></div>
+<div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/dishoom.jpg" alt="Dishoom Shoreditch" height="85" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Dishoom Shoreditch</span></strong></p>
 <p><strong>In a nutshell: </strong>Indian Cafe expands<strong><br /> Where is it? </strong>7 Boundary Street, E2 7JE<strong><br /> Why should you care? </strong>Dishoom has been a big hit in Covent Garden and has now moved east. The new venue will have bar and dining area and will add an outside courtyard too<a href="/Gastroblog/Latest-news/dishoom-shoreditch-to-open-on-boundary-street"><em> (soft launch with 50% until October 19)</em></a>.</p>
@@ -582,7 +614,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/iltempo.jpg" alt="Il Tempo" height="92" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Il Tempo</span></strong></p>
-<p><strong>In a nutshell: </strong>Aperitivo in Covent Garden<br /> <strong>Where is it? </strong>48 Chandos Place, WC2N<strong><br /> Why should you care?</strong> This ground-floor and basement bar/restaurant includes an open-table Italian delicatessen, covering various Italian regions as well as niche Italian wines. You'll be able to eat as much as you like in the evening, as long as you're willing to pay slightly more for your drinks - roughly a £2 surcharge.</p>
+<p><strong>In a nutshell: </strong>Aperitivo in Covent Garden<br /> <strong>Where is it? </strong>48 Chandos Place, WC2N<strong><br /> Why should you care?</strong> This ground-floor and basement bar/restaurant includes an open-table Italian delicatessen, covering various Italian regions as well as niche Italian wines. You'll be able to eat as much as you like in the evening, as long as you're willing to pay slightly more for your drinks - roughly a Â£2 surcharge.</p>
 </div>
 <p class="article_separator">&nbsp;</p>
 <!-- article ends here --> <!-- article starts here -->
@@ -619,7 +651,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/chrysan.jpg" alt="Chrysan" height="86" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Chrysan</span></strong></p>
-<p><strong>In a nutshell: </strong>Japanese Three Michelin starred restaurant opens in London<strong><br /> Where is it? </strong>Snowden Street, London EC2A 2DQ.<strong><br /> Why should you care? </strong>Kikunoi restaurant in Japan is a three Michelin starred restaurant from Yoshihiro Murata serving Kaiseki cuisine since 1912 (Japanese style cuisine with western haute cuisine influences). Murata's Chrysan will be less formal than his Kyoto restaurant but has extensive à la carte and tasting menus as well as a set lunch menu plus a bento box option for time-pressed City workers.</p>
+<p><strong>In a nutshell: </strong>Japanese Three Michelin starred restaurant opens in London<strong><br /> Where is it? </strong>Snowden Street, London EC2A 2DQ.<strong><br /> Why should you care? </strong>Kikunoi restaurant in Japan is a three Michelin starred restaurant from Yoshihiro Murata serving Kaiseki cuisine since 1912 (Japanese style cuisine with western haute cuisine influences). Murata's Chrysan will be less formal than his Kyoto restaurant but has extensive Ã  la carte and tasting menus as well as a set lunch menu plus a bento box option for time-pressed City workers.</p>
 <p><a href="/Restaurant-Reviews/The-City/chrysan-london-snowden-street-broadgate-japanese"><strong>Find out more</strong></a></p>
 </div>
 <p class="article_separator">&nbsp;</p>
@@ -675,7 +707,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/disiac.jpg" alt="Disiac" height="87" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Disiac</span></strong></p>
-<p><strong>In a nutshell: </strong>Seafood &amp; champagne<br /> <strong>Where is it? </strong>Soho, 6 Greek Street, W1D 4ED<strong><br /> Why should you care?</strong> This seafood and champagne restaurant focuses on Italian seafood cuisine (from head chef Michele de Rosa, previously at Cecconi’s) and a selection of champagnes. There's also a raw bar with an open kitchen, plenty of leather booths for dinner and a DJ for late nights.</p>
+<p><strong>In a nutshell: </strong>Seafood &amp; champagne<br /> <strong>Where is it? </strong>Soho, 6 Greek Street, W1D 4ED<strong><br /> Why should you care?</strong> This seafood and champagne restaurant focuses on Italian seafood cuisine (from head chef Michele de Rosa, previously at Cecconiâ€™s) and a selection of champagnes. There's also a raw bar with an open kitchen, plenty of leather booths for dinner and a DJ for late nights.</p>
 </div>
 <p class="article_separator">&nbsp;</p>
 <!-- article ends here -->
@@ -768,7 +800,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/tommis.jpg" alt="Tommi's Burger Joint" height="103" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Tommi's Burger Joint</span></strong></p>
-<p><strong>In a nutshell: </strong>Icelandic burgers in Marylebone<br /><strong>Where is it? </strong>58 Marylebone Lane, W1<strong><br /> Why should you care? </strong>Hamborgara Tómasar aka Tommi's Hamburger Joint opened in 2003 in Reykjavik by Tommi Tómasson who's apparently credited with bringing modern burgers to Iceland. It's a spot favoured by celebrities and burger junkies alike - and this is his first London outpost.</p>
+<p><strong>In a nutshell: </strong>Icelandic burgers in Marylebone<br /><strong>Where is it? </strong>58 Marylebone Lane, W1<strong><br /> Why should you care? </strong>Hamborgara TÃ³masar aka Tommi's Hamburger Joint opened in 2003 in Reykjavik by Tommi TÃ³masson who's apparently credited with bringing modern burgers to Iceland. It's a spot favoured by celebrities and burger junkies alike - and this is his first London outpost.</p>
 <p><a href="/Restaurant-Reviews/Marylebone/tommis-burger-joint-marylebone-lane-london-hamborgara-tomasar"><strong>Find out more</strong></a></p>
 </div>
 <br clear="left" />
@@ -851,7 +883,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/burger-lobster-soho.jpg" alt="Burger &amp; Lobster Soho" height="98" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Burger &amp; Lobster Soho</span></strong></p>
-<p><strong>In a nutshell: </strong>£20 lobster &amp; chips come to Soho<br /><strong>Where is it? </strong>36 Dean Street, W1<strong><br /> Why should you care?</strong> The original was a massive hit and <a href="/Gastroblog/Test-drive/goodman-branches-out-we-check-out-burger-a-lobster"><strong>we loved it too</strong></a>. Now it's expanded to the middle of Soho, and as before is charging only £20 for either a lobster, a lobster roll or a burger - all served with chips and salad.</p>
+<p><strong>In a nutshell: </strong>Â£20 lobster &amp; chips come to Soho<br /><strong>Where is it? </strong>36 Dean Street, W1<strong><br /> Why should you care?</strong> The original was a massive hit and <a href="/Gastroblog/Test-drive/goodman-branches-out-we-check-out-burger-a-lobster"><strong>we loved it too</strong></a>. Now it's expanded to the middle of Soho, and as before is charging only Â£20 for either a lobster, a lobster roll or a burger - all served with chips and salad.</p>
 <p><a href="/Gastroblog/Latest-news/burger-and-lobster-to-open-in-soho-and-farringdon-and-take-bookings"><strong>Find out more</strong></a>.</p>
 </div>
 <br clear="left" />
@@ -913,7 +945,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/lima.jpg" alt="Lima" height="87" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Lima</span></strong></p>
-<p><strong>In a nutshell: </strong>Peruvian in Soho<br /><strong>Where is it? </strong>31 Rathbone Place,&nbsp; London W1T<strong><br /> Why should you care?</strong> This Peruvian restaurant is from Virgilio Martinez, former Executive Chef at Astrid y Gaston, listed on the San Pellegrino World’s Best Restaurants list. It will be "integrating Peruvian traditional cuisine with a modern and contemporary twist."</p>
+<p><strong>In a nutshell: </strong>Peruvian in Soho<br /><strong>Where is it? </strong>31 Rathbone Place,&nbsp; London W1T<strong><br /> Why should you care?</strong> This Peruvian restaurant is from Virgilio Martinez, former Executive Chef at Astrid y Gaston, listed on the San Pellegrino Worldâ€™s Best Restaurants list. It will be "integrating Peruvian traditional cuisine with a modern and contemporary twist."</p>
 <p><a href="/Restaurant-Reviews/Soho-Fitzrovia-Covent-Garden/lima-london-rathbone-place-fitzrovia-peruvian"><strong>Find out more </strong></a></p>
 </div>
 <br clear="left" />
@@ -947,10 +979,10 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <br clear="left" />
 <p class="article_separator">&nbsp;</p>
 <!-- article ends here --> <!-- article starts here -->
-<div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/zedel.jpg" alt="Brasserie Zédel" height="96" width="130" /></div>
+<div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/zedel.jpg" alt="Brasserie ZÃ©del" height="96" width="130" /></div>
 <div style="margin-left: 150px;">
-<p><strong><span class="articleheading">Brasserie Zédel</span></strong></p>
-<p><strong>In a nutshell: </strong>Corbin &amp; King go Parisian <br /><strong>Where is it? </strong><span dir="ltr"><span property="v:street-address">2 Sherwood Street, Quadrant 3, W1</span></span><strong><br /> Why should you care?</strong> Set in the newly revamped development just off Piccadilly (where the old Regent Palace Hotel used to be), <a href="/Gastroblog/Latest-news/chris-corbin-and-jeremy-king-opening-restaurant-on-oriels-sloane-square-site"><strong></strong></a>this is a Parisian café/brasserie with an Art Deco interior as well as cocktail and jazz bars. It's an all-day restaurant with a focus on value for money, so expect something a bit more mid-range than the Delaunay.</p>
+<p><strong><span class="articleheading">Brasserie ZÃ©del</span></strong></p>
+<p><strong>In a nutshell: </strong>Corbin &amp; King go Parisian <br /><strong>Where is it? </strong><span dir="ltr"><span property="v:street-address">2 Sherwood Street, Quadrant 3, W1</span></span><strong><br /> Why should you care?</strong> Set in the newly revamped development just off Piccadilly (where the old Regent Palace Hotel used to be), <a href="/Gastroblog/Latest-news/chris-corbin-and-jeremy-king-opening-restaurant-on-oriels-sloane-square-site"><strong></strong></a>this is a Parisian cafÃ©/brasserie with an Art Deco interior as well as cocktail and jazz bars. It's an all-day restaurant with a focus on value for money, so expect something a bit more mid-range than the Delaunay.</p>
 <p><strong><a href="/Restaurant-Reviews/Soho-Fitzrovia-Covent-Garden/brasserie-zedel-piccadilly-circus-sherwood-street-corbin-king-london">Find out more</a></strong></p>
 </div>
 <br clear="left" />
@@ -1064,7 +1096,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/sonnys.jpg" alt="Sonny's Kitchen " height="87" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Sonny's Kitchen</span></strong></p>
-<p><strong>In a nutshell: </strong>Kitchen W8 goes further west. <br /><strong>Where is it? </strong>92-94 Church Road, SW13<strong><br /> Why should you care? </strong>Following on from the success of <a href="/Restaurant-Reviews/Chelsea-Kensington/kitchen-w8-philip-howard-abingdon-road">Kitchen W8</a> - the last joint venture between restaurateur Rebecca Mascarenhas and chef Philip Howard&nbsp; - the pair have joined forces for a second venture. They've relaunched Sonny’s Restaurant in Barnes as Sonny's Kitchen.</p>
+<p><strong>In a nutshell: </strong>Kitchen W8 goes further west. <br /><strong>Where is it? </strong>92-94 Church Road, SW13<strong><br /> Why should you care? </strong>Following on from the success of <a href="/Restaurant-Reviews/Chelsea-Kensington/kitchen-w8-philip-howard-abingdon-road">Kitchen W8</a> - the last joint venture between restaurateur Rebecca Mascarenhas and chef Philip Howard&nbsp; - the pair have joined forces for a second venture. They've relaunched Sonnyâ€™s Restaurant in Barnes as Sonny's Kitchen.</p>
 <p><a href="/Restaurant-Reviews/West-London/sonnys-kitchen-church-road-barnes-london"><strong>Find out more</strong></a>.</p>
 </div>
 <br clear="left" />
@@ -1099,7 +1131,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/reformsocial.jpg" alt="Reform Social and Grill" height="83" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Reform Social and Grill</span></strong></p>
-<p><strong>In a nutshell: </strong>Bar with very British bar snacks<br /><strong>Where is it? </strong>The Mandeville Hotel, Mandeville Place, W1 <strong><br /> Why should you care?</strong> Located in the Mandeville Hotel on Mandeville Place, the very British snacks on offer include duck faggots with game chips, crispy lamb bacon with mint jelly, Welsh Wagyu beef burgers and Isle of Wight tomatoes on toast. Plus bigger plates include Salt Baked Beetroot with Easter Egg radish and Golden Cross goat’s cheese and Lamb Cutlets Reform served with wild garlic.</p>
+<p><strong>In a nutshell: </strong>Bar with very British bar snacks<br /><strong>Where is it? </strong>The Mandeville Hotel, Mandeville Place, W1 <strong><br /> Why should you care?</strong> Located in the Mandeville Hotel on Mandeville Place, the very British snacks on offer include duck faggots with game chips, crispy lamb bacon with mint jelly, Welsh Wagyu beef burgers and Isle of Wight tomatoes on toast. Plus bigger plates include Salt Baked Beetroot with Easter Egg radish and Golden Cross goatâ€™s cheese and Lamb Cutlets Reform served with wild garlic.</p>
 <p><a href="/Gastroblog/Latest-news/reform-bar-and-grill-opens-in-marylebone-with-british-bar-snacks"><strong>Find out more</strong></a></p>
 </div>
 <br clear="left" />
@@ -1140,10 +1172,10 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <br clear="left" />
 <p class="article_separator">&nbsp;</p>
 <!-- article ends here --> <!-- article starts here -->
-<div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/hot-dinners-no-image.jpg" alt="Le Relais de Venise L'Entrecôte " height="99" width="130" /></div>
+<div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/hot-dinners-no-image.jpg" alt="Le Relais de Venise L'EntrecÃ´te " height="99" width="130" /></div>
 <div style="margin-left: 150px;">
-<p><strong><span class="articleheading">Le Relais de Venise L'Entrecôte </span></strong></p>
-<p><strong>In a nutshell: </strong>Steak frites in Canary Wharf<br /><strong>Where is it? </strong>Mackenzie Walk, Canary Wharf&nbsp;<strong><br /> Why should you care?</strong> It's been a hit in the City and Marylebone and now the steak frites specialist is coming to Canary Wharf, offering the signature (and only) dish for £21 and promising lunch in under an hour for busy banking types.</p>
+<p><strong><span class="articleheading">Le Relais de Venise L'EntrecÃ´te </span></strong></p>
+<p><strong>In a nutshell: </strong>Steak frites in Canary Wharf<br /><strong>Where is it? </strong>Mackenzie Walk, Canary Wharf&nbsp;<strong><br /> Why should you care?</strong> It's been a hit in the City and Marylebone and now the steak frites specialist is coming to Canary Wharf, offering the signature (and only) dish for Â£21 and promising lunch in under an hour for busy banking types.</p>
 <p><a href="/Gastroblog/Latest-news/le-relais-de-venise-lentrecote-expands-to-canary-wharf"><strong>Find out more</strong></a></p>
 </div>
 <br clear="left" />
@@ -1196,7 +1228,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/gillrays.jpg" alt="Gillray's" height="82" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Gillray's Steakhouse and Bar</span></strong></p>
-<p><strong>In a nutshell: </strong>County hall gets the steak in. <br /><strong>Where is it? </strong>Marriott County Hall, SE1<strong><br /> Why should you care? </strong>The Marriott at County Hall certainly has the location right - and has now updated their restaurant to Gillray's Steakhouse &amp; Bar, named after an 18th century caricaturist of note (no, we'd never heard of him) and is apparently "the most English of English dining destinations". Everything will be from 35-day dry aged Hereford Cattle from the Duke of Devonshire’s Bolton Abbey Estate in Yorkshire. There will be nine cuts of steak in total, but it's already clear which dish is the star of the show - a 1000g ‘Bulls Head’ steak, butterfly cut, double rib steak served with the bone in.</p>
+<p><strong>In a nutshell: </strong>County hall gets the steak in. <br /><strong>Where is it? </strong>Marriott County Hall, SE1<strong><br /> Why should you care? </strong>The Marriott at County Hall certainly has the location right - and has now updated their restaurant to Gillray's Steakhouse &amp; Bar, named after an 18th century caricaturist of note (no, we'd never heard of him) and is apparently "the most English of English dining destinations". Everything will be from 35-day dry aged Hereford Cattle from the Duke of Devonshireâ€™s Bolton Abbey Estate in Yorkshire. There will be nine cuts of steak in total, but it's already clear which dish is the star of the show - a 1000g â€˜Bulls Headâ€™ steak, butterfly cut, double rib steak served with the bone in.</p>
 <p><a href="/Gastroblog/Test-drive/south-bank-steak-test-driving-gillrays-at-county-hall"><strong>Find out more</strong></a></p>
 </div>
 <br clear="left" />
@@ -1233,7 +1265,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/meter.jpg" alt="Meter" height="86" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Meter</span></strong></p>
-<p><strong>In a nutshell: </strong>Pizzas and tunes. <br /><strong>Where is it? </strong>70 – 74 City Rd, EC1<strong><br /> Why should you care? </strong>DJ James Priestley is bringing pizza by the meter to his DJ/Artist space, The Camp. Expect eight pizzas on the menu, a small antipasti selection and a range of cocktails.</p>
+<p><strong>In a nutshell: </strong>Pizzas and tunes. <br /><strong>Where is it? </strong>70 â€“ 74 City Rd, EC1<strong><br /> Why should you care? </strong>DJ James Priestley is bringing pizza by the meter to his DJ/Artist space, The Camp. Expect eight pizzas on the menu, a small antipasti selection and a range of cocktails.</p>
 <p><a href="/Restaurant-Reviews/Shoreditch-Clerkenwell/meter-pizza-city-road-clerkenwell"><strong>Find out more</strong></a></p>
 </div>
 <br clear="left" />
@@ -1260,7 +1292,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/labodega.jpg" alt="La Bodega Negra" height="86" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">La Bodega Negra</span></strong></p>
-<p><strong>In a nutshell: </strong>Mexican in Soho<strong><br /> Where is it? </strong>Moor St and Old Compton St, W1 <strong><br /> Why should you care?</strong> NYC's Serge Becker has teamed up with Will Ricker (Great Eastern Dining Room) to create a downstairs restaurant and bar, a road side taqueria, and all-day contemporary Mexican café.</p>
+<p><strong>In a nutshell: </strong>Mexican in Soho<strong><br /> Where is it? </strong>Moor St and Old Compton St, W1 <strong><br /> Why should you care?</strong> NYC's Serge Becker has teamed up with Will Ricker (Great Eastern Dining Room) to create a downstairs restaurant and bar, a road side taqueria, and all-day contemporary Mexican cafÃ©.</p>
 <p><a href="/Restaurant-Reviews/Soho-Fitzrovia-Covent-Garden/la-bodega-negra-serge-becker-compton-moor-street-london"><strong>Find out more</strong></a></p>
 </div>
 <br clear="left" />
@@ -1281,7 +1313,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <p><a href="/Restaurant-Reviews/South-London/sticks-n-sushi-wimbledon-hill"><strong>Find out more</strong></a></p>
 </div>
 <br clear="left" />
-<p class="article_separator">&nbsp;</p>
+<p class="article_separator">&nbsp;p>
 <!-- article ends here --> <!-- article starts here -->
 <div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/juggedhare.jpg" alt="The Jugged Hare " height="87" width="130" /></div>
 <div style="margin-left: 150px;">
@@ -1351,7 +1383,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/ceviche.jpg" alt="Ceviche" height="87" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Ceviche</span></strong></p>
-<p><strong>In a nutshell: </strong>Peruvian in Soho <br /><strong>Where is it? </strong>Soho, W1 <strong><br /> Why should you care?</strong> One of the biggest trends for next year promises to be Peruvian food - so there's a lot of people looking forward to restaurateur Martin Morales and chef Alejandro Bello's Ceviche. The restaurant will, of course, focus on ceviche - freshly caught sustainable fish cold-cooked in Tiger’s Milk marinade made from lime juice and Peruvian aji chilli. You'll be able to sit on the Ceviche Bar and watch the Cevichero Chef prepare them freshly in front of you, while sipping on Peru’s national drink, the Pisco Sour, from Ceviche’s Pisco Bar, the first of its kind in Britain.</p>
+<p><strong>In a nutshell: </strong>Peruvian in Soho <br /><strong>Where is it? </strong>Soho, W1 <strong><br /> Why should you care?</strong> One of the biggest trends for next year promises to be Peruvian food - so there's a lot of people looking forward to restaurateur Martin Morales and chef Alejandro Bello's Ceviche. The restaurant will, of course, focus on ceviche - freshly caught sustainable fish cold-cooked in Tigerâ€™s Milk marinade made from lime juice and Peruvian aji chilli. You'll be able to sit on the Ceviche Bar and watch the Cevichero Chef prepare them freshly in front of you, while sipping on Peruâ€™s national drink, the Pisco Sour, from Cevicheâ€™s Pisco Bar, the first of its kind in Britain.</p>
 <p><a href="/Restaurant-Reviews/Soho-Fitzrovia-Covent-Garden/ceviche-peruvian-martin-morales-frith-street-london"><strong>Find out more</strong></a></p>
 </div>
 <br clear="left" />
@@ -1457,10 +1489,10 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <br clear="left" />
 <p class="article_separator">&nbsp;</p>
 <!-- article ends here --> <!-- article starts here -->
-<div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/hot-dinners-no-image.jpg" alt="Café Le Cordon Bleu" height="99" width="130" /></div>
+<div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/hot-dinners-no-image.jpg" alt="CafÃ© Le Cordon Bleu" height="99" width="130" /></div>
 <div style="margin-left: 150px;">
-<p><strong><span class="articleheading">Café Le Cordon Bleu</span></strong></p>
-<p><strong>In a nutshell: </strong>School dinners <strong><br /> Where is it? </strong><span>15 Bloomsbury Square</span><strong><br /> Why should you care?</strong> The French cookery school is opening an "international flagship" in London with a café attached. This will be serving patisserie, soup, sandwiches and more - all cooked by a qualified chef from the school.</p>
+<p><strong><span class="articleheading">CafÃ© Le Cordon Bleu</span></strong></p>
+<p><strong>In a nutshell: </strong>School dinners <strong><br /> Where is it? </strong><span>15 Bloomsbury Square</span><strong><br /> Why should you care?</strong> The French cookery school is opening an "international flagship" in London with a cafÃ© attached. This will be serving patisserie, soup, sandwiches and more - all cooked by a qualified chef from the school.</p>
 <p><a href="/Gastroblog/Latest-news/flagship-le-cordon-bleu-school-opens-in-bloomsbury-with-its-own-cafe"><strong>Find out more</strong></a>.</p>
 </div>
 <br clear="left" />
@@ -1487,7 +1519,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/dabbous.jpg" alt="Dabbous" height="86" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Dabbous</span></strong></p>
-<p><strong>In a nutshell: </strong>Texture Head Chef goes it alone <strong><br /> Where is it? </strong>Whitfield Street, W1 <strong><br /> Why should you care?</strong> Ollie Dabbous, ex Head Chef of Mayfair's Texture (and also former of Le Manoir aux Quat' Saisons) has opened his own Modern European restaurant in the space that previously held famed Internet cafe Cyberia. It has a street-level dining room and basement bar. The menu will change seasonally, and feature a range of small dishes priced between £4 and £14.</p>
+<p><strong>In a nutshell: </strong>Texture Head Chef goes it alone <strong><br /> Where is it? </strong>Whitfield Street, W1 <strong><br /> Why should you care?</strong> Ollie Dabbous, ex Head Chef of Mayfair's Texture (and also former of Le Manoir aux Quat' Saisons) has opened his own Modern European restaurant in the space that previously held famed Internet cafe Cyberia. It has a street-level dining room and basement bar. The menu will change seasonally, and feature a range of small dishes priced between Â£4 and Â£14.</p>
 <p><a href="/Restaurant-Reviews/Soho-Fitzrovia-Covent-Garden/dabbous-whitfield-street-london"><strong>Find out more</strong></a></p>
 </div>
 <br clear="left" />
@@ -1505,7 +1537,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/leon-bruxelles.jpg" alt="Leon De Bruxelles" height="76" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Leon De Bruxelles</span></strong></p>
-<p><strong>In a nutshell: </strong>Moules frites in London<br /><strong>Where is it? </strong>Cambridge Circus, London WC2<strong><br /> Why should you care?</strong> Belgian restaurant chain Chez Léon has launched a Léon De Bruxelles moules frites joint that offers a range of Flemish classics including eleven types of mussel dishes, frites with mayonnaise, fish soup with rouille and gruyère cheese and Carbonnade of beer braised beef. For desserts there are a selection of waffles as well as other continental treats. The London branch has a special cloudy Belgian beer brewed especially for it alongside a longer list of micro-brewery beers and wines.</p>
+<p><strong>In a nutshell: </strong>Moules frites in London<br /><strong>Where is it? </strong>Cambridge Circus, London WC2<strong><br /> Why should you care?</strong> Belgian restaurant chain Chez LÃ©on has launched a LÃ©on De Bruxelles moules frites joint that offers a range of Flemish classics including eleven types of mussel dishes, frites with mayonnaise, fish soup with rouille and gruyÃ¨re cheese and Carbonnade of beer braised beef. For desserts there are a selection of waffles as well as other continental treats. The London branch has a special cloudy Belgian beer brewed especially for it alongside a longer list of micro-brewery beers and wines.</p>
 <p><a href="/Gastroblog/Latest-news/leon-de-bruxelles-moules-frites-to-open-on-cambridge-circus"><strong>Find out more</strong></a>.</p>
 </div>
 <br clear="left" />
@@ -1540,7 +1572,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/aikens.jpg" alt="Tom Aikens" height="87" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Tom Aikens</span></strong></p>
-<p><strong>In a nutshell: </strong>Chelsea fine dining reopens in relaxed mode<br /><strong>Where is it? </strong>Elystan Street, SW3<strong><br /> Why should you care?</strong> Michelin-starred restaurant ditches the starchy look and goes for a more informal feel. The 52-seat restaurant has been designed by Turkish interior designer Hakan Ezer. There are new à la carte and tasting menus to go with the new decor including six, eight and ten course options that are also available with matching wines.</p>
+<p><strong>In a nutshell: </strong>Chelsea fine dining reopens in relaxed mode<br /><strong>Where is it? </strong>Elystan Street, SW3<strong><br /> Why should you care?</strong> Michelin-starred restaurant ditches the starchy look and goes for a more informal feel. The 52-seat restaurant has been designed by Turkish interior designer Hakan Ezer. There are new Ã  la carte and tasting menus to go with the new decor including six, eight and ten course options that are also available with matching wines.</p>
 <p><a href="/Restaurant-Reviews/Chelsea-Kensington/tom-aikens"><strong>Find out more</strong></a></p>
 </div>
 <br clear="left" />
@@ -1716,7 +1748,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/antunes.jpg" alt="Kitchen Joel Antunes" height="86" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Kitchen Joel Antunes</span></strong></p>
-<p><strong>In a nutshell: </strong>Antunes comes to Mayfair <strong><br /> Where is it? </strong>Embassy Mayfair, 29 Old Burlington St, W1 <strong><br /> Why should you care?</strong> Joel Antunes has gotten raves for his cooking at Brasserie Joel over in the Park Plaza in Waterloo, but the critics weren't as kind about the location. Now he's opened the ground floor restaurant in Simon Fuller's new club Embassy Mayfair, which also features a large terrace. Expect a "Provençal-based menu".</p>
+<p><strong>In a nutshell: </strong>Antunes comes to Mayfair <strong><br /> Where is it? </strong>Embassy Mayfair, 29 Old Burlington St, W1 <strong><br /> Why should you care?</strong> Joel Antunes has gotten raves for his cooking at Brasserie Joel over in the Park Plaza in Waterloo, but the critics weren't as kind about the location. Now he's opened the ground floor restaurant in Simon Fuller's new club Embassy Mayfair, which also features a large terrace. Expect a "ProvenÃ§al-based menu".</p>
 <p><a href="/Gastroblog/Latest-news/kitchen-joel-antunes-to-open-at-the-embassy-mayfair"><strong>Find out more</strong></a><br /><strong> </strong></p>
 </div>
 <br clear="left" />
@@ -1945,7 +1977,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/copita.jpg" alt="Copita " height="97" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Copita </span></strong></p>
-<p><strong>In a nutshell:</strong> Barrica tapas expansion <strong><br /> </strong><strong>Where is it? </strong><span id="lblLongDesc">26 D’Arblay Street</span>, W1<strong><br /> Why should you care?</strong> The successful Goodge Street Spanish restaurant (and winner of Time Out's best Spanish restaurant in 2010) Barrica has expanded to the other side of Oxford Street. Expect a fully fledged tapas bar - all stools and standing space only with no bookings being taken. <a href="/Gastroblog/Latest-news/barrica-launching-tapas-bar-copita-in-soho"></a></p>
+<p><strong>In a nutshell:</strong> Barrica tapas expansion <strong><br /> </strong><strong>Where is it? </strong><span id="lblLongDesc">26 Dâ€™Arblay Street</span>, W1<strong><br /> Why should you care?</strong> The successful Goodge Street Spanish restaurant (and winner of Time Out's best Spanish restaurant in 2010) Barrica has expanded to the other side of Oxford Street. Expect a fully fledged tapas bar - all stools and standing space only with no bookings being taken. <a href="/Gastroblog/Latest-news/barrica-launching-tapas-bar-copita-in-soho"></a></p>
 <p><strong><a href="/Restaurant-Reviews/Soho-Fitzrovia-Covent-Garden/copita-spanish-tapas-darbly-street-london">Find out more about Copita </a></strong><br /><strong> </strong></p>
 </div>
 <br clear="left" />
@@ -1962,7 +1994,7 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
 <div style="float: left; padding: 5px;"><img src="/images/stories/restaurant-thumbs/ribroom.jpg" alt="Rib Room at the Jumeriah" height="93" width="130" /></div>
 <div style="margin-left: 150px;">
 <p><strong><span class="articleheading">Rib Room at the Jumeriah</span></strong></p>
-<p><strong>In a nutshell: </strong>Classic restaurant gets a makeover <strong><br /> Where is it? </strong> Jumeriah Carlton Tower Hotel, Knightsbridge <strong><br /> Why should you care?</strong> With a redesign by Martin Brudnizki - best known for Scott's and Dean Street Townhouse - this is a complete revamp for the fifty year old London classic. Ian Rudge, from the Northcote in Lancashire, takes over as head chef and you can expect a special £19 set menu if you're after a bit of a bargain. <a href="/Gastroblog/Latest-news/first-peek-at-new-look-knightsbridge-rib-room"><strong><br /> Find out more about the Rib Room</strong></a><br /><strong> </strong></p>
+<p><strong>In a nutshell: </strong>Classic restaurant gets a makeover <strong><br /> Where is it? </strong> Jumeriah Carlton Tower Hotel, Knightsbridge <strong><br /> Why should you care?</strong> With a redesign by Martin Brudnizki - best known for Scott's and Dean Street Townhouse - this is a complete revamp for the fifty year old London classic. Ian Rudge, from the Northcote in Lancashire, takes over as head chef and you can expect a special Â£19 set menu if you're after a bit of a bargain. <a href="/Gastroblog/Latest-news/first-peek-at-new-look-knightsbridge-rib-room"><strong><br /> Find out more about the Rib Room</strong></a><br /><strong> </strong></p>
 </div>
 <br clear="left" />
 <p class="article_separator">&nbsp;</p>
@@ -2028,14 +2060,14 @@ var addthis_config = {ui_cobrand: "Hot Dinners",ui_hover_direction: false,ui_use
     </div>
     <!-- End Wrapper -->
 <script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
 </script>
 <script type="text/javascript">
-try {
-var pageTracker = _gat._getTracker("UA-9027444-1");
-pageTracker._trackPageview();
-} catch(err) {}</script>
+    try {
+        var pageTracker = _gat._getTracker("UA-9027444-1");
+        pageTracker._trackPageview();
+    } catch (err) { }</script>
 <!-- START GUARDIAN ONLINE BEHAVIOURAL TARGETING CODE --> 
 <script type="text/javascript"
 src="http://pixel.quantserve.com/api/segments.json?a=p-73ktnlRTKQPTw&callback=qc_results"></script>
@@ -2044,22 +2076,22 @@ src="http://pixel.quantserve.com/api/segments.json?a=p-73ktnlRTKQPTw&callback=qc
 
 <!-- Quantcast Measurement --> 
 <script type="text/javascript">
-  var _qevents = _qevents || [];
+    var _qevents = _qevents || [];
 
-  (function() {
-   var elem = document.createElement('script');
+    (function () {
+        var elem = document.createElement('script');
 
-   elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
-   elem.async = true;
-   elem.type = "text/javascript";
-   var scpt = document.getElementsByTagName('script')[0];
-   scpt.parentNode.insertBefore(elem, scpt);  
-  })();
-</script><script type="text/javascript"> 
-_qevents.push({ 
-qacct:"p-73ktnlRTKQPTw", 
-labels:"select-lifeandstyle" 
-}); 
+        elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+        elem.async = true;
+        elem.type = "text/javascript";
+        var scpt = document.getElementsByTagName('script')[0];
+        scpt.parentNode.insertBefore(elem, scpt);
+    })();
+</script><script type="text/javascript">
+             _qevents.push({
+                 qacct: "p-73ktnlRTKQPTw",
+                 labels: "select-lifeandstyle"
+             });
 </script> 
 
 <noscript> 

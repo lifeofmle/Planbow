@@ -106,8 +106,8 @@ namespace HotDinnerData
             }
 
             hotRestaurants.AddRange(openedRestaurants);
-
-            using (var fileStream = new FileStream(@"hotDinner_20121106.csv", FileMode.OpenOrCreate, FileAccess.ReadWrite))
+            
+            using (var fileStream = new FileStream(@"hotDinner_20121112.csv", FileMode.OpenOrCreate, FileAccess.ReadWrite))
             {
                 using (var streamWriter = new StreamWriter(fileStream))
                 {

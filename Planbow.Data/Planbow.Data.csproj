@@ -72,10 +72,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EmbeddedResource Include="Files\mappedDinners_20121027.csv" />
     <EmbeddedResource Include="Files\FoursquareVenue.json" />
-    <EmbeddedResource Include="Files\mappedDinners_20121106.csv" />
-    <None Include="packages.config" />
+    <EmbeddedResource Include="Files\mappedDinners_20121112.csv" />
+    <EmbeddedResource Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -123,7 +123,7 @@ function HotDinnersViewModel() {
 
     // Methods
     self.setMode = function () {
-        console.log(self.showMode());
+        // console.log(self.showMode());
     };
 
     self.loadData = function () {
@@ -139,7 +139,8 @@ function HotDinnersViewModel() {
 
                 self.mapVenues(data);
 
-                self.setVenue(self.filteredVenues[0].foursquareData.id);
+                if (self.filteredVenues[0] && self.filteredVenues[0].foursquareData)
+                    self.setVenue(self.filteredVenues[0].foursquareData.id);
             }
         });
     };
@@ -212,7 +213,9 @@ function HotDinnersViewModel() {
         $.ajax({
             url: '/api/hotdinners/' + venueId,
             success: function (data) {
-                self.venueDescription(data.hotDinnerData.description);
+
+                if (data && data.hotDinnerData)
+                    self.venueDescription(data.hotDinnerData.description);
             }
         });
     }
