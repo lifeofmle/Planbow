@@ -18,7 +18,7 @@ namespace Planbow.Data
     {
         private static Logger Log = LogManager.GetCurrentClassLogger();
 
-        private List<Venue> _hotDinnerVenues;
+        private List<Venue> _venues;
         private Dictionary<string, string> _foursquareDictionary = new Dictionary<string,string>();
         private Dictionary<string, Venue> _venueDictionary;
 
@@ -28,105 +28,21 @@ namespace Planbow.Data
 
         public PlanRepository(DbContext context) : base(context) 
         {
-            _venueDictionary = new Dictionary<string, Venue>();              
+            _venueDictionary = new Dictionary<string, Venue>();
 
-            List<string[]> hotDinnerData = null;
-            _hotDinnerVenues = new List<Venue>();
-
-            //using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Planbow.Data.Files.FoursquareVenue.json"))
-            //{
-            //    using (var textReader = new StreamReader(stream))
-            //    {
-            //        _foursquareJson = textReader.ReadToEnd();
-            //    }
-            //}
-
-            // Read in csv from resource
-            lock (FileLock)
-            {
-                using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Planbow.Data.Files.mappedDinners_20121112.csv"))
-                {
-                    CsvReader reader = new CsvReader(stream);
-
-                    var count = 0;
-                    foreach (var data in reader.RowEnumerator)
-                    {
-                        if (data is string[])
-                        {
-                            var restaurant = data as string[];
-
-                            var venue = new Venue();
-                            venue.Id = (++count).ToString();
-
-                            venue.Name = CsvUtility.Escape(restaurant[0]);                            
-
-                            var foursquareId = restaurant[1];
-
-                            if (string.IsNullOrEmpty(foursquareId))
-                                foursquareId = Guid.NewGuid().ToString();
-
-                            venue.FoursquareData = new FoursquareVenue() { FoursquareId = foursquareId };
-
-                            if (!string.IsNullOrEmpty(restaurant[2]))
-                                venue.Longitude = double.Parse(restaurant[2]);
-
-                            if (!string.IsNullOrEmpty(restaurant[3]))
-                                venue.Latitude = double.Parse(restaurant[3]);                            
-
-                            var hotDinner = new HotDinnerData();
-                            hotDinner.IsOpen = restaurant[4] == "Open" ? true : false;
-                            hotDinner.When = restaurant[5];
-                            hotDinner.Where = restaurant[6];
-                            hotDinner.ShortDescription = restaurant[7];
-                            hotDinner.Description = restaurant[8];
-                            hotDinner.Url = restaurant[9];                           
-
-                            venue.HotDinnerData = hotDinner;
-
-                            _hotDinnerVenues.Add(venue);
-
-                            if (!_venueDictionary.ContainsKey(venue.Id))
-                                _venueDictionary.Add(venue.Id, venue);
-                        }
-                    }
-                }
-            }       
+            _venues = new List<Venue>(InitializeVenues());                  
         }
 
-        public IEnumerable<Venue> HotDinnerVenues()
+        public IEnumerable<Venue> Venues()
         {
-            var venues = new List<Venue>();
-
-            foreach (var venue in _hotDinnerVenues)
-            {
-                venue.HotDinnerData.Description = null;
-                venues.Add(venue);
-            }
-
-            return venues;
-        }        
-
-        public Venue GetHotDinner(string hotDinnerId)
-        {
-            if (string.IsNullOrEmpty(hotDinnerId))
-                return null;
-
-            var key = hotDinnerId;
-
-            if (_venueDictionary.ContainsKey(key))
-                return _venueDictionary[key];
-
-            return null;
-        }
+            return _venues.Where(x => x.Visited);
+        }    
 
         public string GetVenue(string foursquareId)
         {
             Log.Info("Requesting FoursquareId {0}", foursquareId);
 
             var venueInfo = string.Empty;
-
-            //venueInfo = _foursquareJson;
-            //return venueInfo;
 
             if (_foursquareDictionary.ContainsKey(foursquareId))
             {
@@ -176,6 +92,66 @@ namespace Planbow.Data
             }
 
             return responseValue;
+        }
+
+        private IEnumerable<Venue> InitializeVenues()
+        {
+            var venues = new List<Venue>();
+
+            // Read in csv from resource
+            lock (FileLock)
+            {
+                using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Planbow.Data.Files.mappedDinners_20121118.csv"))
+                {
+                    CsvReader reader = new CsvReader(stream);
+
+                    var count = 0;
+                    foreach (var data in reader.RowEnumerator)
+                    {
+                        if (data is string[])
+                        {
+                            var restaurant = data as string[];
+
+                            var venue = new Venue();
+                            venue.Id = (++count).ToString();
+
+                            venue.Name = CsvUtility.Escape(restaurant[0]);                            
+
+                            if (!string.IsNullOrEmpty(restaurant[1]))                            
+                                venue.Visited = bool.Parse(restaurant[1]);
+
+                            var foursquareId = restaurant[2];
+                            if (string.IsNullOrEmpty(foursquareId))
+                                foursquareId = Guid.NewGuid().ToString();
+
+                            venue.FoursquareData = new FoursquareVenue() { FoursquareId = foursquareId };
+
+                            if (!string.IsNullOrEmpty(restaurant[3]))
+                                venue.Longitude = double.Parse(restaurant[3]);
+
+                            if (!string.IsNullOrEmpty(restaurant[4]))
+                                venue.Latitude = double.Parse(restaurant[4]);
+
+                            //var hotDinner = new HotDinnerData();
+                            //hotDinner.IsOpen = restaurant[4] == "Open" ? true : false;
+                            //hotDinner.When = restaurant[5];
+                            //hotDinner.Where = restaurant[6];
+                            //hotDinner.ShortDescription = restaurant[7];
+                            //hotDinner.Description = restaurant[8];
+                            //hotDinner.Url = restaurant[9];
+                            //venue.HotDinnerData = hotDinner;
+                            //_hotDinnerVenues.Add(venue);
+
+                            venues.Add(venue);
+
+                            if (!_venueDictionary.ContainsKey(venue.Id))
+                                _venueDictionary.Add(venue.Id, venue);
+                        }
+                    }
+                }
+            } 
+
+            return venues;
         }
     }
 }

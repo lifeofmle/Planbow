@@ -16,9 +16,8 @@ namespace Planbow.Web.Controllers
             return View();
         }
 
-        public ActionResult Hot4Dinner()
+        public ActionResult LondonRestos()
         {
-
             return View();
         }
     }

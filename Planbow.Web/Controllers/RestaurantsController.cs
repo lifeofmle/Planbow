@@ -8,9 +8,9 @@ using System.Web.Mvc;
 
 namespace Planbow.Web.Controllers
 {
-    public class HotDinnersController : ApiControllerBase
+    public class RestaurantsController : ApiControllerBase
     {
-        public HotDinnersController(IPlanbowUow uow)
+        public RestaurantsController(IPlanbowUow uow)
         {
             Uow = uow;
         }
@@ -20,15 +20,15 @@ namespace Planbow.Web.Controllers
             if (Uow == null)
                 return null;
 
-            return Uow.Plans.HotDinnerVenues();
+            return Uow.Plans.Venues();
         }
 
-        public Venue Get(string id)
-        {
-            if (Uow == null)
-                return null;
+        ////public Venue Get(string id)
+        ////{
+        ////    if (Uow == null)
+        ////        return null;
 
-            return Uow.Plans.GetHotDinner(id);
-        }
+        ////    return Uow.Plans.GetHotDinner(id);
+        ////}
     }
 }

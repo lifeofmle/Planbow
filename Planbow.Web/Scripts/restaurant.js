@@ -23,7 +23,7 @@ markerLayer.factory(function (m) {
             lon: m.geometry.coordinates[0]
         }).zoom(map.zoom()).optimal();
 
-        viewModel.setVenue(m.id);        
+        viewModel.setVenue(m.id);
     });
 
     return elem;
@@ -36,11 +36,7 @@ function HotDinnersViewModel() {
     var self = this;
 
     // Properties
-    self.showMode = ko.observable('opened');
     self.venueName = ko.observable();
-    self.venueWhen = ko.observable();
-    self.venueWhere = ko.observable();
-    self.venueDescription = ko.observable();
     self.venues = ko.observableArray();
     self.selectedVenue = ko.observable();
     self.venueDetails = ko.observable();
@@ -49,50 +45,18 @@ function HotDinnersViewModel() {
     self.venueFilter = ko.observable("");
 
     // Set up subscribing properties
-    self.showMode.subscribe(function (mode) {
-
-        markerLayer.filter(function (f) {
-            // Returning true for all markers shows everything.
-            switch (mode) {
-                case 'opened':
-                    return f.properties['open'] === true;
-                case 'soon':
-                    return f.properties['open'] === false;
-                default:
-                    return true;
-            }
-
-        });
-    });
-
-    self.validVenues = ko.computed(function () {
-        switch (self.showMode()) {
-            case 'opened':
-                return self.venues().filter(function (venue) {
-                    return venue.hotDinnerData.isOpen;
-                });
-            case 'soon':
-                return self.venues().filter(function (venue) {
-                    return !venue.hotDinnerData.isOpen;
-                });
-            default:
-                return self.venues().filter(function (venue) {
-                    return venue.hotDinnerData.isOpen;
-                });
-        }
-    });
 
     //filter the items using the filter text
     self.filteredVenues = ko.computed(function () {
         var filter = self.venueFilter().toLowerCase();
         if (!filter) {
-            return self.validVenues();
+            return self.venues();
         } else {
-            return ko.utils.arrayFilter(self.validVenues(), function (item) {
+            return ko.utils.arrayFilter(self.venues(), function (item) {
                 return String(item.name).toLowerCase().indexOf(filter) >= 0;
             });
         }
-    });    
+    });
 
     self.selectedVenue.subscribe(function (newVenue) {
 
@@ -101,20 +65,9 @@ function HotDinnersViewModel() {
         self.venueDetails('');
         self.venueTips('');
         self.venuePhotos('');
-        self.loadDescription(newVenue.id);
 
-        if (newVenue.hotDinnerData.isOpen) {
-            self.venueWhen('');
-            self.venueWhere('');
-
-            if (newVenue.foursquareData.id != "") {
-                self.loadVenue(newVenue.foursquareData.id);
-            }        
-            
-        }
-        else {
-            self.venueWhen(newVenue.hotDinnerData.when);
-            self.venueWhere(newVenue.hotDinnerData.where);
+        if (newVenue.foursquareData.id != "") {
+            self.loadVenue(newVenue.foursquareData.id);
         }
 
         self.showOnMap(newVenue);
@@ -142,8 +95,8 @@ function HotDinnersViewModel() {
         $.each(venues, function (i, venue) {
 
             var lat = venue.latitude;
-            var lng = venue.longitude;           
-            
+            var lng = venue.longitude;
+
             markerLayer.add_feature({
                 id: venue.foursquareData.id,
                 geometry: {
@@ -155,7 +108,7 @@ function HotDinnersViewModel() {
                     title: venue.name
                 }
             });
-            
+
         });
     };
 
@@ -187,8 +140,6 @@ function HotDinnersViewModel() {
     self.loadVenue = function (foursquareId) {
         var foursquareVenueUrl = "/api/foursquare/" + foursquareId;
 
-        self.loadDescription();
-
         $.ajax({
             url: foursquareVenueUrl,
             success: function (data) {
@@ -199,12 +150,19 @@ function HotDinnersViewModel() {
                 else
                     self.venueDetails(foursquareData.response.venue);
 
-                var tipArray = foursquareData['response']['venue']['tips']['groups'][0]['items'];
+                var tipArray = foursquareData['response']['venue']['tips']['groups']; // [0]['items'];
 
-                if (typeof tipArray === "undefined")
-                    self.venueTips('');
-                else
-                    self.venueTips(tipArray);
+                $.each(tipArray, function (i, tipGroup) {
+                    if (tipGroup.name == 'Tips from others') {
+                        if (typeof tipGroup.items === "undefined")
+                            self.venueTips('');
+                        else {
+                            self.venueTips(tipGroup.items);
+                        }                    
+                    }
+                });
+
+                                    
 
                 var photoArray = foursquareData['response']['venue']['photos']['groups'];
 
@@ -222,7 +180,7 @@ function HotDinnersViewModel() {
                 $('.carousel').carousel('next');
             }
         });
-        
+
     };
 }
 
@@ -233,8 +191,8 @@ ko.applyBindings(viewModel);
 $(document).ready(function () {
 
     // set up filter routing
-    Router({ '/:filter': viewModel.showMode }).init();  
+    //Router({ '/:filter': viewModel.showMode }).init();
 
-    viewModel.loadData();  
+    viewModel.loadData();
 
 });

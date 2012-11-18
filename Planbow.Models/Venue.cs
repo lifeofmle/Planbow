@@ -10,9 +10,9 @@ namespace Planbow.Models
     {
         public string Id { get; set; }
 
-        public FoursquareVenue FoursquareData { get; set; }
+        public bool Visited { get; set; }
 
-        public HotDinnerData HotDinnerData { get; set; }
+        public FoursquareVenue FoursquareData { get; set; }
 
         [JsonIgnore]
         public string VenueType { get; set; }        

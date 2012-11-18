@@ -9,9 +9,7 @@ namespace Planbow.Data.Interfaces
 {
     public interface IPlanRepository : IRepository<Plan>
     {
-        IEnumerable<Venue> HotDinnerVenues();
-
-        Venue GetHotDinner(string hotDinnerId);
+        IEnumerable<Venue> Venues();
 
         string GetVenue(string venueId);
     }

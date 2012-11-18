@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width" />
     <title>Planbow - Hot4Dinner</title>
 
-    <meta name="description" content="A map of Hot-Dinner restaurants in London. We used this with Mapbox, the Foursquare API and the data from Hot-Dinners.com. Helping you find out what's hot for dinner" />
+    <meta name="description" content="A map of restaurants in London. We used this with Mapbox and the Foursquare API to map out our favourite restaurants" />
 
-    <meta name="keywords" content="hot dinner mapped, dinner London, mapbox london, mapbox foursquare, hot for dinner, hot4dinner"  />
+    <meta name="keywords" content="restaurant London, mapbox london, mapbox foursquare"  />
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
     
@@ -157,8 +157,10 @@
     <script type="text/javascript">stLight.options({ publisher: "10c4168a-033d-44bd-b657-f0710422964e", doNotHash: false, doNotCopy: false, hashAddressBar: true });</script>
     
     <!-- Bootstrap -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+    @*<link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">*@
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-responsive.min.css" rel="stylesheet">
     
 </head>
 <body>
@@ -182,7 +184,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Labs <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/Labs/Hot4Dinner#/opened">Hot4Dinner</a></li>
+                        <li><a href="/Labs/LondonRestos">London Restos</a></li>
                     </ul>
                 </li>
                 <li><a href="http://blog.planbow.com/">Blog</a></li>
@@ -200,10 +202,10 @@
         <div class="row">
             <div class="span9">
                 <p style="font-size:medium; font-weight:700; margin-top:10px;">
-                    <img src="/img/fire_2X.png" style="height:16px;margin-bottom:5px;margin-right:5px;">Hot4Dinner 
+                    <img src="/img/fire_2X.png" style="height:16px;margin-bottom:5px;margin-right:5px;">London Restos 
                 </p>
                 <p style="font-size:14px; margin-top:-8px;">
-                    A visualization of restaurant openings from <a href="http://www.hot-dinners.com/" target="_blank">Hot-Dinners.com</a> in London
+                    A map of restaurants in London
                 </p>
             </div>
 
@@ -219,15 +221,9 @@
             <div class="span3" style="height:100%;height:auto;">
                 <div style="margin-bottom:-20px">
                     <ul class="nav nav-tabs">
-                        <li data-bind="css: { active: showMode() == 'opened' }" >
-						    <a class="active" href="#/opened">Opened</a>
+                        <li class="active">
+						    <a class="active" href="#/opened">Restaurants</a>
 					    </li>
-					    <li data-bind="css: { active: showMode() == 'soon' }">
-						    <a href="#/soon">Soon</a>
-					    </li>
-					    @*<li data-bind="css: { active: showMode() == 'trends' }">
-						    <a href="#/trends">Trends</a>
-					    </li>*@
                     </ul>                    
                 </div>
                 <div class="info" >
@@ -237,13 +233,8 @@
                         <ul id="list" data-bind="foreach: filteredVenues">
                             <li  data-bind="click: $root.selectedVenue"><div data-bind="text: name" /></li>
                         </ul>
-                    </div> 
-                    
+                    </div>
                 </div>
-                <p style="font-size:x-small">
-                    <br />*Planbow is not affliated with Hot-Dinners. Data is sourced from Hot-Dinners.com as of Nov 11 2012.
-                        
-                </p>
                 
                 <a class="btn btn-info" href="mailto:info@planbow.com"><i class="icon-envelope icon-white" style="margin-right:5px;"></i>Feedback?</a>
                   
@@ -261,7 +252,7 @@
                     class="row"
                     style="margin-top:10px;">
 
-                    <div class="span3" >     
+                    <div class="span4" >     
                         <span style="font-size:large; font-weight:700" data-bind="text: $root.venueName"></span>
 
                         <div data-bind="with: $root.venueDetails, visible: $root.venueDetails">
@@ -276,28 +267,19 @@
                                 <i class="icon-calendar" style="margin-right: 5px;"></i><span style="font-size:small" data-bind="text: $root.venueWhen"></span>                                
                             </div>  
                         </div>
-                
+                        
+                        <div data-bind="with: $root.venueDetails, visible: $root.venueDetails">
+                            <div data-bind="template: { name: 'stats-template', data: $root.venueDetails }"></div>
+                        </div>                
                     </div>
 
-                    <div class="span4" data-bind="with: $root.selectedVenue, visible: $root.selectedVenue">
-                        <p data-bind="text: $root.venueDescription"></p>
-                        <p style="text-align:right; margin-top:-15px;font-size:10px;"> <a data-bind="attr: { href: 'http://www.hot-dinners.com' + hotDinnerData.url }"  target="_blank">Find out more</a></p>       
-                    </div>
-
-                    <div class="span2" data-bind="with: $root.venueDetails, visible: $root.venueDetails">
-                        <div data-bind="template: { name: 'stats-template', data: $root.venueDetails }"></div>
-                    </div>
-
-                </div>
-                <!-- Pictures/Tips -->
-                <div class="row">
                     <div class="span3">              
                         <div data-bind="with: $root.venuePhotos, visible: $root.venueDetails" style="margin-top:10px;">
                     
                             <div id="myCarousel" class="carousel slide" style="overflow:hidden">
                                 <!-- Carousel items -->
-                                <div class="carousel-inner" data-bind="foreach: $root.venuePhotos" style="margin-left:35px;">                          
-                                    <div class="item"><img data-bind="attr: { src: prefix + '200x200' + suffix }" /></div>
+                                <div class="carousel-inner" data-bind="foreach: $root.venuePhotos" style="margin-left:60px;">                          
+                                    <div class="item"><img data-bind="attr: { src: prefix + '150x150' + suffix }" /></div>
                                 </div>
                                 <!-- Carousel nav -->
                                 <a class="carousel-control left" href="#myCarousel" data-slide="prev" style="margin-left:-10px;">&lsaquo;</a>
@@ -306,28 +288,30 @@
                         </div>
                     </div>
 
-                    <div class="span6">
-                        <div data-bind="with: $root.venueTips, visible: $root.venueTips">                  
-                            <ul id="tips" data-bind="foreach: $root.venueTips">
-                                <li>
-                                    <span data-bind="text: text" /><br /><br />
-                                </li>
-                            </ul>
-                        </div>
-                    </div>                    
+                </div>
+                <!-- Tips -->
+                <div class="row">
+                    <div data-bind="with: $root.venueTips, visible: $root.venueTips">                  
+                        <ul id="tips" data-bind="foreach: $root.venueTips">
+                            <li>
+                                <span data-bind="text: text" /><br /><br />
+                            </li>
+                        </ul>
+                    </div>                 
                 </div>
             </div>              
         </div>        
     </div>
     
-    <script src="/Scripts/lib/jquery-1.7.1.min.js"></script>
-    <script src="/Scripts/lib/director-1.1.6.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    @*<script src="/Scripts/lib/director-1.1.6.min.js"></script>*@
     
     <script src="http://api.tiles.mapbox.com/mapbox.js/v0.6.6/mapbox.js"></script>
     <link href="http://api.tiles.mapbox.com/mapbox.js/v0.6.6/mapbox.css" rel="stylesheet" /> 
 
     <script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.1.0.js"></script>
-    <script src="/Scripts/bootstrap.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    @*<script src="/Scripts/bootstrap.js"></script>*@
 
     <script type="text/html" id="address-template">
         <div>
@@ -353,8 +337,8 @@
     </script>
 
     <script type="text/html" id="stats-template">
-        <div style="text-align:left">
-            <div>
+        <div style="text-align:left; margin-top:10px;">
+            <div style="display:inline-block">
                 <div style="display:inline-block">
                     <img src="/img/marker.png" style="text-align:center;margin-left:14px;" /><br />
                     <span style="font-size:10px;text-align:center">Check-ins</span>
@@ -362,7 +346,7 @@
                 
                 <span class="circle" style="font-size:small;background:#008baa;" data-bind="text: stats.checkinsCount"></span>
             </div>
-            <div>
+            <div style="display:inline-block; margin-left: 15px;">
                 <div style="display:inline-block; margin-right:3px;">
                     <img src="/img/group.png" style="text-align:center;margin-left:6px;" /><br />
                     <span style="font-size:10px;text-align:center;margin-left:10px;">Users</span>
@@ -370,7 +354,7 @@
                 
                 <span class="circle" style="font-size:small;background:#62b2a9;" data-bind="text: stats.usersCount"></span>                
             </div>
-            <div>
+            <div style="display:inline-block; margin-left: 15px;">
                 <div style="display:inline-block">
                     <img src="/img/ok.png" style="text-align:center;margin-left:10px;" /><br />
                     <span style="font-size:10px;text-align:center">Here Now</span>
@@ -382,7 +366,7 @@
         
     </script>   
 
-    <script src="/Scripts/hot4dinner.js"></script>
+    <script src="/Scripts/restaurant.js"></script>
 </body>
 </html>
 
