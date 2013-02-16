@@ -1,5 +1,4 @@
 ﻿using Planbow.Data.Interfaces;
-using Planbow.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,17 +6,17 @@ using System.Text;
 
 namespace Planbow.Data
 {
-    public class PlanbowUow : IPlanbowUow, IDisposable
+    public class WeatherUow : IWeatherUow, IDisposable
     {
-        public PlanbowUow(IRepositoryProvider repositoryProvider)
+        public WeatherUow(IRepositoryProvider repositoryProvider)
         {
             CreateDbContext();
 
             repositoryProvider.DbContext = DbContext;
-            RepositoryProvider = repositoryProvider;       
+            RepositoryProvider = repositoryProvider;
         }
 
-        public IPlanRepository Plans { get { return GetRepo<IPlanRepository>(); } }
+        public IWeatherRepository WeatherConditions { get { return GetRepo<IWeatherRepository>(); } }
 
         /// <summary>
         /// Save pending changes to the database
@@ -30,7 +29,7 @@ namespace Planbow.Data
 
         protected void CreateDbContext()
         {
-            DbContext = new PlanbowDbContext();
+            DbContext = new WeatherDbContext();
 
             // Do NOT enable proxied entities, else serialization fails
             DbContext.Configuration.ProxyCreationEnabled = false;
@@ -53,13 +52,13 @@ namespace Planbow.Data
         {
             return RepositoryProvider.GetRepositoryForEntityType<T>();
         }
-        
+
         private T GetRepo<T>() where T : class
         {
             return RepositoryProvider.GetRepository<T>();
         }
 
-        private PlanbowDbContext DbContext { get; set; }
+        private WeatherDbContext DbContext { get; set; }
 
         #region IDisposable
 
@@ -81,5 +80,8 @@ namespace Planbow.Data
         }
 
         #endregion
+
+
+       
     }
 }

@@ -14,6 +14,7 @@ namespace Planbow.Data.Helpers
             return new Dictionary<Type, Func<DbContext, object>>
                 {
                    {typeof(IPlanRepository), dbContext => new PlanRepository(dbContext)},
+                   {typeof(IWeatherRepository), dbContext => new WeatherRepository(dbContext)}
                 };
         }
 

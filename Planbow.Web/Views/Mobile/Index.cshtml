@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Planbow App</title>
+    <link href="/kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="discover" data-role="view" data-layout="discoverLayout">
+        Discover and find plans
+    </div>
+
+    <div id="discoverMap" data-role="view" data-layout="discoverMapLayout">
+        Discover and find plans using a map
+    </div>
+
+    <div id="plans" data-role="view" data-layout="default">
+        View and create your plans
+    </div>
+
+    <div id="settings" data-role="view" data-layout="default">
+        Configure your settings
+    </div>
+
+    <section data-role="layout" data-id="discoverMapLayout">
+        <header data-role="header">
+            <div data-role="navbar">
+                Planbow
+                <a href="#discover" data-role="button" data-align="right">List</a>
+            </div>
+        </header>        
+
+        <!--View content will render here-->
+
+        <footer data-role="footer">
+            <div data-role="tabstrip">
+                <a href="#discover">Discover</a>  
+                <a href="#plans">Plans</a>  
+                <a href="#settings">Settings</a>    
+            </div> 
+        <footer>
+    </section>
+
+    <section data-role="layout" data-id="discoverLayout">
+        <header data-role="header">
+            <div data-role="navbar">
+                Planbow
+                <a href="#discoverMap" data-role="button" data-align="right">Map</a>
+            </div>
+        </header>        
+
+        <!--View content will render here-->
+
+        <footer data-role="footer">
+            <div data-role="tabstrip">
+                <a href="#discover">Discover</a>  
+                <a href="#plans">Plans</a>  
+                <a href="#settings">Settings</a>    
+            </div> 
+        <footer>
+    </section>
+
+    <section data-role="layout" data-id="default">
+        <header data-role="header">
+            <div data-role="navbar">Planbow</div>
+        </header>        
+
+        <!--View content will render here-->
+
+        <footer data-role="footer">
+            <div data-role="tabstrip">
+                <a href="#discover" data-icon="custom">Discover</a>  
+                <a href="#plans"  data-icon="custom">Plans</a>  
+                <a href="#settings" data-icon="custom">Settings</a>    
+            </div> 
+        <footer>
+    </section>
+
+    <script src="/kendo/js/jquery.min.js"></script>
+    <script src="/kendo/js/kendo.mobile.min.js"></script>
+
+    <script>
+
+        var app = new kendo.mobile.Application(document.body,
+        {
+            transition: 'slide'
+        });
+
+    </script>
+</body>
+</html>

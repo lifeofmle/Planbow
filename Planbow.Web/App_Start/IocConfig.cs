@@ -25,6 +25,7 @@ namespace Planbow.Web.App_Start
 
             kernel.Bind<IRepositoryProvider>().To<RepositoryProvider>();
             kernel.Bind<IPlanbowUow>().To<PlanbowUow>();
+            kernel.Bind<IWeatherUow>().To<WeatherUow>();
 
             // Tell WebApi how to use our Ninject IoC
             config.DependencyResolver = new NinjectDependencyResolver(kernel);

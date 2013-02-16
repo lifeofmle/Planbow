@@ -1,0 +1,896 @@
+
+{
+	"response": {
+		"version": "0.1"
+		,"termsofService": "http://www.wunderground.com/weather/api/d/terms.html"
+		,"features": {
+		"geolookup": 1
+		,
+		"conditions": 1
+		,
+		"forecast": 1
+		}
+	}
+		,	"location": {
+		"type":"INTLCITY",
+		"country":"UK",
+		"country_iso3166":"GB",
+		"country_name":"United Kingdom",
+		"state":"",
+		"city":"London",
+		"tz_short":"GMT",
+		"tz_long":"Europe/London",
+		"lat":"51.47999954",
+		"lon":"-0.44999999",
+		"zip":"00000",
+		"magic":"1",
+		"wmo":"03772",
+		"l":"/q/zmw:00000.1.03772",
+		"requesturl":"global/stations/03772.html",
+		"wuiurl":"http://www.wunderground.com/global/stations/03772.html",
+		"nearby_weather_stations": {
+		"airport": {
+		"station": [
+		{ "city":"London / Heathrow Airport", "state":"", "country":"United Kingdom", "icao":"EGLL", "lat":"51.48333359", "lon":"-0.44999999" },
+		{ "city":"London", "state":"", "country":"UK", "icao":"EGLL", "lat":"51.47999954", "lon":"-0.44999999" },
+		{ "city":"Northolt", "state":"", "country":"UK", "icao":"EGWU", "lat":"51.54999924", "lon":"-0.41999999" },
+		{ "city":"Farnborough", "state":"", "country":"UK", "icao":"EGLF", "lat":"51.27999878", "lon":"-0.77999997" }
+		]
+		}
+		,
+		"pws": {
+		"station": [
+		{
+		"neighborhood":"",
+		"city":"Iver, South Bucks",
+		"state":"",
+		"country":"United Kingdom",
+		"id":"IBUCKSIV1",
+		"lat":51.504894,
+		"lon":-0.508861,
+		"distance_km":4,
+		"distance_mi":2
+		},
+		{
+		"neighborhood":"Ashford",
+		"city":"Ashford",
+		"state":"SURREY",
+		"country":"UNITED KINGDOM",
+		"id":"ISURREYA4",
+		"lat":51.436668,
+		"lon":-0.473333,
+		"distance_km":5,
+		"distance_mi":3
+		},
+		{
+		"neighborhood":"Hayes End",
+		"city":"Hillingdon",
+		"state":"GREATER LONDON",
+		"country":"UNITED KINGDOM",
+		"id":"IGREATER31",
+		"lat":51.524734,
+		"lon":-0.433171,
+		"distance_km":5,
+		"distance_mi":3
+		},
+		{
+		"neighborhood":"APRSWXNET London Heathow UK",
+		"city":"London",
+		"state":"",
+		"country":"UK",
+		"id":"MD4121",
+		"lat":51.463329,
+		"lon":-0.370830,
+		"distance_km":5,
+		"distance_mi":3
+		},
+		{
+		"neighborhood":"Hounslow",
+		"city":"Hounslow",
+		"state":"Middlesex",
+		"country":"United Kingdom",
+		"id":"IMIDDLES2",
+		"lat":51.456646,
+		"lon":-0.366677,
+		"distance_km":6,
+		"distance_mi":3
+		},
+		{
+		"neighborhood":"Langley Weather Station",
+		"city":"Slough",
+		"state":"BERKSHIRE. U.K.",
+		"country":"UNITED KINGDOM",
+		"id":"IBERKSHI18",
+		"lat":51.498379,
+		"lon":-0.541763,
+		"distance_km":6,
+		"distance_mi":4
+		},
+		{
+		"neighborhood":"Sunbury on Thames",
+		"city":"Middlesex",
+		"state":"UK",
+		"country":"United Kingdom",
+		"id":"I90581027",
+		"lat":51.417065,
+		"lon":-0.433550,
+		"distance_km":7,
+		"distance_mi":4
+		},
+		{
+		"neighborhood":"",
+		"city":"Slough",
+		"state":"SLOUGH",
+		"country":"UNITED KINGDOM",
+		"id":"ISLOUGHS4",
+		"lat":51.500664,
+		"lon":-0.567698,
+		"distance_km":8,
+		"distance_mi":5
+		},
+		{
+		"neighborhood":"Hampton Hill",
+		"city":"Hampton",
+		"state":"MIDDLESEX",
+		"country":"UNITED KINGDOM",
+		"id":"IMIDDLES22",
+		"lat":51.429050,
+		"lon":-0.358474,
+		"distance_km":8,
+		"distance_mi":5
+		},
+		{
+		"neighborhood":"Shepperton Green",
+		"city":"Shepperton",
+		"state":"SURREY",
+		"country":"UNITED KINGDOM",
+		"id":"ISURREYS3",
+		"lat":51.401806,
+		"lon":-0.461514,
+		"distance_km":8,
+		"distance_mi":5
+		},
+		{
+		"neighborhood":"Littleton SC",
+		"city":"Littleton",
+		"state":"SURREY",
+		"country":"UNITED KINGDOM",
+		"id":"ISURREYS4",
+		"lat":51.396389,
+		"lon":-0.475556,
+		"distance_km":9,
+		"distance_mi":5
+		},
+		{
+		"neighborhood":"Ruislip",
+		"city":"Ruislip",
+		"state":"GREATER LONDON",
+		"country":"UNITED KINGDOM",
+		"id":"IGREATER59",
+		"lat":51.559952,
+		"lon":-0.397741,
+		"distance_km":9,
+		"distance_mi":5
+		},
+		{
+		"neighborhood":"Ickenham",
+		"city":"Ickenham",
+		"state":"Greater London",
+		"country":"UNITED KINGDOM",
+		"id":"IUXBRIDG3",
+		"lat":51.567413,
+		"lon":-0.441985,
+		"distance_km":9,
+		"distance_mi":5
+		},
+		{
+		"neighborhood":"APRSWXNET Ruislip UK",
+		"city":"Northolt",
+		"state":"",
+		"country":"UK",
+		"id":"MD8710",
+		"lat":51.577499,
+		"lon":-0.401670,
+		"distance_km":11,
+		"distance_mi":6
+		},
+		{
+		"neighborhood":"APRSWXNET London UK",
+		"city":"Northolt",
+		"state":"",
+		"country":"UK",
+		"id":"MAT501",
+		"lat":51.553001,
+		"lon":-0.330200,
+		"distance_km":11,
+		"distance_mi":6
+		},
+		{
+		"neighborhood":"Chertsey",
+		"city":"Chertsey",
+		"state":"ENGLAND",
+		"country":"UNITED KINGDOM",
+		"id":"IENGLAND374",
+		"lat":51.376011,
+		"lon":-0.512374,
+		"distance_km":12,
+		"distance_mi":7
+		},
+		{
+		"neighborhood":"Hersham",
+		"city":"Walton-on-Thames",
+		"state":"Surrey",
+		"country":"United Kingdom",
+		"id":"ISURREYW12",
+		"lat":51.365776,
+		"lon":-0.408288,
+		"distance_km":13,
+		"distance_mi":7
+		},
+		{
+		"neighborhood":"Surbiton",
+		"city":"Surbion",
+		"state":"SURREY",
+		"country":"UNITED KINGDOM",
+		"id":"ISURREYS7",
+		"lat":51.398445,
+		"lon":-0.301911,
+		"distance_km":13,
+		"distance_mi":8
+		},
+		{
+		"neighborhood":"Harrow",
+		"city":"Harrow",
+		"state":"GREATER LONDON",
+		"country":"UNITED KINGDOM",
+		"id":"IGREATER48",
+		"lat":51.591576,
+		"lon":-0.335255,
+		"distance_km":14,
+		"distance_mi":8
+		},
+		{
+		"neighborhood":"Northwood",
+		"city":"London",
+		"state":"MIDDLESEX",
+		"country":"UNITED KINGDOM",
+		"id":"IMIDDLES21",
+		"lat":51.614792,
+		"lon":-0.418510,
+		"distance_km":15,
+		"distance_mi":9
+		},
+		{
+		"neighborhood":"BRAGGS OF SURBITON",
+		"city":"Berrylands, Surbiton",
+		"state":"SURREY",
+		"country":"United Kingdom",
+		"id":"ISURREYS1",
+		"lat":51.389900,
+		"lon":-0.283300,
+		"distance_km":15,
+		"distance_mi":9
+		},
+		{
+		"neighborhood":"",
+		"city":"Byfleet",
+		"state":"SURREY",
+		"country":"UNITED KINGDOM",
+		"id":"ISURREYB2",
+		"lat":51.341728,
+		"lon":-0.479759,
+		"distance_km":15,
+		"distance_mi":9
+		},
+		{
+		"neighborhood":"Berrylands",
+		"city":"Kingston Upon Thames",
+		"state":"GREATER LONDON",
+		"country":"UNITED KINGDOM",
+		"id":"IGREATER43",
+		"lat":51.391754,
+		"lon":-0.273848,
+		"distance_km":15,
+		"distance_mi":9
+		},
+		{
+		"neighborhood":"Burnham, Bucks UK",
+		"city":"Burnham",
+		"state":"ENGLAND",
+		"country":"UNITED KINGDOM",
+		"id":"IENGLAND174",
+		"lat":51.527870,
+		"lon":-0.664260,
+		"distance_km":15,
+		"distance_mi":9
+		},
+		{
+		"neighborhood":"Surrey",
+		"city":"Chessington",
+		"state":"Surrey",
+		"country":"UNITED KINGDOM",
+		"id":"IGREATER3",
+		"lat":51.373192,
+		"lon":-0.298337,
+		"distance_km":15,
+		"distance_mi":9
+		},
+		{
+		"neighborhood":"Hook",
+		"city":"Chessington",
+		"state":"SURREY",
+		"country":"UNITED KINGDOM",
+		"id":"ISURREYC12",
+		"lat":51.369133,
+		"lon":-0.303051,
+		"distance_km":15,
+		"distance_mi":9
+		},
+		{
+		"neighborhood":"Chalfont St Peter",
+		"city":"Gerrards Cross",
+		"state":"BUCKINGHAMSHIRE",
+		"country":"United Kingdom",
+		"id":"IBUCKING4",
+		"lat":51.610851,
+		"lon":-0.549910,
+		"distance_km":16,
+		"distance_mi":9
+		},
+		{
+		"neighborhood":"",
+		"city":"Harrow",
+		"state":"GREATER LONDON",
+		"country":"UNITED KINGDOM",
+		"id":"IGREATER38",
+		"lat":51.609791,
+		"lon":-0.339873,
+		"distance_km":16,
+		"distance_mi":9
+		},
+		{
+		"neighborhood":"West Byfleet",
+		"city":"Woking",
+		"state":"SURREY",
+		"country":"UNITED KINGDOM",
+		"id":"ISURREYW11",
+		"lat":51.339092,
+		"lon":-0.518956,
+		"distance_km":16,
+		"distance_mi":9
+		},
+		{
+		"neighborhood":"Chessington",
+		"city":"Chessington",
+		"state":"SURREY",
+		"country":"UNITED KINGDOM",
+		"id":"ISURREYC11",
+		"lat":51.360031,
+		"lon":-0.301569,
+		"distance_km":16,
+		"distance_mi":10
+		},
+		{
+		"neighborhood":"",
+		"city":"Ascot",
+		"state":"BERKS",
+		"country":"United Kingdom",
+		"id":"IBERKSWI1",
+		"lat":51.416229,
+		"lon":-0.676671,
+		"distance_km":17,
+		"distance_mi":10
+		},
+		{
+		"neighborhood":"Motspur Park",
+		"city":"New Malden",
+		"state":"SURREY",
+		"country":"UNITED KINGDOM",
+		"id":"ISURREYN4",
+		"lat":51.396648,
+		"lon":-0.237227,
+		"distance_km":17,
+		"distance_mi":10
+		},
+		{
+		"neighborhood":"Ewell",
+		"city":"Epsom",
+		"state":"Surrey",
+		"country":"United Kingdom",
+		"id":"ISURREYL5",
+		"lat":51.361359,
+		"lon":-0.272220,
+		"distance_km":18,
+		"distance_mi":10
+		},
+		{
+		"neighborhood":"Cricklewood (NW2 3 ) Matthew Stratford",
+		"city":"London",
+		"state":"LONDON",
+		"country":"UNITED KINGDOM",
+		"id":"ILONDONL8",
+		"lat":51.557594,
+		"lon":-0.212718,
+		"distance_km":18,
+		"distance_mi":11
+		},
+		{
+		"neighborhood":"",
+		"city":"Epsom",
+		"state":"SURREY",
+		"country":"UNITED KINGDOM",
+		"id":"ISURREYE4",
+		"lat":51.364799,
+		"lon":-0.251000,
+		"distance_km":18,
+		"distance_mi":11
+		}
+		]
+		}
+		}
+	}
+		,	"current_observation": {
+		"image": {
+		"url":"http://icons-ak.wxug.com/graphics/wu2/logo_130x80.png",
+		"title":"Weather Underground",
+		"link":"http://www.wunderground.com"
+		},
+		"display_location": {
+		"full":"London, United Kingdom",
+		"city":"London",
+		"state":"",
+		"state_name":"United Kingdom",
+		"country":"UK",
+		"country_iso3166":"GB",
+		"zip":"00000",
+		"latitude":"51.47999954",
+		"longitude":"-0.44999999",
+		"elevation":"24.00000000"
+		},
+		"observation_location": {
+		"full":"London, ",
+		"city":"London",
+		"state":"",
+		"country":"UK",
+		"country_iso3166":"GB",
+		"latitude":"51.47999954",
+		"longitude":"-0.44999999",
+		"elevation":"79 ft"
+		},
+		"estimated": {
+		},
+		"station_id":"EGLL",
+		"observation_time":"Last Updated on February 16, 2:20 PM GMT",
+		"observation_time_rfc822":"Sat, 16 Feb 2013 14:20:00 +0000",
+		"observation_epoch":"1361024400",
+		"local_time_rfc822":"Sat, 16 Feb 2013 14:49:22 +0000",
+		"local_epoch":"1361026162",
+		"local_tz_short":"GMT",
+		"local_tz_long":"Europe/London",
+		"local_tz_offset":"+0000",
+		"weather":"Partly Cloudy",
+		"temperature_string":"50 F (10 C)",
+		"temp_f":50,
+		"temp_c":10,
+		"relative_humidity":"47%",
+		"wind_string":"From the South at 5 MPH",
+		"wind_dir":"South",
+		"wind_degrees":190,
+		"wind_mph":5,
+		"wind_gust_mph":0,
+		"wind_kph":7,
+		"wind_gust_kph":0,
+		"pressure_mb":"1023",
+		"pressure_in":"30.21",
+		"pressure_trend":"-",
+		"dewpoint_string":"30 F (-1 C)",
+		"dewpoint_f":30,
+		"dewpoint_c":-1,
+		"heat_index_string":"NA",
+		"heat_index_f":"NA",
+		"heat_index_c":"NA",
+		"windchill_string":"NA",
+		"windchill_f":"NA",
+		"windchill_c":"NA",
+		"feelslike_string":"50 F (10 C)",
+		"feelslike_f":"50",
+		"feelslike_c":"10",
+		"visibility_mi":"6.2",
+		"visibility_km":"10.0",
+		"solarradiation":"",
+		"UV":"1",
+		"precip_1hr_string":"-9999.00 in (-9999.00 mm)",
+		"precip_1hr_in":"-9999.00",
+		"precip_1hr_metric":"-9999.00",
+		"precip_today_string":"0.00 in (0.0 mm)",
+		"precip_today_in":"0.00",
+		"precip_today_metric":"0.0",
+		"icon":"partlycloudy",
+		"icon_url":"http://icons-ak.wxug.com/i/c/k/partlycloudy.gif",
+		"forecast_url":"http://www.wunderground.com/global/stations/03772.html",
+		"history_url":"http://www.wunderground.com/history/airport/EGLL/2013/2/16/DailyHistory.html",
+		"ob_url":"http://www.wunderground.com/cgi-bin/findweather/getForecast?query=51.47999954,-0.44999999"
+	}
+		,
+	"forecast":{
+		"txt_forecast": {
+		"date":"12:00 AM GMT",
+		"forecastday": [
+		{
+		"period":0,
+		"icon":"partlycloudy",
+		"icon_url":"http://icons-ak.wxug.com/i/c/k/partlycloudy.gif",
+		"title":"Saturday",
+		"fcttext":"Partly cloudy. High of 50F. Winds less than 5 mph.",
+		"fcttext_metric":"Partly cloudy. High of 10C. Winds less than 5 km/h.",
+		"pop":"0"
+		}
+		,
+		{
+		"period":1,
+		"icon":"partlycloudy",
+		"icon_url":"http://icons-ak.wxug.com/i/c/k/partlycloudy.gif",
+		"title":"Saturday Night",
+		"fcttext":"Partly cloudy. Low of 36F. Winds from the SSE at 5 to 10 mph.",
+		"fcttext_metric":"Partly cloudy. Low of 2C. Winds from the SSE at 10 to 15 km/h.",
+		"pop":"0"
+		}
+		,
+		{
+		"period":2,
+		"icon":"partlycloudy",
+		"icon_url":"http://icons-ak.wxug.com/i/c/k/partlycloudy.gif",
+		"title":"Sunday",
+		"fcttext":"Partly cloudy in the morning, then clear. High of 48F. Winds from the SE at 5 to 10 mph.",
+		"fcttext_metric":"Partly cloudy in the morning, then clear. High of 9C. Breezy. Winds from the SE at 10 to 20 km/h.",
+		"pop":"0"
+		}
+		,
+		{
+		"period":3,
+		"icon":"clear",
+		"icon_url":"http://icons-ak.wxug.com/i/c/k/clear.gif",
+		"title":"Sunday Night",
+		"fcttext":"Clear. Low of 34F. Winds from the ESE at 5 to 10 mph.",
+		"fcttext_metric":"Clear. Low of 1C. Winds from the ESE at 10 to 15 km/h.",
+		"pop":"0"
+		}
+		,
+		{
+		"period":4,
+		"icon":"clear",
+		"icon_url":"http://icons-ak.wxug.com/i/c/k/clear.gif",
+		"title":"Monday",
+		"fcttext":"Clear. High of 48F. Winds from the ESE at 5 to 10 mph.",
+		"fcttext_metric":"Clear. High of 9C. Winds from the ESE at 10 to 15 km/h.",
+		"pop":"0"
+		}
+		,
+		{
+		"period":5,
+		"icon":"partlycloudy",
+		"icon_url":"http://icons-ak.wxug.com/i/c/k/partlycloudy.gif",
+		"title":"Monday Night",
+		"fcttext":"Partly cloudy. Fog overnight. Low of 30F. Winds less than 5 mph.",
+		"fcttext_metric":"Partly cloudy. Fog overnight. Low of -1C. Winds less than 5 km/h.",
+		"pop":"0"
+		}
+		,
+		{
+		"period":6,
+		"icon":"partlycloudy",
+		"icon_url":"http://icons-ak.wxug.com/i/c/k/partlycloudy.gif",
+		"title":"Tuesday",
+		"fcttext":"Clear in the morning, then partly cloudy. High of 46F. Winds from the North at 5 to 10 mph.",
+		"fcttext_metric":"Clear in the morning, then partly cloudy. High of 8C. Winds from the North at 10 to 15 km/h.",
+		"pop":"0"
+		}
+		,
+		{
+		"period":7,
+		"icon":"mostlycloudy",
+		"icon_url":"http://icons-ak.wxug.com/i/c/k/mostlycloudy.gif",
+		"title":"Tuesday Night",
+		"fcttext":"Mostly cloudy in the evening, then overcast. Low of 34F with a windchill as low as 28F. Winds from the NE at 5 to 15 mph.",
+		"fcttext_metric":"Mostly cloudy in the evening, then overcast. Low of 1C. Breezy. Winds from the NE at 10 to 20 km/h.",
+		"pop":"0"
+		}
+		]
+		},
+		"simpleforecast": {
+		"forecastday": [
+		{"date":{
+	"epoch":"1361048400",
+	"pretty":"9:00 PM GMT on February 16, 2013",
+	"day":16,
+	"month":2,
+	"year":2013,
+	"yday":46,
+	"hour":21,
+	"min":"00",
+	"sec":0,
+	"isdst":"0",
+	"monthname":"February",
+	"weekday_short":"Sat",
+	"weekday":"Saturday",
+	"ampm":"PM",
+	"tz_short":"GMT",
+	"tz_long":"Europe/London"
+},
+		"period":1,
+		"high": {
+		"fahrenheit":"50",
+		"celsius":"10"
+		},
+		"low": {
+		"fahrenheit":"36",
+		"celsius":"2"
+		},
+		"conditions":"Partly Cloudy",
+		"icon":"partlycloudy",
+		"icon_url":"http://icons-ak.wxug.com/i/c/k/partlycloudy.gif",
+		"skyicon":"partlycloudy",
+		"pop":0,
+		"qpf_allday": {
+		"in": 0.00,
+		"mm": 0.0
+		},
+		"qpf_day": {
+		"in": 0.00,
+		"mm": 0.0
+		},
+		"qpf_night": {
+		"in": 0.00,
+		"mm": 0.0
+		},
+		"snow_allday": {
+		"in": 0,
+		"cm": 0
+		},
+		"snow_day": {
+		"in": 0,
+		"cm": 0
+		},
+		"snow_night": {
+		"in": 0,
+		"cm": 0
+		},
+		"maxwind": {
+		"mph": 7,
+		"kph": 11,
+		"dir": "SSE",
+		"degrees": 167
+		},
+		"avewind": {
+		"mph": 6,
+		"kph": 10,
+		"dir": "South",
+		"degrees": 177
+		},
+		"avehumidity": 81,
+		"maxhumidity": 88,
+		"minhumidity": 58
+		}
+		,
+		{"date":{
+	"epoch":"1361134800",
+	"pretty":"9:00 PM GMT on February 17, 2013",
+	"day":17,
+	"month":2,
+	"year":2013,
+	"yday":47,
+	"hour":21,
+	"min":"00",
+	"sec":0,
+	"isdst":"0",
+	"monthname":"February",
+	"weekday_short":"Sun",
+	"weekday":"Sunday",
+	"ampm":"PM",
+	"tz_short":"GMT",
+	"tz_long":"Europe/London"
+},
+		"period":2,
+		"high": {
+		"fahrenheit":"48",
+		"celsius":"9"
+		},
+		"low": {
+		"fahrenheit":"34",
+		"celsius":"1"
+		},
+		"conditions":"Partly Cloudy",
+		"icon":"partlycloudy",
+		"icon_url":"http://icons-ak.wxug.com/i/c/k/partlycloudy.gif",
+		"skyicon":"mostlysunny",
+		"pop":0,
+		"qpf_allday": {
+		"in": 0.00,
+		"mm": 0.0
+		},
+		"qpf_day": {
+		"in": 0.00,
+		"mm": 0.0
+		},
+		"qpf_night": {
+		"in": 0.00,
+		"mm": 0.0
+		},
+		"snow_allday": {
+		"in": 0,
+		"cm": 0
+		},
+		"snow_day": {
+		"in": 0,
+		"cm": 0
+		},
+		"snow_night": {
+		"in": 0,
+		"cm": 0
+		},
+		"maxwind": {
+		"mph": 10,
+		"kph": 16,
+		"dir": "SE",
+		"degrees": 137
+		},
+		"avewind": {
+		"mph": 8,
+		"kph": 13,
+		"dir": "SE",
+		"degrees": 125
+		},
+		"avehumidity": 74,
+		"maxhumidity": 87,
+		"minhumidity": 64
+		}
+		,
+		{"date":{
+	"epoch":"1361221200",
+	"pretty":"9:00 PM GMT on February 18, 2013",
+	"day":18,
+	"month":2,
+	"year":2013,
+	"yday":48,
+	"hour":21,
+	"min":"00",
+	"sec":0,
+	"isdst":"0",
+	"monthname":"February",
+	"weekday_short":"Mon",
+	"weekday":"Monday",
+	"ampm":"PM",
+	"tz_short":"GMT",
+	"tz_long":"Europe/London"
+},
+		"period":3,
+		"high": {
+		"fahrenheit":"48",
+		"celsius":"9"
+		},
+		"low": {
+		"fahrenheit":"30",
+		"celsius":"-1"
+		},
+		"conditions":"Clear",
+		"icon":"clear",
+		"icon_url":"http://icons-ak.wxug.com/i/c/k/clear.gif",
+		"skyicon":"mostlysunny",
+		"pop":0,
+		"qpf_allday": {
+		"in": 0.00,
+		"mm": 0.0
+		},
+		"qpf_day": {
+		"in": 0.00,
+		"mm": 0.0
+		},
+		"qpf_night": {
+		"in": 0.00,
+		"mm": 0.0
+		},
+		"snow_allday": {
+		"in": 0,
+		"cm": 0
+		},
+		"snow_day": {
+		"in": 0,
+		"cm": 0
+		},
+		"snow_night": {
+		"in": 0,
+		"cm": 0
+		},
+		"maxwind": {
+		"mph": 7,
+		"kph": 11,
+		"dir": "ESE",
+		"degrees": 111
+		},
+		"avewind": {
+		"mph": 6,
+		"kph": 10,
+		"dir": "ESE",
+		"degrees": 112
+		},
+		"avehumidity": 85,
+		"maxhumidity": 97,
+		"minhumidity": 60
+		}
+		,
+		{"date":{
+	"epoch":"1361307600",
+	"pretty":"9:00 PM GMT on February 19, 2013",
+	"day":19,
+	"month":2,
+	"year":2013,
+	"yday":49,
+	"hour":21,
+	"min":"00",
+	"sec":0,
+	"isdst":"0",
+	"monthname":"February",
+	"weekday_short":"Tue",
+	"weekday":"Tuesday",
+	"ampm":"PM",
+	"tz_short":"GMT",
+	"tz_long":"Europe/London"
+},
+		"period":4,
+		"high": {
+		"fahrenheit":"46",
+		"celsius":"8"
+		},
+		"low": {
+		"fahrenheit":"34",
+		"celsius":"1"
+		},
+		"conditions":"Partly Cloudy",
+		"icon":"partlycloudy",
+		"icon_url":"http://icons-ak.wxug.com/i/c/k/partlycloudy.gif",
+		"skyicon":"mostlysunny",
+		"pop":0,
+		"qpf_allday": {
+		"in": 0.00,
+		"mm": 0.0
+		},
+		"qpf_day": {
+		"in": 0.00,
+		"mm": 0.0
+		},
+		"qpf_night": {
+		"in": 0.00,
+		"mm": 0.0
+		},
+		"snow_allday": {
+		"in": 0,
+		"cm": 0
+		},
+		"snow_day": {
+		"in": 0,
+		"cm": 0
+		},
+		"snow_night": {
+		"in": 0,
+		"cm": 0
+		},
+		"maxwind": {
+		"mph": 9,
+		"kph": 14,
+		"dir": "NE",
+		"degrees": 56
+		},
+		"avewind": {
+		"mph": 7,
+		"kph": 11,
+		"dir": "ENE",
+		"degrees": 78
+		},
+		"avehumidity": 81,
+		"maxhumidity": 96,
+		"minhumidity": 59
+		}
+		]
+		}
+	}
+}

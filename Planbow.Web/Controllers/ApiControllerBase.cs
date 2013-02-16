@@ -10,5 +10,7 @@ namespace Planbow.Web.Controllers
     public abstract class ApiControllerBase : ApiController
     {
         protected IPlanbowUow Uow { get; set; }
+
+        protected IWeatherUow WeatherUow { get; set; }
     }
 }

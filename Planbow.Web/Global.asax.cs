@@ -1,6 +1,8 @@
-﻿using Planbow.Web.App_Start;
+﻿using Planbow.Data;
+using Planbow.Web.App_Start;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net.Http.Formatting;
 using System.Web;
@@ -29,7 +31,8 @@ namespace Planbow.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             GlobalConfig.CustomizeConfig(GlobalConfiguration.Configuration);
-            
+
+            Database.SetInitializer<WeatherDbContext>(null);            
         }
     }
 }
