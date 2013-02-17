@@ -22,6 +22,9 @@ namespace Planbow.Web
         {
             AreaRegistration.RegisterAllAreas();
 
+            var config = GlobalConfiguration.Configuration;
+            config.Formatters.Insert(0, new JsonpMediaTypeFormatter());
+
             IocConfig.RegisterIoc(GlobalConfiguration.Configuration);  
 
             // Standard ones

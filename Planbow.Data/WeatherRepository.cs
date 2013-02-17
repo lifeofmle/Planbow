@@ -82,6 +82,8 @@ namespace Planbow.Data
         {
             var weather = new Weather() { City = city, Area = area };
 
+            var weatherJson = new JObject();  
+
             var formattedCity = FormatCity(city);
 
             var isInternational = !_states.Contains(area);
@@ -94,12 +96,36 @@ namespace Planbow.Data
 
             var wundergroundUrl = string.Format(currentUrl, _wundergroundApiKey, area, formattedCity);
 
-            //var currentConditions = GetData(wundergroundUrl);
+            var currentConditions = GetData(wundergroundUrl);
 
-            //if (!string.IsNullOrEmpty(currentConditions))
-            //{
+            if (!string.IsNullOrEmpty(currentConditions))
+            {
+                var jObject = JObject.Parse(currentConditions);
 
-            //}
+                var currentObs = jObject["current_observation"];
+                weatherJson.Add("currentTemp", currentObs["temp_c"]);
+                weatherJson.Add("currentFeelsLike", currentObs["feelslike_c"]);
+                weatherJson.Add("currentCondition", currentObs["weather"]);
+                weatherJson.Add("currentIcon", currentObs["icon"]);
+
+                var forecast = jObject["forecast"];
+
+                var dailyForecasts = forecast["txt_forecast"]["forecastday"];
+
+                var forecastList = new JArray();
+                foreach (var item in dailyForecasts)
+                {
+                    if (item.Value<string>("period") == "0")
+                    {
+                        weatherJson.Add("currentPop", item["pop"]);
+                        continue;
+                    }
+
+                    forecastList.Add(item);
+                }
+
+                weatherJson.Add("forecast", forecastList);
+            }
 
             // Yesterday Info
             var wundergroundYesterdayUrl = string.Format("http://api.wunderground.com/api/{0}/yesterday/q/{2}/{1}.json",
@@ -107,12 +133,23 @@ namespace Planbow.Data
                                         formattedCity,
                                         area);
 
-            //var yesterday = GetData(wundergroundYesterdayUrl);
+            var yesterday = GetData(wundergroundYesterdayUrl);
 
-            //if (!string.IsNullOrEmpty(yesterday))
-            //{
+            if (!string.IsNullOrEmpty(yesterday))
+            {
+                var jObject = JObject.Parse(yesterday);
 
-            //}
+                var yesterdaySummary = string.Empty;
+
+                var dailySummary = jObject["history"]["dailysummary"][0];
+
+                var tempMin = dailySummary["mintempm"].Value<string>();
+                var tempMax = dailySummary["maxtempm"].Value<string>();
+
+                yesterdaySummary = string.Format("Ranged from a low of {0}&#176;C to a high of {1}&#176;C", tempMin, tempMax);
+
+                weatherJson.Add("yesterday", yesterdaySummary);
+            }
 
             // 10 Hr Breakdown
             var wunderground10HourUrl = string.Format("http://api.wunderground.com/api/{0}/hourly10day/q/{2}/{1}.json",
@@ -120,12 +157,46 @@ namespace Planbow.Data
                                         formattedCity,
                                         area);
 
-            //var hourly = GetData(wunderground10HourUrl);
+            var hourly = GetData(wunderground10HourUrl);
 
-            //if (!string.IsNullOrEmpty(hourly))
-            //{
+            if (!string.IsNullOrEmpty(hourly))
+            {
+                var jObject = JObject.Parse(hourly);
 
-            //}
+                var hourlyForecast = jObject["hourly_forecast"];
+
+                var hourlyData = new JArray();
+
+                int i = 0;
+                foreach (var item in hourlyForecast)
+                {
+                    var hour = item["FCTTIME"]["hour"];
+                    var temp = item["temp"]["metric"];
+
+                    var hourValue = hour.Value<int>();
+                    var time = "am";
+                    if (hourValue > 12)
+                    {
+                        hourValue = hourValue - 12;
+                        time = "pm";
+                    }
+
+                    var hourObj = new JObject();
+                    hourObj.Add("hour", hourValue + time);
+                    hourObj.Add("temp", temp);
+
+                    hourlyData.Add(hourObj);
+
+                    i++;
+
+                    if (i >= 12)
+                        break;
+                }
+
+                weatherJson.Add("hourly", hourlyData);
+            }
+
+            weather.CurrentWeather = weatherJson.ToString();
 
             return weather;
         }
@@ -197,7 +268,11 @@ namespace Planbow.Data
             {
                 var weatherItem = condition;
 
-                if (weatherItem.City == "London") // || DateTime.Now.Subtract(condition.Updated).Hours >= 12)
+                var differenceTime = DateTime.Now.Subtract(condition.Updated);
+                var minutesSinceLastUpdate = differenceTime.TotalMinutes;
+                var minutes = differenceTime.Minutes;
+
+                if (minutesSinceLastUpdate >= 30 && IsValidTimeToRun(weatherItem.Id, minutes))
                 {
                     weatherItem = UpdateWeather(condition);
 
@@ -214,6 +289,32 @@ namespace Planbow.Data
                 return null;
 
             return city.Replace(" ", "_");
+        }
+
+        private bool IsValidTimeToRun(int index, int minutes)
+        {
+            if (index == 1 && (minutes >= 1 && minutes <= 5) && (minutes >= 31 && minutes <= 35))
+            {
+                return true;
+            }
+            else if (index == 2 && (minutes >= 6 && minutes <= 10) && (minutes >= 36 && minutes <= 40))
+            {
+                return true;
+            }
+            else if (index == 3 && (minutes >= 11 && minutes <= 15) && (minutes >= 41 && minutes <= 45))
+            {
+                return true;
+            }
+            else if (index == 4 && (minutes >= 16 && minutes <= 20) && (minutes >= 46 && minutes <= 50))
+            {
+                return true;
+            }
+            else if (index == 5 && (minutes >= 21 && minutes <= 25) && (minutes >= 51 && minutes <= 55))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

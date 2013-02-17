@@ -54,6 +54,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="WeatherFeelTest.cs" />
     <Compile Include="FourSquareServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -71,7 +72,10 @@
     <EmbeddedResource Include="FoursquareVenue.json" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="currentForecast.json" />
+    <EmbeddedResource Include="hourly.json" />
     <None Include="packages.config" />
+    <EmbeddedResource Include="yesterday.json" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
